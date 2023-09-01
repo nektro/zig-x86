@@ -1,0 +1,6 @@
+id: 64qr019q55j6vxhywygyldgc3yfnv9y9zrys7mfgtv85iew6
+name: x86
+main: src/mod.zig
+license: MPL-2.0
+description: x86 and x86_64 library for Zig
+dependencies:
