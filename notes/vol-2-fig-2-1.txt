@@ -1,0 +1,20 @@
+Instruction Prefixes | Opcode | ModR/M | SIB | Displacement | Immediate
+-----------------------------------------------------------------------
+- Prefixes of 1 byte each (optional)(1, 2)
+- 1-, 2-, or 3-byte opcode
+- 1 byte (if required)
+- 1 byte (if required)
+- Address displacement of 1, 2, or 4 bytes or none(3)
+- Immediate data of 1, 2, or 4 bytes or none(3)
+
+Mod | Reg/Opcode | R/M
+7 6   5   4    3   2 1 0
+----------------------
+
+Scale | Index | Base
+7   6   5 4 3   2 1 0
+--------------------
+
+1. The REX prefix is optional, but if used must be immediately before the opcode; see Section 2.2.1, “REX Prefixes” for additional information.
+2. For VEX encoding information, see Section 2.3, “Intel® Advanced Vector Extensions (Intel® AVX)”.
+3. Some rare instructions can take an 8B immediate or 8B displacement.
