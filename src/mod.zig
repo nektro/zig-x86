@@ -66,3 +66,46 @@ const AddressingMethod = enum {
     /// Memory addressed by the ES:rDI register pair (for example, MOVS, CMPS, INS, STOS, or SCAS).
     Y,
 };
+
+const OperandType = enum {
+    /// Two one-word operands in memory or two double-word operands in memory, depending on operand-size attribute (used only by the BOUND instruction).
+    a,
+    /// Byte, regardless of operand-size attribute.
+    b,
+    /// Byte or word, depending on operand-size attribute.
+    c,
+    /// Doubleword, regardless of operand-size attribute.
+    d,
+    /// Double-quadword, regardless of operand-size attribute.
+    dq,
+    /// 32-bit, 48-bit, or 80-bit pointer, depending on operand-size attribute.
+    p,
+    /// 128-bit or 256-bit packed double precision floating-point data.
+    pd,
+    /// Quadword MMX technology register (for example: mm0).
+    pi,
+    /// 128-bit or 256-bit packed single-precision floating-point data.
+    ps,
+    /// Quadword, regardless of operand-size attribute.
+    q,
+    /// Quad-Quadword (256-bits), regardless of operand-size attribute.
+    qq,
+    /// 6-byte or 10-byte pseudo-descriptor.
+    s,
+    /// Scalar element of a 128-bit double precision floating data.
+    sd,
+    /// Scalar element of a 128-bit single-precision floating data.
+    ss,
+    /// Doubleword integer register (for example: eax).
+    si,
+    /// Word, doubleword or quadword (in 64-bit mode), depending on operand-size attribute.
+    v,
+    /// Word, regardless of operand-size attribute.
+    w,
+    /// dq or qq based on the operand-size attribute.
+    x,
+    /// Doubleword or quadword (in 64-bit mode), depending on operand-size attribute.
+    y,
+    /// Word for 16-bit operand-size or doubleword for 32 or 64-bit operand-size.
+    z,
+};
