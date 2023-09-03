@@ -11,3 +11,9 @@ const AddressSize = enum(u8) {
     @"32" = 32,
     @"64" = 64,
 };
+
+const StackAddrSize = enum(u8) {
+    @"16" = 16,
+    @"32" = 32,
+    @"64" = 64,
+};
