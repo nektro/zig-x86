@@ -593,3 +593,35 @@ const InstructionKind = enum {
 // UNPCKHPS—Unpack and Interleave High Packed Single Precision Floating-Point Values
 // UNPCKLPD—Unpack and Interleave Low Packed Double Precision Floating-Point Values
 // UNPCKLPS—Unpack and Interleave Low Packed Single Precision Floating-Point Values
+
+// TODO: V
+
+// WAIT/FWAIT—Wait
+// WBINVD—Write Back and Invalidate Cache
+// WBNOINVD—Write Back and Do Not Invalidate Cache
+// WRFSBASE/WRGSBASE—Write FS/GS Segment Base
+// WRMSR—Write to Model Specific Register
+// WRPKRU—Write Data to User Page Key Register
+// WRSSD/WRSSQ—Write to Shadow Stack
+// WRUSSD/WRUSSQ—Write to User Shadow Stack
+// XABORT—Transactional Abort
+// XACQUIRE/XRELEASE—Hardware Lock Elision Prefix Hints
+// XADD—Exchange and Add
+// XBEGIN—Transactional Begin
+// XCHG—Exchange Register/Memory With Register
+// XEND—Transactional End
+// XGETBV—Get Value of Extended Control Register
+// XLAT/XLATB—Table Look-up Translation
+// XOR—Logical Exclusive OR
+// XORPD—Bitwise Logical XOR of Packed Double Precision Floating-Point Values
+// XORPS—Bitwise Logical XOR of Packed Single Precision Floating-Point Values
+// XRESLDTRK—Resume Tracking Load Addresses
+// XRSTOR—Restore Processor Extended States
+// XRSTORS—Restore Processor Extended States Supervisor
+// XSAVE—Save Processor Extended States
+// XSAVEC—Save Processor Extended States With Compaction
+// XSAVEOPT—Save Processor Extended States Optimized
+// XSAVES—Save Processor Extended States Supervisor
+// XSETBV—Set Extended Control Register
+// XSUSLDTRK—Suspend Tracking Load Addresses
+// XTEST—Test if in Transactional Execution
