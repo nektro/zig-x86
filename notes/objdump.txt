@@ -1,0 +1,2447 @@
+
+add.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add>:
+       0:	01 f7                	add    %esi,%edi
+       2:	70 03                	jo     7 <add+0x7>
+       4:	89 f8                	mov    %edi,%eax
+       6:	c3                   	ret
+       7:	50                   	push   %rax
+       8:	bf 00 00 00 00       	mov    $0x0,%edi
+       d:	be 10 00 00 00       	mov    $0x10,%esi
+      12:	31 c9                	xor    %ecx,%ecx
+      14:	e8 00 00 00 00       	call   19 <add+0x19>
+      19:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000000020 <os.raise>:
+      20:	53                   	push   %rbx
+      21:	48 81 ec 80 00 00 00 	sub    $0x80,%rsp
+      28:	c5 fc 28 05 00 00 00 	vmovaps 0x0(%rip),%ymm0        # 30 <os.raise+0x10>
+      2f:	00 
+      30:	41 89 f0             	mov    %esi,%r8d
+      33:	48 89 fb             	mov    %rdi,%rbx
+      36:	48 89 e2             	mov    %rsp,%rdx
+      39:	b8 0e 00 00 00       	mov    $0xe,%eax
+      3e:	be 00 00 00 00       	mov    $0x0,%esi
+      43:	41 ba 08 00 00 00    	mov    $0x8,%r10d
+      49:	31 ff                	xor    %edi,%edi
+      4b:	45 31 c9             	xor    %r9d,%r9d
+      4e:	c5 fc 11 44 24 60    	vmovups %ymm0,0x60(%rsp)
+      54:	c5 fc 11 44 24 40    	vmovups %ymm0,0x40(%rsp)
+      5a:	c5 fc 11 44 24 20    	vmovups %ymm0,0x20(%rsp)
+      60:	c5 fc 11 04 24       	vmovups %ymm0,(%rsp)
+      65:	0f 05                	syscall
+      67:	89 c1                	mov    %eax,%ecx
+      69:	f7 d9                	neg    %ecx
+      6b:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+      71:	41 0f 42 c9          	cmovb  %r9d,%ecx
+      75:	66 85 c9             	test   %cx,%cx
+      78:	75 7c                	jne    f6 <os.raise+0xd6>
+      7a:	b8 ba 00 00 00       	mov    $0xba,%eax
+      7f:	0f 05                	syscall
+      81:	48 63 f8             	movslq %eax,%rdi
+      84:	41 0f b6 f0          	movzbl %r8b,%esi
+      88:	b8 c8 00 00 00       	mov    $0xc8,%eax
+      8d:	31 d2                	xor    %edx,%edx
+      8f:	0f 05                	syscall
+      91:	49 89 c0             	mov    %rax,%r8
+      94:	48 89 e6             	mov    %rsp,%rsi
+      97:	b8 0e 00 00 00       	mov    $0xe,%eax
+      9c:	bf 02 00 00 00       	mov    $0x2,%edi
+      a1:	0f 05                	syscall
+      a3:	89 c1                	mov    %eax,%ecx
+      a5:	f7 d9                	neg    %ecx
+      a7:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+      ad:	41 0f 42 c9          	cmovb  %r9d,%ecx
+      b1:	66 85 c9             	test   %cx,%cx
+      b4:	75 40                	jne    f6 <os.raise+0xd6>
+      b6:	31 c0                	xor    %eax,%eax
+      b8:	49 81 f8 01 f0 ff ff 	cmp    $0xfffffffffffff001,%r8
+      bf:	72 09                	jb     ca <os.raise+0xaa>
+      c1:	41 0f b7 c8          	movzwl %r8w,%ecx
+      c5:	48 85 c9             	test   %rcx,%rcx
+      c8:	75 0c                	jne    d6 <os.raise+0xb6>
+      ca:	48 81 c4 80 00 00 00 	add    $0x80,%rsp
+      d1:	5b                   	pop    %rbx
+      d2:	c5 f8 77             	vzeroupper
+      d5:	c3                   	ret
+      d6:	48 89 df             	mov    %rbx,%rdi
+      d9:	c5 f8 77             	vzeroupper
+      dc:	e8 00 00 00 00       	call   e1 <os.raise+0xc1>
+      e1:	48 89 df             	mov    %rbx,%rdi
+      e4:	e8 00 00 00 00       	call   e9 <os.raise+0xc9>
+      e9:	66 b8 0f 00          	mov    $0xf,%ax
+      ed:	48 81 c4 80 00 00 00 	add    $0x80,%rsp
+      f4:	5b                   	pop    %rbx
+      f5:	c3                   	ret
+      f6:	0f b7 c1             	movzwl %cx,%eax
+      f9:	83 f8 0e             	cmp    $0xe,%eax
+      fc:	74 03                	je     101 <os.raise+0xe1>
+      fe:	83 f8 16             	cmp    $0x16,%eax
+     101:	bf 00 00 00 00       	mov    $0x0,%edi
+     106:	be 18 00 00 00       	mov    $0x18,%esi
+     10b:	31 c9                	xor    %ecx,%ecx
+     10d:	c5 f8 77             	vzeroupper
+     110:	e8 00 00 00 00       	call   115 <os.raise+0xf5>
+     115:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+     11c:	00 00 00 00 
+
+0000000000000120 <os.sigaction>:
+     120:	48 83 ec 28          	sub    $0x28,%rsp
+     124:	89 f0                	mov    %esi,%eax
+     126:	24 3f                	and    $0x3f,%al
+     128:	3c 09                	cmp    $0x9,%al
+     12a:	0f 84 c9 00 00 00    	je     1f9 <os.sigaction+0xd9>
+     130:	c5 fc 28 05 00 00 00 	vmovaps 0x0(%rip),%ymm0        # 138 <os.sigaction+0x18>
+     137:	00 
+     138:	49 89 f8             	mov    %rdi,%r8
+     13b:	c5 fc 11 04 24       	vmovups %ymm0,(%rsp)
+     140:	48 85 d2             	test   %rdx,%rdx
+     143:	74 49                	je     18e <os.sigaction+0x6e>
+     145:	48 8b 02             	mov    (%rdx),%rax
+     148:	48 8d 4c 24 18       	lea    0x18(%rsp),%rcx
+     14d:	48 8d 7a 10          	lea    0x10(%rdx),%rdi
+     151:	48 89 04 24          	mov    %rax,(%rsp)
+     155:	8b 82 88 00 00 00    	mov    0x88(%rdx),%eax
+     15b:	48 0d 00 00 00 04    	or     $0x4000000,%rax
+     161:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+     166:	48 8d 42 08          	lea    0x8(%rdx),%rax
+     16a:	48 c7 44 24 10 00 00 	movq   $0x0,0x10(%rsp)
+     171:	00 00 
+     173:	48 39 f9             	cmp    %rdi,%rcx
+     176:	73 0e                	jae    186 <os.sigaction+0x66>
+     178:	48 8d 4c 24 20       	lea    0x20(%rsp),%rcx
+     17d:	48 39 c8             	cmp    %rcx,%rax
+     180:	0f 82 87 00 00 00    	jb     20d <os.sigaction+0xed>
+     186:	48 8b 00             	mov    (%rax),%rax
+     189:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+     18e:	48 85 d2             	test   %rdx,%rdx
+     191:	48 89 e1             	mov    %rsp,%rcx
+     194:	40 0f b6 fe          	movzbl %sil,%edi
+     198:	b8 0d 00 00 00       	mov    $0xd,%eax
+     19d:	41 ba 08 00 00 00    	mov    $0x8,%r10d
+     1a3:	48 0f 44 ca          	cmove  %rdx,%rcx
+     1a7:	83 e7 3f             	and    $0x3f,%edi
+     1aa:	31 d2                	xor    %edx,%edx
+     1ac:	45 31 c9             	xor    %r9d,%r9d
+     1af:	48 89 ce             	mov    %rcx,%rsi
+     1b2:	0f 05                	syscall
+     1b4:	48 89 c1             	mov    %rax,%rcx
+     1b7:	f7 d8                	neg    %eax
+     1b9:	66 85 c9             	test   %cx,%cx
+     1bc:	41 0f 44 c1          	cmove  %r9d,%eax
+     1c0:	48 81 f9 01 f0 ff ff 	cmp    $0xfffffffffffff001,%rcx
+     1c7:	41 0f 42 c1          	cmovb  %r9d,%eax
+     1cb:	66 85 c0             	test   %ax,%ax
+     1ce:	75 08                	jne    1d8 <os.sigaction+0xb8>
+     1d0:	48 83 c4 28          	add    $0x28,%rsp
+     1d4:	c5 f8 77             	vzeroupper
+     1d7:	c3                   	ret
+     1d8:	0f b7 c0             	movzwl %ax,%eax
+     1db:	83 f8 16             	cmp    $0x16,%eax
+     1de:	74 05                	je     1e5 <os.sigaction+0xc5>
+     1e0:	83 f8 26             	cmp    $0x26,%eax
+     1e3:	75 14                	jne    1f9 <os.sigaction+0xd9>
+     1e5:	4c 89 c7             	mov    %r8,%rdi
+     1e8:	c5 f8 77             	vzeroupper
+     1eb:	e8 00 00 00 00       	call   1f0 <os.sigaction+0xd0>
+     1f0:	66 b8 10 00          	mov    $0x10,%ax
+     1f4:	48 83 c4 28          	add    $0x28,%rsp
+     1f8:	c3                   	ret
+     1f9:	bf 00 00 00 00       	mov    $0x0,%edi
+     1fe:	be 18 00 00 00       	mov    $0x18,%esi
+     203:	31 c9                	xor    %ecx,%ecx
+     205:	c5 f8 77             	vzeroupper
+     208:	e8 00 00 00 00       	call   20d <os.sigaction+0xed>
+     20d:	bf 00 00 00 00       	mov    $0x0,%edi
+     212:	be 17 00 00 00       	mov    $0x17,%esi
+     217:	31 c9                	xor    %ecx,%ecx
+     219:	c5 f8 77             	vzeroupper
+     21c:	e8 00 00 00 00       	call   221 <os.sigaction+0x101>
+     221:	66 66 66 66 66 66 2e 	data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+     228:	0f 1f 84 00 00 00 00 
+     22f:	00 
+
+0000000000000230 <os.exit>:
+     230:	50                   	push   %rax
+     231:	e8 7a 0c 00 00       	call   eb0 <os.linux.exit_group>
+     236:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+     23d:	00 00 00 
+
+0000000000000240 <os.mmap>:
+     240:	41 57                	push   %r15
+     242:	41 56                	push   %r14
+     244:	41 54                	push   %r12
+     246:	53                   	push   %rbx
+     247:	50                   	push   %rax
+     248:	49 89 cf             	mov    %rcx,%r15
+     24b:	48 63 4c 24 30       	movslq 0x30(%rsp),%rcx
+     250:	49 89 d3             	mov    %rdx,%r11
+     253:	49 89 f6             	mov    %rsi,%r14
+     256:	48 89 fb             	mov    %rdi,%rbx
+     259:	44 89 c2             	mov    %r8d,%edx
+     25c:	45 89 ca             	mov    %r9d,%r10d
+     25f:	b8 09 00 00 00       	mov    $0x9,%eax
+     264:	45 31 c9             	xor    %r9d,%r9d
+     267:	45 31 e4             	xor    %r12d,%r12d
+     26a:	4c 89 df             	mov    %r11,%rdi
+     26d:	4c 89 fe             	mov    %r15,%rsi
+     270:	49 89 c8             	mov    %rcx,%r8
+     273:	0f 05                	syscall
+     275:	89 c1                	mov    %eax,%ecx
+     277:	f7 d9                	neg    %ecx
+     279:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+     27f:	41 0f 42 cc          	cmovb  %r12d,%ecx
+     283:	66 83 f9 4b          	cmp    $0x4b,%cx
+     287:	0f 87 93 00 00 00    	ja     320 <os.mmap+0xe0>
+     28d:	0f b7 c9             	movzwl %cx,%ecx
+     290:	ff 24 cd 00 00 00 00 	jmp    *0x0(,%rcx,8)
+     297:	48 85 c0             	test   %rax,%rax
+     29a:	0f 84 2d 01 00 00    	je     3cd <os.mmap+0x18d>
+     2a0:	48 89 c1             	mov    %rax,%rcx
+     2a3:	48 c1 e1 34          	shl    $0x34,%rcx
+     2a7:	0f 85 31 01 00 00    	jne    3de <os.mmap+0x19e>
+     2ad:	48 89 03             	mov    %rax,(%rbx)
+     2b0:	4c 89 7b 08          	mov    %r15,0x8(%rbx)
+     2b4:	66 c7 43 10 00 00    	movw   $0x0,0x10(%rbx)
+     2ba:	48 83 c4 08          	add    $0x8,%rsp
+     2be:	5b                   	pop    %rbx
+     2bf:	41 5c                	pop    %r12
+     2c1:	41 5e                	pop    %r14
+     2c3:	41 5f                	pop    %r15
+     2c5:	c3                   	ret
+     2c6:	4c 89 f7             	mov    %r14,%rdi
+     2c9:	e8 00 00 00 00       	call   2ce <os.mmap+0x8e>
+     2ce:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # 2d6 <os.mmap+0x96>
+     2d5:	00 
+     2d6:	48 c7 43 10 07 00 00 	movq   $0x7,0x10(%rbx)
+     2dd:	00 
+     2de:	c5 f8 11 03          	vmovups %xmm0,(%rbx)
+     2e2:	eb d6                	jmp    2ba <os.mmap+0x7a>
+     2e4:	4c 89 f7             	mov    %r14,%rdi
+     2e7:	e8 00 00 00 00       	call   2ec <os.mmap+0xac>
+     2ec:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # 2f4 <os.mmap+0xb4>
+     2f3:	00 
+     2f4:	48 c7 43 10 20 00 00 	movq   $0x20,0x10(%rbx)
+     2fb:	00 
+     2fc:	c5 f8 11 03          	vmovups %xmm0,(%rbx)
+     300:	eb b8                	jmp    2ba <os.mmap+0x7a>
+     302:	4c 89 f7             	mov    %r14,%rdi
+     305:	e8 00 00 00 00       	call   30a <os.mmap+0xca>
+     30a:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # 312 <os.mmap+0xd2>
+     311:	00 
+     312:	48 c7 43 10 29 00 00 	movq   $0x29,0x10(%rbx)
+     319:	00 
+     31a:	c5 f8 11 03          	vmovups %xmm0,(%rbx)
+     31e:	eb 9a                	jmp    2ba <os.mmap+0x7a>
+     320:	4c 89 f7             	mov    %r14,%rdi
+     323:	e8 00 00 00 00       	call   328 <os.mmap+0xe8>
+     328:	4c 89 f7             	mov    %r14,%rdi
+     32b:	e8 00 00 00 00       	call   330 <os.mmap+0xf0>
+     330:	66 c7 43 10 0f 00    	movw   $0xf,0x10(%rbx)
+     336:	eb 82                	jmp    2ba <os.mmap+0x7a>
+     338:	4c 89 f7             	mov    %r14,%rdi
+     33b:	e8 00 00 00 00       	call   340 <os.mmap+0x100>
+     340:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # 348 <os.mmap+0x108>
+     347:	00 
+     348:	48 c7 43 10 2e 00 00 	movq   $0x2e,0x10(%rbx)
+     34f:	00 
+     350:	c5 f8 11 03          	vmovups %xmm0,(%rbx)
+     354:	e9 61 ff ff ff       	jmp    2ba <os.mmap+0x7a>
+     359:	4c 89 f7             	mov    %r14,%rdi
+     35c:	e8 00 00 00 00       	call   361 <os.mmap+0x121>
+     361:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # 369 <os.mmap+0x129>
+     368:	00 
+     369:	48 c7 43 10 14 00 00 	movq   $0x14,0x10(%rbx)
+     370:	00 
+     371:	c5 f8 11 03          	vmovups %xmm0,(%rbx)
+     375:	e9 40 ff ff ff       	jmp    2ba <os.mmap+0x7a>
+     37a:	4c 89 f7             	mov    %r14,%rdi
+     37d:	e8 00 00 00 00       	call   382 <os.mmap+0x142>
+     382:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # 38a <os.mmap+0x14a>
+     389:	00 
+     38a:	48 c7 43 10 2d 00 00 	movq   $0x2d,0x10(%rbx)
+     391:	00 
+     392:	c5 f8 11 03          	vmovups %xmm0,(%rbx)
+     396:	e9 1f ff ff ff       	jmp    2ba <os.mmap+0x7a>
+     39b:	4c 89 f7             	mov    %r14,%rdi
+     39e:	e8 00 00 00 00       	call   3a3 <os.mmap+0x163>
+     3a3:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # 3ab <os.mmap+0x16b>
+     3aa:	00 
+     3ab:	48 c7 43 10 1f 00 00 	movq   $0x1f,0x10(%rbx)
+     3b2:	00 
+     3b3:	c5 f8 11 03          	vmovups %xmm0,(%rbx)
+     3b7:	e9 fe fe ff ff       	jmp    2ba <os.mmap+0x7a>
+     3bc:	bf 00 00 00 00       	mov    $0x0,%edi
+     3c1:	be 18 00 00 00       	mov    $0x18,%esi
+     3c6:	31 c9                	xor    %ecx,%ecx
+     3c8:	e8 00 00 00 00       	call   3cd <os.mmap+0x18d>
+     3cd:	bf 00 00 00 00       	mov    $0x0,%edi
+     3d2:	be 1e 00 00 00       	mov    $0x1e,%esi
+     3d7:	31 c9                	xor    %ecx,%ecx
+     3d9:	e8 00 00 00 00       	call   3de <os.mmap+0x19e>
+     3de:	bf 00 00 00 00       	mov    $0x0,%edi
+     3e3:	be 13 00 00 00       	mov    $0x13,%esi
+     3e8:	31 c9                	xor    %ecx,%ecx
+     3ea:	e8 00 00 00 00       	call   3ef <os.mmap+0x1af>
+     3ef:	90                   	nop
+
+00000000000003f0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>:
+     3f0:	55                   	push   %rbp
+     3f1:	41 57                	push   %r15
+     3f3:	41 56                	push   %r14
+     3f5:	41 55                	push   %r13
+     3f7:	41 54                	push   %r12
+     3f9:	53                   	push   %rbx
+     3fa:	48 81 ec 28 01 00 00 	sub    $0x128,%rsp
+     401:	c5 f9 6e c2          	vmovd  %edx,%xmm0
+     405:	48 89 34 24          	mov    %rsi,(%rsp)
+     409:	c4 e2 7d 78 c0       	vpbroadcastb %xmm0,%ymm0
+     40e:	c5 fe 7f 84 24 00 01 	vmovdqu %ymm0,0x100(%rsp)
+     415:	00 00 
+     417:	c5 fe 7f 84 24 e0 00 	vmovdqu %ymm0,0xe0(%rsp)
+     41e:	00 00 
+     420:	c5 fe 7f 84 24 c0 00 	vmovdqu %ymm0,0xc0(%rsp)
+     427:	00 00 
+     429:	c5 fe 7f 84 24 a0 00 	vmovdqu %ymm0,0xa0(%rsp)
+     430:	00 00 
+     432:	c5 fe 7f 84 24 80 00 	vmovdqu %ymm0,0x80(%rsp)
+     439:	00 00 
+     43b:	c5 fe 7f 44 24 60    	vmovdqu %ymm0,0x60(%rsp)
+     441:	c5 fe 7f 44 24 40    	vmovdqu %ymm0,0x40(%rsp)
+     447:	c5 fe 7f 44 24 20    	vmovdqu %ymm0,0x20(%rsp)
+     44d:	48 85 c9             	test   %rcx,%rcx
+     450:	74 6f                	je     4c1 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0xd1>
+     452:	48 89 fb             	mov    %rdi,%rbx
+     455:	4c 8d 64 24 10       	lea    0x10(%rsp),%r12
+     45a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     460:	48 8b 04 24          	mov    (%rsp),%rax
+     464:	48 81 f9 00 01 00 00 	cmp    $0x100,%rcx
+     46b:	41 bf 00 01 00 00    	mov    $0x100,%r15d
+     471:	48 89 4c 24 08       	mov    %rcx,0x8(%rsp)
+     476:	4c 0f 42 f9          	cmovb  %rcx,%r15
+     47a:	45 31 f6             	xor    %r14d,%r14d
+     47d:	8b 28                	mov    (%rax),%ebp
+     47f:	90                   	nop
+     480:	4d 89 f8             	mov    %r15,%r8
+     483:	4d 29 f0             	sub    %r14,%r8
+     486:	72 66                	jb     4ee <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0xfe>
+     488:	4a 8d 4c 34 20       	lea    0x20(%rsp,%r14,1),%rcx
+     48d:	4c 89 e7             	mov    %r12,%rdi
+     490:	48 89 de             	mov    %rbx,%rsi
+     493:	89 ea                	mov    %ebp,%edx
+     495:	c5 f8 77             	vzeroupper
+     498:	e8 d3 01 00 00       	call   670 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     49d:	44 0f b7 6c 24 18    	movzwl 0x18(%rsp),%r13d
+     4a3:	66 45 85 ed          	test   %r13w,%r13w
+     4a7:	75 1d                	jne    4c6 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0xd6>
+     4a9:	4c 03 74 24 10       	add    0x10(%rsp),%r14
+     4ae:	72 52                	jb     502 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x112>
+     4b0:	4d 39 f7             	cmp    %r14,%r15
+     4b3:	75 cb                	jne    480 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x90>
+     4b5:	48 8b 4c 24 08       	mov    0x8(%rsp),%rcx
+     4ba:	4c 29 f9             	sub    %r15,%rcx
+     4bd:	72 43                	jb     502 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x112>
+     4bf:	75 9f                	jne    460 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x70>
+     4c1:	45 31 ed             	xor    %r13d,%r13d
+     4c4:	eb 10                	jmp    4d6 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0xe6>
+     4c6:	48 89 df             	mov    %rbx,%rdi
+     4c9:	e8 00 00 00 00       	call   4ce <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0xde>
+     4ce:	48 89 df             	mov    %rbx,%rdi
+     4d1:	e8 00 00 00 00       	call   4d6 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0xe6>
+     4d6:	44 89 e8             	mov    %r13d,%eax
+     4d9:	48 81 c4 28 01 00 00 	add    $0x128,%rsp
+     4e0:	5b                   	pop    %rbx
+     4e1:	41 5c                	pop    %r12
+     4e3:	41 5d                	pop    %r13
+     4e5:	41 5e                	pop    %r14
+     4e7:	41 5f                	pop    %r15
+     4e9:	5d                   	pop    %rbp
+     4ea:	c5 f8 77             	vzeroupper
+     4ed:	c3                   	ret
+     4ee:	bf 00 00 00 00       	mov    $0x0,%edi
+     4f3:	be 24 00 00 00       	mov    $0x24,%esi
+     4f8:	31 c9                	xor    %ecx,%ecx
+     4fa:	c5 f8 77             	vzeroupper
+     4fd:	e8 00 00 00 00       	call   502 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x112>
+     502:	bf 00 00 00 00       	mov    $0x0,%edi
+     507:	be 10 00 00 00       	mov    $0x10,%esi
+     50c:	31 c9                	xor    %ecx,%ecx
+     50e:	e8 00 00 00 00       	call   513 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x123>
+     513:	66 66 66 66 2e 0f 1f 	data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+     51a:	84 00 00 00 00 00 
+
+0000000000000520 <debug.StackIterator.isValidMemory>:
+     520:	48 81 ec 18 01 00 00 	sub    $0x118,%rsp
+     527:	48 8d 44 24 18       	lea    0x18(%rsp),%rax
+     52c:	45 31 c0             	xor    %r8d,%r8d
+     52f:	48 81 e7 00 f0 ff ff 	and    $0xfffffffffffff000,%rdi
+     536:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+     53b:	48 c7 44 24 10 20 00 	movq   $0x20,0x10(%rsp)
+     542:	00 00 
+     544:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
+     54b:	00 
+     54c:	74 40                	je     58e <debug.StackIterator.isValidMemory+0x6e>
+     54e:	b8 1a 00 00 00       	mov    $0x1a,%eax
+     553:	be 00 10 00 00       	mov    $0x1000,%esi
+     558:	ba 01 00 00 00       	mov    $0x1,%edx
+     55d:	0f 05                	syscall
+     55f:	89 c1                	mov    %eax,%ecx
+     561:	f7 d9                	neg    %ecx
+     563:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+     569:	b0 01                	mov    $0x1,%al
+     56b:	44 0f 43 c1          	cmovae %ecx,%r8d
+     56f:	66 45 85 c0          	test   %r8w,%r8w
+     573:	75 08                	jne    57d <debug.StackIterator.isValidMemory+0x5d>
+     575:	48 81 c4 18 01 00 00 	add    $0x118,%rsp
+     57c:	c3                   	ret
+     57d:	41 0f b7 c0          	movzwl %r8w,%eax
+     581:	83 f8 0c             	cmp    $0xc,%eax
+     584:	75 12                	jne    598 <debug.StackIterator.isValidMemory+0x78>
+     586:	48 89 e7             	mov    %rsp,%rdi
+     589:	e8 00 00 00 00       	call   58e <debug.StackIterator.isValidMemory+0x6e>
+     58e:	31 c0                	xor    %eax,%eax
+     590:	48 81 c4 18 01 00 00 	add    $0x118,%rsp
+     597:	c3                   	ret
+     598:	83 f8 16             	cmp    $0x16,%eax
+     59b:	bf 00 00 00 00       	mov    $0x0,%edi
+     5a0:	be 18 00 00 00       	mov    $0x18,%esi
+     5a5:	31 c9                	xor    %ecx,%ecx
+     5a7:	e8 00 00 00 00       	call   5ac <debug.StackIterator.isValidMemory+0x8c>
+     5ac:	0f 1f 40 00          	nopl   0x0(%rax)
+
+00000000000005b0 <os.linux.x86_64.getContextInternal>:
+     5b0:	48 c7 07 00 00 00 00 	movq   $0x0,(%rdi)
+     5b7:	48 c7 47 08 00 00 00 	movq   $0x0,0x8(%rdi)
+     5be:	00 
+     5bf:	4c 89 47 28          	mov    %r8,0x28(%rdi)
+     5c3:	4c 89 4f 30          	mov    %r9,0x30(%rdi)
+     5c7:	4c 89 57 38          	mov    %r10,0x38(%rdi)
+     5cb:	4c 89 5f 40          	mov    %r11,0x40(%rdi)
+     5cf:	4c 89 67 48          	mov    %r12,0x48(%rdi)
+     5d3:	4c 89 6f 50          	mov    %r13,0x50(%rdi)
+     5d7:	4c 89 77 58          	mov    %r14,0x58(%rdi)
+     5db:	4c 89 7f 60          	mov    %r15,0x60(%rdi)
+     5df:	48 89 7f 68          	mov    %rdi,0x68(%rdi)
+     5e3:	48 89 77 70          	mov    %rsi,0x70(%rdi)
+     5e7:	48 89 6f 78          	mov    %rbp,0x78(%rdi)
+     5eb:	48 89 9f 80 00 00 00 	mov    %rbx,0x80(%rdi)
+     5f2:	48 89 97 88 00 00 00 	mov    %rdx,0x88(%rdi)
+     5f9:	48 89 87 90 00 00 00 	mov    %rax,0x90(%rdi)
+     600:	48 89 8f 98 00 00 00 	mov    %rcx,0x98(%rdi)
+     607:	48 8b 0c 24          	mov    (%rsp),%rcx
+     60b:	48 89 8f a8 00 00 00 	mov    %rcx,0xa8(%rdi)
+     612:	48 8d 4c 24 08       	lea    0x8(%rsp),%rcx
+     617:	48 89 8f a0 00 00 00 	mov    %rcx,0xa0(%rdi)
+     61e:	9c                   	pushf
+     61f:	8f 87 b0 00 00 00    	pop    0xb0(%rdi)
+     625:	48 8d 8f a8 01 00 00 	lea    0x1a8(%rdi),%rcx
+     62c:	48 89 8f e0 00 00 00 	mov    %rcx,0xe0(%rdi)
+     633:	d9 31                	fnstenv (%rcx)
+     635:	d9 21                	fldenv (%rcx)
+     637:	0f ae 9f c0 01 00 00 	stmxcsr 0x1c0(%rdi)
+     63e:	48 8d 77 10          	lea    0x10(%rdi),%rsi
+     642:	49 89 f8             	mov    %rdi,%r8
+     645:	31 ff                	xor    %edi,%edi
+     647:	48 c7 c0 83 00 00 00 	mov    $0x83,%rax
+     64e:	0f 05                	syscall
+     650:	48 85 c0             	test   %rax,%rax
+     653:	75 18                	jne    66d <os.linux.x86_64.getContextInternal+0xbd>
+     655:	48 c7 c0 0e 00 00 00 	mov    $0xe,%rax
+     65c:	31 f6                	xor    %esi,%esi
+     65e:	49 8d 90 28 01 00 00 	lea    0x128(%r8),%rdx
+     665:	41 ba 08 00 00 00    	mov    $0x8,%r10d
+     66b:	0f 05                	syscall
+     66d:	c3                   	ret
+     66e:	0f 0b                	ud2
+
+0000000000000670 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>:
+     670:	55                   	push   %rbp
+     671:	41 56                	push   %r14
+     673:	53                   	push   %rbx
+     674:	48 83 ec 10          	sub    $0x10,%rsp
+     678:	48 89 fb             	mov    %rdi,%rbx
+     67b:	4d 85 c0             	test   %r8,%r8
+     67e:	74 72                	je     6f2 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x82>
+     680:	89 d0                	mov    %edx,%eax
+     682:	49 81 f8 00 f0 ff 7f 	cmp    $0x7ffff000,%r8
+     689:	ba 00 f0 ff 7f       	mov    $0x7ffff000,%edx
+     68e:	49 89 c9             	mov    %rcx,%r9
+     691:	49 89 f6             	mov    %rsi,%r14
+     694:	49 0f 42 d0          	cmovb  %r8,%rdx
+     698:	48 63 f8             	movslq %eax,%rdi
+     69b:	45 31 c0             	xor    %r8d,%r8d
+     69e:	66 90                	xchg   %ax,%ax
+     6a0:	b8 01 00 00 00       	mov    $0x1,%eax
+     6a5:	4c 89 ce             	mov    %r9,%rsi
+     6a8:	0f 05                	syscall
+     6aa:	89 c1                	mov    %eax,%ecx
+     6ac:	f7 d9                	neg    %ecx
+     6ae:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+     6b4:	41 0f 42 c8          	cmovb  %r8d,%ecx
+     6b8:	66 83 f9 04          	cmp    $0x4,%cx
+     6bc:	74 e2                	je     6a0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x30>
+     6be:	0f b7 c9             	movzwl %cx,%ecx
+     6c1:	83 f9 7a             	cmp    $0x7a,%ecx
+     6c4:	0f 87 7d 01 00 00    	ja     847 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1d7>
+     6ca:	89 c9                	mov    %ecx,%ecx
+     6cc:	ff 24 cd 00 00 00 00 	jmp    *0x0(,%rcx,8)
+     6d3:	4c 89 f7             	mov    %r14,%rdi
+     6d6:	e8 00 00 00 00       	call   6db <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x6b>
+     6db:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     6e2:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     6e9:	66 bd 07 00          	mov    $0x7,%bp
+     6ed:	e9 69 01 00 00       	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     6f2:	31 c0                	xor    %eax,%eax
+     6f4:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     6fb:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     702:	0f b7 4c 24 04       	movzwl 0x4(%rsp),%ecx
+     707:	8b 14 24             	mov    (%rsp),%edx
+     70a:	48 89 03             	mov    %rax,(%rbx)
+     70d:	31 ed                	xor    %ebp,%ebp
+     70f:	89 54 24 08          	mov    %edx,0x8(%rsp)
+     713:	66 89 4c 24 0c       	mov    %cx,0xc(%rsp)
+     718:	e9 5f 01 00 00       	jmp    87c <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x20c>
+     71d:	4c 89 f7             	mov    %r14,%rdi
+     720:	e8 00 00 00 00       	call   725 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0xb5>
+     725:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     72c:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     733:	66 bd 03 00          	mov    $0x3,%bp
+     737:	e9 1f 01 00 00       	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     73c:	4c 89 f7             	mov    %r14,%rdi
+     73f:	e8 00 00 00 00       	call   744 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0xd4>
+     744:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     74b:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     752:	66 bd 0b 00          	mov    $0xb,%bp
+     756:	e9 00 01 00 00       	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     75b:	4c 89 f7             	mov    %r14,%rdi
+     75e:	e8 00 00 00 00       	call   763 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0xf3>
+     763:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     76a:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     771:	66 bd 0d 00          	mov    $0xd,%bp
+     775:	e9 e1 00 00 00       	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     77a:	4c 89 f7             	mov    %r14,%rdi
+     77d:	e8 00 00 00 00       	call   782 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x112>
+     782:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     789:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     790:	66 bd 05 00          	mov    $0x5,%bp
+     794:	e9 c2 00 00 00       	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     799:	4c 89 f7             	mov    %r14,%rdi
+     79c:	e8 00 00 00 00       	call   7a1 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x131>
+     7a1:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     7a8:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     7af:	66 bd 06 00          	mov    $0x6,%bp
+     7b3:	e9 a3 00 00 00       	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     7b8:	4c 89 f7             	mov    %r14,%rdi
+     7bb:	e8 00 00 00 00       	call   7c0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x150>
+     7c0:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     7c7:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     7ce:	66 bd 02 00          	mov    $0x2,%bp
+     7d2:	e9 84 00 00 00       	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     7d7:	4c 89 f7             	mov    %r14,%rdi
+     7da:	e8 00 00 00 00       	call   7df <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x16f>
+     7df:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     7e6:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     7ed:	66 bd 04 00          	mov    $0x4,%bp
+     7f1:	eb 68                	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     7f3:	4c 89 f7             	mov    %r14,%rdi
+     7f6:	e8 00 00 00 00       	call   7fb <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x18b>
+     7fb:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     802:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     809:	66 bd 08 00          	mov    $0x8,%bp
+     80d:	eb 4c                	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     80f:	4c 89 f7             	mov    %r14,%rdi
+     812:	e8 00 00 00 00       	call   817 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1a7>
+     817:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     81e:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     825:	66 bd 0e 00          	mov    $0xe,%bp
+     829:	eb 30                	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     82b:	4c 89 f7             	mov    %r14,%rdi
+     82e:	e8 00 00 00 00       	call   833 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1c3>
+     833:	66 c7 44 24 04 00 00 	movw   $0x0,0x4(%rsp)
+     83a:	c7 04 24 00 00 00 00 	movl   $0x0,(%rsp)
+     841:	66 bd 01 00          	mov    $0x1,%bp
+     845:	eb 14                	jmp    85b <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1eb>
+     847:	4c 89 f7             	mov    %r14,%rdi
+     84a:	e8 00 00 00 00       	call   84f <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1df>
+     84f:	4c 89 f7             	mov    %r14,%rdi
+     852:	e8 00 00 00 00       	call   857 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1e7>
+     857:	66 bd 0f 00          	mov    $0xf,%bp
+     85b:	4c 89 f7             	mov    %r14,%rdi
+     85e:	e8 00 00 00 00       	call   863 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x1f3>
+     863:	0f b7 44 24 04       	movzwl 0x4(%rsp),%eax
+     868:	8b 0c 24             	mov    (%rsp),%ecx
+     86b:	4c 89 f7             	mov    %r14,%rdi
+     86e:	89 4c 24 08          	mov    %ecx,0x8(%rsp)
+     872:	66 89 44 24 0c       	mov    %ax,0xc(%rsp)
+     877:	e8 00 00 00 00       	call   87c <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x20c>
+     87c:	0f b7 4c 24 0c       	movzwl 0xc(%rsp),%ecx
+     881:	8b 44 24 08          	mov    0x8(%rsp),%eax
+     885:	66 89 6b 08          	mov    %bp,0x8(%rbx)
+     889:	89 43 0a             	mov    %eax,0xa(%rbx)
+     88c:	66 89 4b 0e          	mov    %cx,0xe(%rbx)
+     890:	48 83 c4 10          	add    $0x10,%rsp
+     894:	5b                   	pop    %rbx
+     895:	41 5e                	pop    %r14
+     897:	5d                   	pop    %rbp
+     898:	c3                   	ret
+     899:	bf 00 00 00 00       	mov    $0x0,%edi
+     89e:	be 18 00 00 00       	mov    $0x18,%esi
+     8a3:	31 c9                	xor    %ecx,%ecx
+     8a5:	e8 00 00 00 00       	call   8aa <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x23a>
+     8aa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000008b0 <fmt.formatBuf__anon_7419>:
+     8b0:	55                   	push   %rbp
+     8b1:	41 57                	push   %r15
+     8b3:	41 56                	push   %r14
+     8b5:	41 55                	push   %r13
+     8b7:	41 54                	push   %r12
+     8b9:	53                   	push   %rbx
+     8ba:	48 83 ec 48          	sub    $0x48,%rsp
+     8be:	80 79 18 00          	cmpb   $0x0,0x18(%rcx)
+     8c2:	4c 89 c5             	mov    %r8,%rbp
+     8c5:	49 89 d6             	mov    %rdx,%r14
+     8c8:	49 89 f7             	mov    %rsi,%r15
+     8cb:	49 89 fd             	mov    %rdi,%r13
+     8ce:	0f 84 e3 02 00 00    	je     bb7 <fmt.formatBuf__anon_7419+0x307>
+     8d4:	4c 8b 61 10          	mov    0x10(%rcx),%r12
+     8d8:	48 89 6c 24 20       	mov    %rbp,0x20(%rsp)
+     8dd:	48 89 4c 24 18       	mov    %rcx,0x18(%rsp)
+     8e2:	4d 85 f6             	test   %r14,%r14
+     8e5:	0f 84 2c 03 00 00    	je     c17 <fmt.formatBuf__anon_7419+0x367>
+     8eb:	49 8b 45 00          	mov    0x0(%r13),%rax
+     8ef:	0f b6 0d 00 00 00 00 	movzbl 0x0(%rip),%ecx        # 8f6 <fmt.formatBuf__anon_7419+0x46>
+     8f6:	0f b6 15 00 00 00 00 	movzbl 0x0(%rip),%edx        # 8fd <fmt.formatBuf__anon_7419+0x4d>
+     8fd:	0f b6 35 00 00 00 00 	movzbl 0x0(%rip),%esi        # 904 <fmt.formatBuf__anon_7419+0x54>
+     904:	0f b6 3d 00 00 00 00 	movzbl 0x0(%rip),%edi        # 90b <fmt.formatBuf__anon_7419+0x5b>
+     90b:	49 b8 80 80 80 80 80 	movabs $0x8080808080808080,%r8
+     912:	80 80 80 
+     915:	45 31 c9             	xor    %r9d,%r9d
+     918:	48 89 04 24          	mov    %rax,(%rsp)
+     91c:	31 c0                	xor    %eax,%eax
+     91e:	4d 89 ca             	mov    %r9,%r10
+     921:	49 83 c2 08          	add    $0x8,%r10
+     925:	73 29                	jae    950 <fmt.formatBuf__anon_7419+0xa0>
+     927:	e9 2c 05 00 00       	jmp    e58 <fmt.formatBuf__anon_7419+0x5a8>
+     92c:	0f 1f 40 00          	nopl   0x0(%rax)
+     930:	4d 89 ca             	mov    %r9,%r10
+     933:	4d 39 f2             	cmp    %r14,%r10
+     936:	0f 83 14 02 00 00    	jae    b50 <fmt.formatBuf__anon_7419+0x2a0>
+     93c:	4d 89 ca             	mov    %r9,%r10
+     93f:	49 83 c2 08          	add    $0x8,%r10
+     943:	0f 82 0f 05 00 00    	jb     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     949:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+     950:	4d 39 f2             	cmp    %r14,%r10
+     953:	77 2b                	ja     980 <fmt.formatBuf__anon_7419+0xd0>
+     955:	4d 8d 59 08          	lea    0x8(%r9),%r11
+     959:	4d 39 f3             	cmp    %r14,%r11
+     95c:	0f 87 07 05 00 00    	ja     e69 <fmt.formatBuf__anon_7419+0x5b9>
+     962:	4f 85 04 0f          	test   %r8,(%r15,%r9,1)
+     966:	75 18                	jne    980 <fmt.formatBuf__anon_7419+0xd0>
+     968:	48 83 c0 08          	add    $0x8,%rax
+     96c:	0f 82 e6 04 00 00    	jb     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     972:	4d 89 d1             	mov    %r10,%r9
+     975:	49 83 c2 08          	add    $0x8,%r10
+     979:	73 d5                	jae    950 <fmt.formatBuf__anon_7419+0xa0>
+     97b:	e9 d8 04 00 00       	jmp    e58 <fmt.formatBuf__anon_7419+0x5a8>
+     980:	4d 39 f1             	cmp    %r14,%r9
+     983:	73 ab                	jae    930 <fmt.formatBuf__anon_7419+0x80>
+     985:	47 0f b6 1c 0f       	movzbl (%r15,%r9,1),%r11d
+     98a:	41 89 fa             	mov    %edi,%r10d
+     98d:	45 84 db             	test   %r11b,%r11b
+     990:	79 2e                	jns    9c0 <fmt.formatBuf__anon_7419+0x110>
+     992:	44 89 db             	mov    %r11d,%ebx
+     995:	41 89 f2             	mov    %esi,%r10d
+     998:	80 e3 e0             	and    $0xe0,%bl
+     99b:	80 fb c0             	cmp    $0xc0,%bl
+     99e:	74 20                	je     9c0 <fmt.formatBuf__anon_7419+0x110>
+     9a0:	44 89 db             	mov    %r11d,%ebx
+     9a3:	41 89 d2             	mov    %edx,%r10d
+     9a6:	80 e3 f0             	and    $0xf0,%bl
+     9a9:	80 fb e0             	cmp    $0xe0,%bl
+     9ac:	74 12                	je     9c0 <fmt.formatBuf__anon_7419+0x110>
+     9ae:	44 89 db             	mov    %r11d,%ebx
+     9b1:	41 89 ca             	mov    %ecx,%r10d
+     9b4:	80 e3 f8             	and    $0xf8,%bl
+     9b7:	80 fb f0             	cmp    $0xf0,%bl
+     9ba:	0f 85 75 01 00 00    	jne    b35 <fmt.formatBuf__anon_7419+0x285>
+     9c0:	41 80 e2 07          	and    $0x7,%r10b
+     9c4:	41 0f b6 da          	movzbl %r10b,%ebx
+     9c8:	4d 8d 14 19          	lea    (%r9,%rbx,1),%r10
+     9cc:	4d 39 f2             	cmp    %r14,%r10
+     9cf:	0f 87 68 01 00 00    	ja     b3d <fmt.formatBuf__anon_7419+0x28d>
+     9d5:	80 fb 01             	cmp    $0x1,%bl
+     9d8:	75 26                	jne    a00 <fmt.formatBuf__anon_7419+0x150>
+     9da:	48 ff c0             	inc    %rax
+     9dd:	0f 84 75 04 00 00    	je     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     9e3:	4d 89 d1             	mov    %r10,%r9
+     9e6:	4d 39 f2             	cmp    %r14,%r10
+     9e9:	0f 82 4d ff ff ff    	jb     93c <fmt.formatBuf__anon_7419+0x8c>
+     9ef:	e9 5c 01 00 00       	jmp    b50 <fmt.formatBuf__anon_7419+0x2a0>
+     9f4:	66 66 66 2e 0f 1f 84 	data16 data16 cs nopw 0x0(%rax,%rax,1)
+     9fb:	00 00 00 00 00 
+     a00:	48 ff cb             	dec    %rbx
+     a03:	48 83 fb 03          	cmp    $0x3,%rbx
+     a07:	0f 87 7e 04 00 00    	ja     e8b <fmt.formatBuf__anon_7419+0x5db>
+     a0d:	ff 24 dd 00 00 00 00 	jmp    *0x0(,%rbx,8)
+     a14:	44 89 db             	mov    %r11d,%ebx
+     a17:	80 e3 e0             	and    $0xe0,%bl
+     a1a:	80 fb c0             	cmp    $0xc0,%bl
+     a1d:	0f 85 68 04 00 00    	jne    e8b <fmt.formatBuf__anon_7419+0x5db>
+     a23:	47 0f b6 4c 0f 01    	movzbl 0x1(%r15,%r9,1),%r9d
+     a29:	41 80 e1 c0          	and    $0xc0,%r9b
+     a2d:	41 80 f9 80          	cmp    $0x80,%r9b
+     a31:	0f 85 f6 00 00 00    	jne    b2d <fmt.formatBuf__anon_7419+0x27d>
+     a37:	41 80 e3 1e          	and    $0x1e,%r11b
+     a3b:	75 9d                	jne    9da <fmt.formatBuf__anon_7419+0x12a>
+     a3d:	e9 eb 00 00 00       	jmp    b2d <fmt.formatBuf__anon_7419+0x27d>
+     a42:	44 89 db             	mov    %r11d,%ebx
+     a45:	80 e3 f0             	and    $0xf0,%bl
+     a48:	80 fb e0             	cmp    $0xe0,%bl
+     a4b:	0f 85 3a 04 00 00    	jne    e8b <fmt.formatBuf__anon_7419+0x5db>
+     a51:	43 0f b6 5c 0f 01    	movzbl 0x1(%r15,%r9,1),%ebx
+     a57:	89 dd                	mov    %ebx,%ebp
+     a59:	40 80 e5 c0          	and    $0xc0,%bpl
+     a5d:	40 80 fd 80          	cmp    $0x80,%bpl
+     a61:	48 8b 6c 24 20       	mov    0x20(%rsp),%rbp
+     a66:	0f 85 c1 00 00 00    	jne    b2d <fmt.formatBuf__anon_7419+0x27d>
+     a6c:	47 0f b6 4c 0f 02    	movzbl 0x2(%r15,%r9,1),%r9d
+     a72:	41 80 e1 c0          	and    $0xc0,%r9b
+     a76:	41 80 f9 80          	cmp    $0x80,%r9b
+     a7a:	0f 85 ad 00 00 00    	jne    b2d <fmt.formatBuf__anon_7419+0x27d>
+     a80:	41 80 e3 0f          	and    $0xf,%r11b
+     a84:	80 e3 3f             	and    $0x3f,%bl
+     a87:	45 0f b6 db          	movzbl %r11b,%r11d
+     a8b:	44 0f b6 cb          	movzbl %bl,%r9d
+     a8f:	41 c1 e3 0c          	shl    $0xc,%r11d
+     a93:	41 c1 e1 06          	shl    $0x6,%r9d
+     a97:	45 09 d9             	or     %r11d,%r9d
+     a9a:	41 81 f9 00 08 00 00 	cmp    $0x800,%r9d
+     aa1:	0f 82 86 00 00 00    	jb     b2d <fmt.formatBuf__anon_7419+0x27d>
+     aa7:	41 81 e1 00 f8 00 00 	and    $0xf800,%r9d
+     aae:	41 81 f9 00 d8 00 00 	cmp    $0xd800,%r9d
+     ab5:	0f 85 1f ff ff ff    	jne    9da <fmt.formatBuf__anon_7419+0x12a>
+     abb:	eb 70                	jmp    b2d <fmt.formatBuf__anon_7419+0x27d>
+     abd:	44 89 db             	mov    %r11d,%ebx
+     ac0:	80 e3 f8             	and    $0xf8,%bl
+     ac3:	80 fb f0             	cmp    $0xf0,%bl
+     ac6:	0f 85 bf 03 00 00    	jne    e8b <fmt.formatBuf__anon_7419+0x5db>
+     acc:	43 0f b6 5c 0f 01    	movzbl 0x1(%r15,%r9,1),%ebx
+     ad2:	89 dd                	mov    %ebx,%ebp
+     ad4:	40 80 e5 c0          	and    $0xc0,%bpl
+     ad8:	40 80 fd 80          	cmp    $0x80,%bpl
+     adc:	48 8b 6c 24 20       	mov    0x20(%rsp),%rbp
+     ae1:	75 4a                	jne    b2d <fmt.formatBuf__anon_7419+0x27d>
+     ae3:	43 0f b6 6c 0f 02    	movzbl 0x2(%r15,%r9,1),%ebp
+     ae9:	40 80 e5 c0          	and    $0xc0,%bpl
+     aed:	40 80 fd 80          	cmp    $0x80,%bpl
+     af1:	48 8b 6c 24 20       	mov    0x20(%rsp),%rbp
+     af6:	75 35                	jne    b2d <fmt.formatBuf__anon_7419+0x27d>
+     af8:	47 0f b6 4c 0f 03    	movzbl 0x3(%r15,%r9,1),%r9d
+     afe:	41 80 e1 c0          	and    $0xc0,%r9b
+     b02:	41 80 f9 80          	cmp    $0x80,%r9b
+     b06:	75 25                	jne    b2d <fmt.formatBuf__anon_7419+0x27d>
+     b08:	80 e3 30             	and    $0x30,%bl
+     b0b:	45 0f b6 cb          	movzbl %r11b,%r9d
+     b0f:	44 0f b6 db          	movzbl %bl,%r11d
+     b13:	41 c1 e1 1d          	shl    $0x1d,%r9d
+     b17:	41 c1 e3 17          	shl    $0x17,%r11d
+     b1b:	47 8d 8c 19 00 00 00 	lea    0x78000000(%r9,%r11,1),%r9d
+     b22:	78 
+     b23:	41 c1 f9 0b          	sar    $0xb,%r9d
+     b27:	0f 88 ad fe ff ff    	js     9da <fmt.formatBuf__anon_7419+0x12a>
+     b2d:	4c 89 ef             	mov    %r13,%rdi
+     b30:	e8 00 00 00 00       	call   b35 <fmt.formatBuf__anon_7419+0x285>
+     b35:	4c 89 ef             	mov    %r13,%rdi
+     b38:	e8 00 00 00 00       	call   b3d <fmt.formatBuf__anon_7419+0x28d>
+     b3d:	4c 89 ef             	mov    %r13,%rdi
+     b40:	e8 00 00 00 00       	call   b45 <fmt.formatBuf__anon_7419+0x295>
+     b45:	48 8b 04 24          	mov    (%rsp),%rax
+     b49:	49 89 45 00          	mov    %rax,0x0(%r13)
+     b4d:	4c 89 f0             	mov    %r14,%rax
+     b50:	31 c9                	xor    %ecx,%ecx
+     b52:	49 29 c4             	sub    %rax,%r12
+     b55:	4c 0f 42 e1          	cmovb  %rcx,%r12
+     b59:	48 8b 4c 24 18       	mov    0x18(%rsp),%rcx
+     b5e:	0f 87 bc 00 00 00    	ja     c20 <fmt.formatBuf__anon_7419+0x370>
+     b64:	8b 6d 00             	mov    0x0(%rbp),%ebp
+     b67:	31 db                	xor    %ebx,%ebx
+     b69:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+     b70:	4c 39 f3             	cmp    %r14,%rbx
+     b73:	0f 87 01 03 00 00    	ja     e7a <fmt.formatBuf__anon_7419+0x5ca>
+     b79:	4d 89 f0             	mov    %r14,%r8
+     b7c:	49 8d 0c 1f          	lea    (%r15,%rbx,1),%rcx
+     b80:	48 8d 7c 24 08       	lea    0x8(%rsp),%rdi
+     b85:	4c 89 ee             	mov    %r13,%rsi
+     b88:	89 ea                	mov    %ebp,%edx
+     b8a:	49 29 d8             	sub    %rbx,%r8
+     b8d:	e8 de fa ff ff       	call   670 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     b92:	44 0f b7 64 24 10    	movzwl 0x10(%rsp),%r12d
+     b98:	66 45 85 e4          	test   %r12w,%r12w
+     b9c:	0f 85 8d 02 00 00    	jne    e2f <fmt.formatBuf__anon_7419+0x57f>
+     ba2:	48 03 5c 24 08       	add    0x8(%rsp),%rbx
+     ba7:	0f 82 ab 02 00 00    	jb     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     bad:	4c 39 f3             	cmp    %r14,%rbx
+     bb0:	75 be                	jne    b70 <fmt.formatBuf__anon_7419+0x2c0>
+     bb2:	e9 63 02 00 00       	jmp    e1a <fmt.formatBuf__anon_7419+0x56a>
+     bb7:	4d 85 f6             	test   %r14,%r14
+     bba:	0f 84 5a 02 00 00    	je     e1a <fmt.formatBuf__anon_7419+0x56a>
+     bc0:	8b 6d 00             	mov    0x0(%rbp),%ebp
+     bc3:	31 db                	xor    %ebx,%ebx
+     bc5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+     bcc:	00 00 00 00 
+     bd0:	4c 39 f3             	cmp    %r14,%rbx
+     bd3:	0f 87 a1 02 00 00    	ja     e7a <fmt.formatBuf__anon_7419+0x5ca>
+     bd9:	4d 89 f0             	mov    %r14,%r8
+     bdc:	49 8d 0c 1f          	lea    (%r15,%rbx,1),%rcx
+     be0:	48 8d 7c 24 08       	lea    0x8(%rsp),%rdi
+     be5:	4c 89 ee             	mov    %r13,%rsi
+     be8:	89 ea                	mov    %ebp,%edx
+     bea:	49 29 d8             	sub    %rbx,%r8
+     bed:	e8 7e fa ff ff       	call   670 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     bf2:	44 0f b7 64 24 10    	movzwl 0x10(%rsp),%r12d
+     bf8:	66 45 85 e4          	test   %r12w,%r12w
+     bfc:	0f 85 2d 02 00 00    	jne    e2f <fmt.formatBuf__anon_7419+0x57f>
+     c02:	48 03 5c 24 08       	add    0x8(%rsp),%rbx
+     c07:	0f 82 4b 02 00 00    	jb     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     c0d:	4c 39 f3             	cmp    %r14,%rbx
+     c10:	75 be                	jne    bd0 <fmt.formatBuf__anon_7419+0x320>
+     c12:	e9 03 02 00 00       	jmp    e1a <fmt.formatBuf__anon_7419+0x56a>
+     c17:	4d 85 e4             	test   %r12,%r12
+     c1a:	0f 84 fa 01 00 00    	je     e1a <fmt.formatBuf__anon_7419+0x56a>
+     c20:	0f b6 41 20          	movzbl 0x20(%rcx),%eax
+     c24:	4c 89 24 24          	mov    %r12,(%rsp)
+     c28:	85 c0                	test   %eax,%eax
+     c2a:	0f 84 97 00 00 00    	je     cc7 <fmt.formatBuf__anon_7419+0x417>
+     c30:	83 f8 01             	cmp    $0x1,%eax
+     c33:	0f 84 22 01 00 00    	je     d5b <fmt.formatBuf__anon_7419+0x4ab>
+     c39:	83 f8 02             	cmp    $0x2,%eax
+     c3c:	0f 85 5a 02 00 00    	jne    e9c <fmt.formatBuf__anon_7419+0x5ec>
+     c42:	8b 45 00             	mov    0x0(%rbp),%eax
+     c45:	48 8b 0c 24          	mov    (%rsp),%rcx
+     c49:	48 8d 74 24 40       	lea    0x40(%rsp),%rsi
+     c4e:	4c 89 ef             	mov    %r13,%rdi
+     c51:	89 44 24 40          	mov    %eax,0x40(%rsp)
+     c55:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+     c5a:	0f b6 50 21          	movzbl 0x21(%rax),%edx
+     c5e:	e8 8d f7 ff ff       	call   3f0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>
+     c63:	66 85 c0             	test   %ax,%ax
+     c66:	0f 85 cd 01 00 00    	jne    e39 <fmt.formatBuf__anon_7419+0x589>
+     c6c:	4d 85 f6             	test   %r14,%r14
+     c6f:	0f 84 a5 01 00 00    	je     e1a <fmt.formatBuf__anon_7419+0x56a>
+     c75:	8b 6d 00             	mov    0x0(%rbp),%ebp
+     c78:	31 db                	xor    %ebx,%ebx
+     c7a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     c80:	4c 39 f3             	cmp    %r14,%rbx
+     c83:	0f 87 f1 01 00 00    	ja     e7a <fmt.formatBuf__anon_7419+0x5ca>
+     c89:	4d 89 f0             	mov    %r14,%r8
+     c8c:	49 8d 0c 1f          	lea    (%r15,%rbx,1),%rcx
+     c90:	48 8d 7c 24 08       	lea    0x8(%rsp),%rdi
+     c95:	4c 89 ee             	mov    %r13,%rsi
+     c98:	89 ea                	mov    %ebp,%edx
+     c9a:	49 29 d8             	sub    %rbx,%r8
+     c9d:	e8 ce f9 ff ff       	call   670 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     ca2:	44 0f b7 64 24 10    	movzwl 0x10(%rsp),%r12d
+     ca8:	66 45 85 e4          	test   %r12w,%r12w
+     cac:	0f 85 7d 01 00 00    	jne    e2f <fmt.formatBuf__anon_7419+0x57f>
+     cb2:	48 03 5c 24 08       	add    0x8(%rsp),%rbx
+     cb7:	0f 82 9b 01 00 00    	jb     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     cbd:	4c 39 f3             	cmp    %r14,%rbx
+     cc0:	75 be                	jne    c80 <fmt.formatBuf__anon_7419+0x3d0>
+     cc2:	e9 53 01 00 00       	jmp    e1a <fmt.formatBuf__anon_7419+0x56a>
+     cc7:	48 89 e8             	mov    %rbp,%rax
+     cca:	4c 89 ed             	mov    %r13,%rbp
+     ccd:	44 8b 28             	mov    (%rax),%r13d
+     cd0:	4d 85 f6             	test   %r14,%r14
+     cd3:	74 56                	je     d2b <fmt.formatBuf__anon_7419+0x47b>
+     cd5:	31 db                	xor    %ebx,%ebx
+     cd7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+     cde:	00 00 
+     ce0:	4c 39 f3             	cmp    %r14,%rbx
+     ce3:	0f 87 91 01 00 00    	ja     e7a <fmt.formatBuf__anon_7419+0x5ca>
+     ce9:	4d 89 f0             	mov    %r14,%r8
+     cec:	49 8d 0c 1f          	lea    (%r15,%rbx,1),%rcx
+     cf0:	48 8d 7c 24 08       	lea    0x8(%rsp),%rdi
+     cf5:	48 89 ee             	mov    %rbp,%rsi
+     cf8:	44 89 ea             	mov    %r13d,%edx
+     cfb:	49 29 d8             	sub    %rbx,%r8
+     cfe:	e8 6d f9 ff ff       	call   670 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     d03:	44 0f b7 64 24 10    	movzwl 0x10(%rsp),%r12d
+     d09:	66 45 85 e4          	test   %r12w,%r12w
+     d0d:	0f 85 33 01 00 00    	jne    e46 <fmt.formatBuf__anon_7419+0x596>
+     d13:	48 03 5c 24 08       	add    0x8(%rsp),%rbx
+     d18:	0f 82 3a 01 00 00    	jb     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     d1e:	4c 39 f3             	cmp    %r14,%rbx
+     d21:	75 bd                	jne    ce0 <fmt.formatBuf__anon_7419+0x430>
+     d23:	48 8b 44 24 20       	mov    0x20(%rsp),%rax
+     d28:	44 8b 28             	mov    (%rax),%r13d
+     d2b:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+     d30:	44 89 6c 24 28       	mov    %r13d,0x28(%rsp)
+     d35:	48 8b 0c 24          	mov    (%rsp),%rcx
+     d39:	48 8d 74 24 28       	lea    0x28(%rsp),%rsi
+     d3e:	48 89 ef             	mov    %rbp,%rdi
+     d41:	0f b6 50 21          	movzbl 0x21(%rax),%edx
+     d45:	e8 a6 f6 ff ff       	call   3f0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>
+     d4a:	66 85 c0             	test   %ax,%ax
+     d4d:	0f 84 c7 00 00 00    	je     e1a <fmt.formatBuf__anon_7419+0x56a>
+     d53:	41 89 c4             	mov    %eax,%r12d
+     d56:	e9 f3 00 00 00       	jmp    e4e <fmt.formatBuf__anon_7419+0x59e>
+     d5b:	48 8b 0c 24          	mov    (%rsp),%rcx
+     d5f:	48 89 cb             	mov    %rcx,%rbx
+     d62:	48 ff c3             	inc    %rbx
+     d65:	0f 84 ed 00 00 00    	je     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     d6b:	8b 45 00             	mov    0x0(%rbp),%eax
+     d6e:	48 d1 e9             	shr    %rcx
+     d71:	48 8d 74 24 30       	lea    0x30(%rsp),%rsi
+     d76:	4c 89 ef             	mov    %r13,%rdi
+     d79:	89 44 24 30          	mov    %eax,0x30(%rsp)
+     d7d:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+     d82:	0f b6 50 21          	movzbl 0x21(%rax),%edx
+     d86:	e8 65 f6 ff ff       	call   3f0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>
+     d8b:	66 85 c0             	test   %ax,%ax
+     d8e:	0f 85 a5 00 00 00    	jne    e39 <fmt.formatBuf__anon_7419+0x589>
+     d94:	8b 6d 00             	mov    0x0(%rbp),%ebp
+     d97:	4d 85 f6             	test   %r14,%r14
+     d9a:	74 59                	je     df5 <fmt.formatBuf__anon_7419+0x545>
+     d9c:	48 89 1c 24          	mov    %rbx,(%rsp)
+     da0:	31 db                	xor    %ebx,%ebx
+     da2:	66 66 66 66 66 2e 0f 	data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+     da9:	1f 84 00 00 00 00 00 
+     db0:	4c 39 f3             	cmp    %r14,%rbx
+     db3:	0f 87 c1 00 00 00    	ja     e7a <fmt.formatBuf__anon_7419+0x5ca>
+     db9:	4d 89 f0             	mov    %r14,%r8
+     dbc:	49 8d 0c 1f          	lea    (%r15,%rbx,1),%rcx
+     dc0:	48 8d 7c 24 08       	lea    0x8(%rsp),%rdi
+     dc5:	4c 89 ee             	mov    %r13,%rsi
+     dc8:	89 ea                	mov    %ebp,%edx
+     dca:	49 29 d8             	sub    %rbx,%r8
+     dcd:	e8 9e f8 ff ff       	call   670 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     dd2:	44 0f b7 64 24 10    	movzwl 0x10(%rsp),%r12d
+     dd8:	66 45 85 e4          	test   %r12w,%r12w
+     ddc:	75 51                	jne    e2f <fmt.formatBuf__anon_7419+0x57f>
+     dde:	48 03 5c 24 08       	add    0x8(%rsp),%rbx
+     de3:	72 73                	jb     e58 <fmt.formatBuf__anon_7419+0x5a8>
+     de5:	4c 39 f3             	cmp    %r14,%rbx
+     de8:	75 c6                	jne    db0 <fmt.formatBuf__anon_7419+0x500>
+     dea:	48 8b 44 24 20       	mov    0x20(%rsp),%rax
+     def:	48 8b 1c 24          	mov    (%rsp),%rbx
+     df3:	8b 28                	mov    (%rax),%ebp
+     df5:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+     dfa:	89 6c 24 38          	mov    %ebp,0x38(%rsp)
+     dfe:	48 d1 eb             	shr    %rbx
+     e01:	48 8d 74 24 38       	lea    0x38(%rsp),%rsi
+     e06:	4c 89 ef             	mov    %r13,%rdi
+     e09:	48 89 d9             	mov    %rbx,%rcx
+     e0c:	0f b6 50 21          	movzbl 0x21(%rax),%edx
+     e10:	e8 db f5 ff ff       	call   3f0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>
+     e15:	66 85 c0             	test   %ax,%ax
+     e18:	75 1f                	jne    e39 <fmt.formatBuf__anon_7419+0x589>
+     e1a:	45 31 e4             	xor    %r12d,%r12d
+     e1d:	44 89 e0             	mov    %r12d,%eax
+     e20:	48 83 c4 48          	add    $0x48,%rsp
+     e24:	5b                   	pop    %rbx
+     e25:	41 5c                	pop    %r12
+     e27:	41 5d                	pop    %r13
+     e29:	41 5e                	pop    %r14
+     e2b:	41 5f                	pop    %r15
+     e2d:	5d                   	pop    %rbp
+     e2e:	c3                   	ret
+     e2f:	4c 89 ef             	mov    %r13,%rdi
+     e32:	e8 00 00 00 00       	call   e37 <fmt.formatBuf__anon_7419+0x587>
+     e37:	eb 03                	jmp    e3c <fmt.formatBuf__anon_7419+0x58c>
+     e39:	41 89 c4             	mov    %eax,%r12d
+     e3c:	4c 89 ef             	mov    %r13,%rdi
+     e3f:	e8 00 00 00 00       	call   e44 <fmt.formatBuf__anon_7419+0x594>
+     e44:	eb d7                	jmp    e1d <fmt.formatBuf__anon_7419+0x56d>
+     e46:	48 89 ef             	mov    %rbp,%rdi
+     e49:	e8 00 00 00 00       	call   e4e <fmt.formatBuf__anon_7419+0x59e>
+     e4e:	48 89 ef             	mov    %rbp,%rdi
+     e51:	e8 00 00 00 00       	call   e56 <fmt.formatBuf__anon_7419+0x5a6>
+     e56:	eb c5                	jmp    e1d <fmt.formatBuf__anon_7419+0x56d>
+     e58:	bf 00 00 00 00       	mov    $0x0,%edi
+     e5d:	be 10 00 00 00       	mov    $0x10,%esi
+     e62:	31 c9                	xor    %ecx,%ecx
+     e64:	e8 00 00 00 00       	call   e69 <fmt.formatBuf__anon_7419+0x5b9>
+     e69:	bf 00 00 00 00       	mov    $0x0,%edi
+     e6e:	be 13 00 00 00       	mov    $0x13,%esi
+     e73:	31 c9                	xor    %ecx,%ecx
+     e75:	e8 00 00 00 00       	call   e7a <fmt.formatBuf__anon_7419+0x5ca>
+     e7a:	bf 00 00 00 00       	mov    $0x0,%edi
+     e7f:	be 24 00 00 00       	mov    $0x24,%esi
+     e84:	31 c9                	xor    %ecx,%ecx
+     e86:	e8 00 00 00 00       	call   e8b <fmt.formatBuf__anon_7419+0x5db>
+     e8b:	bf 00 00 00 00       	mov    $0x0,%edi
+     e90:	be 18 00 00 00       	mov    $0x18,%esi
+     e95:	31 c9                	xor    %ecx,%ecx
+     e97:	e8 00 00 00 00       	call   e9c <fmt.formatBuf__anon_7419+0x5ec>
+     e9c:	bf 00 00 00 00       	mov    $0x0,%edi
+     ea1:	be 17 00 00 00       	mov    $0x17,%esi
+     ea6:	31 c9                	xor    %ecx,%ecx
+     ea8:	e8 00 00 00 00       	call   ead <fmt.formatBuf__anon_7419+0x5fd>
+     ead:	0f 1f 00             	nopl   (%rax)
+
+0000000000000eb0 <os.linux.exit_group>:
+     eb0:	50                   	push   %rax
+     eb1:	b8 e7 00 00 00       	mov    $0xe7,%eax
+     eb6:	bf 7f 00 00 00       	mov    $0x7f,%edi
+     ebb:	0f 05                	syscall
+     ebd:	bf 00 00 00 00       	mov    $0x0,%edi
+     ec2:	be 18 00 00 00       	mov    $0x18,%esi
+     ec7:	31 c9                	xor    %ecx,%ecx
+     ec9:	e8 00 00 00 00       	call   ece <os.linux.exit_group+0x1e>
+     ece:	66 90                	xchg   %ax,%ax
+
+0000000000000ed0 <debug.StackIterator.next_internal>:
+     ed0:	53                   	push   %rbx
+     ed1:	48 81 ec 30 02 00 00 	sub    $0x230,%rsp
+     ed8:	48 8d 44 24 30       	lea    0x30(%rsp),%rax
+     edd:	49 89 f0             	mov    %rsi,%r8
+     ee0:	48 89 fb             	mov    %rdi,%rbx
+     ee3:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+     ee8:	48 c7 44 24 10 20 00 	movq   $0x20,0x10(%rsp)
+     eef:	00 00 
+     ef1:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
+     ef8:	00 
+     ef9:	80 be 38 01 00 00 00 	cmpb   $0x0,0x138(%rsi)
+     f00:	74 0e                	je     f10 <debug.StackIterator.next_internal+0x40>
+     f02:	41 80 b8 32 01 00 00 	cmpb   $0x0,0x132(%r8)
+     f09:	00 
+     f0a:	0f 84 a4 00 00 00    	je     fb4 <debug.StackIterator.next_internal+0xe4>
+     f10:	4d 8b 48 10          	mov    0x10(%r8),%r9
+     f14:	4d 85 c9             	test   %r9,%r9
+     f17:	0f 84 9e 00 00 00    	je     fbb <debug.StackIterator.next_internal+0xeb>
+     f1d:	4c 89 c8             	mov    %r9,%rax
+     f20:	48 83 e0 f8          	and    $0xfffffffffffffff8,%rax
+     f24:	4c 39 c8             	cmp    %r9,%rax
+     f27:	0f 85 8e 00 00 00    	jne    fbb <debug.StackIterator.next_internal+0xeb>
+     f2d:	4c 89 cf             	mov    %r9,%rdi
+     f30:	48 8d 84 24 30 01 00 	lea    0x130(%rsp),%rax
+     f37:	00 
+     f38:	48 81 e7 00 f0 ff ff 	and    $0xfffffffffffff000,%rdi
+     f3f:	48 89 44 24 20       	mov    %rax,0x20(%rsp)
+     f44:	48 c7 44 24 28 20 00 	movq   $0x20,0x28(%rsp)
+     f4b:	00 00 
+     f4d:	48 c7 44 24 18 00 00 	movq   $0x0,0x18(%rsp)
+     f54:	00 00 
+     f56:	74 63                	je     fbb <debug.StackIterator.next_internal+0xeb>
+     f58:	b8 1a 00 00 00       	mov    $0x1a,%eax
+     f5d:	be 00 10 00 00       	mov    $0x1000,%esi
+     f62:	ba 01 00 00 00       	mov    $0x1,%edx
+     f67:	0f 05                	syscall
+     f69:	89 c2                	mov    %eax,%edx
+     f6b:	31 c9                	xor    %ecx,%ecx
+     f6d:	f7 da                	neg    %edx
+     f6f:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+     f75:	0f 43 ca             	cmovae %edx,%ecx
+     f78:	66 85 c9             	test   %cx,%cx
+     f7b:	75 4f                	jne    fcc <debug.StackIterator.next_internal+0xfc>
+     f7d:	41 f6 c1 07          	test   $0x7,%r9b
+     f81:	75 7b                	jne    ffe <debug.StackIterator.next_internal+0x12e>
+     f83:	49 8b 01             	mov    (%r9),%rax
+     f86:	48 85 c0             	test   %rax,%rax
+     f89:	74 06                	je     f91 <debug.StackIterator.next_internal+0xc1>
+     f8b:	49 3b 40 10          	cmp    0x10(%r8),%rax
+     f8f:	72 2a                	jb     fbb <debug.StackIterator.next_internal+0xeb>
+     f91:	49 83 c1 08          	add    $0x8,%r9
+     f95:	72 49                	jb     fe0 <debug.StackIterator.next_internal+0x110>
+     f97:	41 f6 c1 07          	test   $0x7,%r9b
+     f9b:	75 61                	jne    ffe <debug.StackIterator.next_internal+0x12e>
+     f9d:	49 8b 09             	mov    (%r9),%rcx
+     fa0:	49 89 40 10          	mov    %rax,0x10(%r8)
+     fa4:	48 89 0b             	mov    %rcx,(%rbx)
+     fa7:	c6 43 08 01          	movb   $0x1,0x8(%rbx)
+     fab:	48 81 c4 30 02 00 00 	add    $0x230,%rsp
+     fb2:	5b                   	pop    %rbx
+     fb3:	c3                   	ret
+     fb4:	49 83 78 40 00       	cmpq   $0x0,0x40(%r8)
+     fb9:	75 54                	jne    100f <debug.StackIterator.next_internal+0x13f>
+     fbb:	c5 f8 57 c0          	vxorps %xmm0,%xmm0,%xmm0
+     fbf:	c5 f8 11 03          	vmovups %xmm0,(%rbx)
+     fc3:	48 81 c4 30 02 00 00 	add    $0x230,%rsp
+     fca:	5b                   	pop    %rbx
+     fcb:	c3                   	ret
+     fcc:	0f b7 c1             	movzwl %cx,%eax
+     fcf:	83 f8 0c             	cmp    $0xc,%eax
+     fd2:	75 16                	jne    fea <debug.StackIterator.next_internal+0x11a>
+     fd4:	48 8d 7c 24 18       	lea    0x18(%rsp),%rdi
+     fd9:	e8 00 00 00 00       	call   fde <debug.StackIterator.next_internal+0x10e>
+     fde:	eb db                	jmp    fbb <debug.StackIterator.next_internal+0xeb>
+     fe0:	48 89 e7             	mov    %rsp,%rdi
+     fe3:	e8 00 00 00 00       	call   fe8 <debug.StackIterator.next_internal+0x118>
+     fe8:	eb d1                	jmp    fbb <debug.StackIterator.next_internal+0xeb>
+     fea:	83 f8 16             	cmp    $0x16,%eax
+     fed:	bf 00 00 00 00       	mov    $0x0,%edi
+     ff2:	be 18 00 00 00       	mov    $0x18,%esi
+     ff7:	31 c9                	xor    %ecx,%ecx
+     ff9:	e8 00 00 00 00       	call   ffe <debug.StackIterator.next_internal+0x12e>
+     ffe:	bf 00 00 00 00       	mov    $0x0,%edi
+    1003:	be 13 00 00 00       	mov    $0x13,%esi
+    1008:	31 c9                	xor    %ecx,%ecx
+    100a:	e8 00 00 00 00       	call   100f <debug.StackIterator.next_internal+0x13f>
+    100f:	bf 00 00 00 00       	mov    $0x0,%edi
+    1014:	be 10 00 00 00       	mov    $0x10,%esi
+    1019:	31 c9                	xor    %ecx,%ecx
+    101b:	e8 00 00 00 00       	call   1020 <os.linux.x86_64.restore_rt>
+
+0000000000001020 <os.linux.x86_64.restore_rt>:
+    1020:	b8 0f 00 00 00       	mov    $0xf,%eax
+    1025:	0f 05                	syscall
+    1027:	0f 0b                	ud2
+    1029:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001030 <heap.PageAllocator.alloc>:
+    1030:	41 56                	push   %r14
+    1032:	53                   	push   %rbx
+    1033:	48 81 ec 38 01 00 00 	sub    $0x138,%rsp
+    103a:	48 8d 44 24 38       	lea    0x38(%rsp),%rax
+    103f:	48 89 44 24 10       	mov    %rax,0x10(%rsp)
+    1044:	48 c7 44 24 18 20 00 	movq   $0x20,0x18(%rsp)
+    104b:	00 00 
+    104d:	48 c7 44 24 08 00 00 	movq   $0x0,0x8(%rsp)
+    1054:	00 00 
+    1056:	48 85 f6             	test   %rsi,%rsi
+    1059:	0f 84 87 00 00 00    	je     10e6 <heap.PageAllocator.alloc+0xb6>
+    105f:	48 89 f3             	mov    %rsi,%rbx
+    1062:	48 81 fe 01 f0 ff ff 	cmp    $0xfffffffffffff001,%rsi
+    1069:	73 45                	jae    10b0 <heap.PageAllocator.alloc+0x80>
+    106b:	4c 8b 35 00 00 00 00 	mov    0x0(%rip),%r14        # 1072 <heap.PageAllocator.alloc+0x42>
+    1072:	48 81 c3 ff 0f 00 00 	add    $0xfff,%rbx
+    1079:	48 8d 7c 24 20       	lea    0x20(%rsp),%rdi
+    107e:	48 8d 74 24 08       	lea    0x8(%rsp),%rsi
+    1083:	41 b8 03 00 00 00    	mov    $0x3,%r8d
+    1089:	41 b9 22 00 00 00    	mov    $0x22,%r9d
+    108f:	c7 04 24 ff ff ff ff 	movl   $0xffffffff,(%rsp)
+    1096:	48 81 e3 00 f0 ff ff 	and    $0xfffffffffffff000,%rbx
+    109d:	48 89 d9             	mov    %rbx,%rcx
+    10a0:	4c 89 f2             	mov    %r14,%rdx
+    10a3:	e8 98 f1 ff ff       	call   240 <os.mmap>
+    10a8:	66 83 7c 24 30 00    	cmpw   $0x0,0x30(%rsp)
+    10ae:	74 10                	je     10c0 <heap.PageAllocator.alloc+0x90>
+    10b0:	31 c9                	xor    %ecx,%ecx
+    10b2:	48 89 c8             	mov    %rcx,%rax
+    10b5:	48 81 c4 38 01 00 00 	add    $0x138,%rsp
+    10bc:	5b                   	pop    %rbx
+    10bd:	41 5e                	pop    %r14
+    10bf:	c3                   	ret
+    10c0:	48 8b 4c 24 20       	mov    0x20(%rsp),%rcx
+    10c5:	f7 c1 ff 0f 00 00    	test   $0xfff,%ecx
+    10cb:	75 19                	jne    10e6 <heap.PageAllocator.alloc+0xb6>
+    10cd:	48 01 cb             	add    %rcx,%rbx
+    10d0:	f7 c3 ff 0f 00 00    	test   $0xfff,%ebx
+    10d6:	75 1f                	jne    10f7 <heap.PageAllocator.alloc+0xc7>
+    10d8:	4c 89 f0             	mov    %r14,%rax
+    10db:	f0 48 0f b1 1d 00 00 	lock cmpxchg %rbx,0x0(%rip)        # 10e4 <heap.PageAllocator.alloc+0xb4>
+    10e2:	00 00 
+    10e4:	eb cc                	jmp    10b2 <heap.PageAllocator.alloc+0x82>
+    10e6:	bf 00 00 00 00       	mov    $0x0,%edi
+    10eb:	be 18 00 00 00       	mov    $0x18,%esi
+    10f0:	31 c9                	xor    %ecx,%ecx
+    10f2:	e8 00 00 00 00       	call   10f7 <heap.PageAllocator.alloc+0xc7>
+    10f7:	bf 00 00 00 00       	mov    $0x0,%edi
+    10fc:	be 13 00 00 00       	mov    $0x13,%esi
+    1101:	31 c9                	xor    %ecx,%ecx
+    1103:	e8 00 00 00 00       	call   1108 <heap.PageAllocator.alloc+0xd8>
+    1108:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    110f:	00 
+
+0000000000001110 <heap.PageAllocator.resize>:
+    1110:	50                   	push   %rax
+    1111:	49 81 c0 ff 0f 00 00 	add    $0xfff,%r8
+    1118:	72 5d                	jb     1177 <heap.PageAllocator.resize+0x67>
+    111a:	48 81 c2 ff 0f 00 00 	add    $0xfff,%rdx
+    1121:	72 54                	jb     1177 <heap.PageAllocator.resize+0x67>
+    1123:	49 81 e0 00 f0 ff ff 	and    $0xfffffffffffff000,%r8
+    112a:	48 81 e2 00 f0 ff ff 	and    $0xfffffffffffff000,%rdx
+    1131:	41 b1 01             	mov    $0x1,%r9b
+    1134:	4c 39 c2             	cmp    %r8,%rdx
+    1137:	74 31                	je     116a <heap.PageAllocator.resize+0x5a>
+    1139:	4c 29 c2             	sub    %r8,%rdx
+    113c:	76 31                	jbe    116f <heap.PageAllocator.resize+0x5f>
+    113e:	4c 01 c6             	add    %r8,%rsi
+    1141:	f7 c6 ff 0f 00 00    	test   $0xfff,%esi
+    1147:	75 5b                	jne    11a4 <heap.PageAllocator.resize+0x94>
+    1149:	48 89 f7             	mov    %rsi,%rdi
+    114c:	b8 0b 00 00 00       	mov    $0xb,%eax
+    1151:	48 89 d6             	mov    %rdx,%rsi
+    1154:	0f 05                	syscall
+    1156:	89 c2                	mov    %eax,%edx
+    1158:	31 c9                	xor    %ecx,%ecx
+    115a:	f7 da                	neg    %edx
+    115c:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+    1162:	0f 43 ca             	cmovae %edx,%ecx
+    1165:	66 85 c9             	test   %cx,%cx
+    1168:	75 1e                	jne    1188 <heap.PageAllocator.resize+0x78>
+    116a:	44 89 c8             	mov    %r9d,%eax
+    116d:	59                   	pop    %rcx
+    116e:	c3                   	ret
+    116f:	45 31 c9             	xor    %r9d,%r9d
+    1172:	44 89 c8             	mov    %r9d,%eax
+    1175:	59                   	pop    %rcx
+    1176:	c3                   	ret
+    1177:	bf 00 00 00 00       	mov    $0x0,%edi
+    117c:	be 10 00 00 00       	mov    $0x10,%esi
+    1181:	31 c9                	xor    %ecx,%ecx
+    1183:	e8 00 00 00 00       	call   1188 <heap.PageAllocator.resize+0x78>
+    1188:	0f b7 c1             	movzwl %cx,%eax
+    118b:	83 f8 0c             	cmp    $0xc,%eax
+    118e:	74 03                	je     1193 <heap.PageAllocator.resize+0x83>
+    1190:	83 f8 16             	cmp    $0x16,%eax
+    1193:	bf 00 00 00 00       	mov    $0x0,%edi
+    1198:	be 18 00 00 00       	mov    $0x18,%esi
+    119d:	31 c9                	xor    %ecx,%ecx
+    119f:	e8 00 00 00 00       	call   11a4 <heap.PageAllocator.resize+0x94>
+    11a4:	bf 00 00 00 00       	mov    $0x0,%edi
+    11a9:	be 13 00 00 00       	mov    $0x13,%esi
+    11ae:	31 c9                	xor    %ecx,%ecx
+    11b0:	e8 00 00 00 00       	call   11b5 <heap.PageAllocator.resize+0xa5>
+    11b5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    11bc:	00 00 00 00 
+
+00000000000011c0 <heap.PageAllocator.free>:
+    11c0:	50                   	push   %rax
+    11c1:	48 81 c2 ff 0f 00 00 	add    $0xfff,%rdx
+    11c8:	72 54                	jb     121e <heap.PageAllocator.free+0x5e>
+    11ca:	48 89 f0             	mov    %rsi,%rax
+    11cd:	48 81 e2 00 f0 ff ff 	and    $0xfffffffffffff000,%rdx
+    11d4:	48 c1 e0 34          	shl    $0x34,%rax
+    11d8:	74 05                	je     11df <heap.PageAllocator.free+0x1f>
+    11da:	48 85 d2             	test   %rdx,%rdx
+    11dd:	75 50                	jne    122f <heap.PageAllocator.free+0x6f>
+    11df:	48 89 f7             	mov    %rsi,%rdi
+    11e2:	b8 0b 00 00 00       	mov    $0xb,%eax
+    11e7:	48 89 d6             	mov    %rdx,%rsi
+    11ea:	0f 05                	syscall
+    11ec:	89 c2                	mov    %eax,%edx
+    11ee:	31 c9                	xor    %ecx,%ecx
+    11f0:	f7 da                	neg    %edx
+    11f2:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+    11f8:	0f 43 ca             	cmovae %edx,%ecx
+    11fb:	66 85 c9             	test   %cx,%cx
+    11fe:	75 02                	jne    1202 <heap.PageAllocator.free+0x42>
+    1200:	58                   	pop    %rax
+    1201:	c3                   	ret
+    1202:	0f b7 c1             	movzwl %cx,%eax
+    1205:	83 f8 0c             	cmp    $0xc,%eax
+    1208:	74 03                	je     120d <heap.PageAllocator.free+0x4d>
+    120a:	83 f8 16             	cmp    $0x16,%eax
+    120d:	bf 00 00 00 00       	mov    $0x0,%edi
+    1212:	be 18 00 00 00       	mov    $0x18,%esi
+    1217:	31 c9                	xor    %ecx,%ecx
+    1219:	e8 00 00 00 00       	call   121e <heap.PageAllocator.free+0x5e>
+    121e:	bf 00 00 00 00       	mov    $0x0,%edi
+    1223:	be 10 00 00 00       	mov    $0x10,%esi
+    1228:	31 c9                	xor    %ecx,%ecx
+    122a:	e8 00 00 00 00       	call   122f <heap.PageAllocator.free+0x6f>
+    122f:	bf 00 00 00 00       	mov    $0x0,%edi
+    1234:	be 13 00 00 00       	mov    $0x13,%esi
+    1239:	31 c9                	xor    %ecx,%ecx
+    123b:	e8 00 00 00 00       	call   1240 <heap.arena_allocator.ArenaAllocator.alloc>
+
+0000000000001240 <heap.arena_allocator.ArenaAllocator.alloc>:
+    1240:	55                   	push   %rbp
+    1241:	41 57                	push   %r15
+    1243:	41 56                	push   %r14
+    1245:	41 55                	push   %r13
+    1247:	41 54                	push   %r12
+    1249:	53                   	push   %rbx
+    124a:	48 83 ec 28          	sub    $0x28,%rsp
+    124e:	48 89 fb             	mov    %rdi,%rbx
+    1251:	48 89 34 24          	mov    %rsi,(%rsp)
+    1255:	f6 c3 07             	test   $0x7,%bl
+    1258:	0f 85 4b 02 00 00    	jne    14a9 <heap.arena_allocator.ArenaAllocator.alloc+0x269>
+    125e:	80 fa 40             	cmp    $0x40,%dl
+    1261:	0f 83 53 02 00 00    	jae    14ba <heap.arena_allocator.ArenaAllocator.alloc+0x27a>
+    1267:	4c 8b 7b 10          	mov    0x10(%rbx),%r15
+    126b:	b8 01 00 00 00       	mov    $0x1,%eax
+    1270:	c4 62 e9 f7 e0       	shlx   %rdx,%rax,%r12
+    1275:	4d 85 ff             	test   %r15,%r15
+    1278:	75 26                	jne    12a0 <heap.arena_allocator.ArenaAllocator.alloc+0x60>
+    127a:	48 8b 14 24          	mov    (%rsp),%rdx
+    127e:	4c 01 e2             	add    %r12,%rdx
+    1281:	0f 82 41 01 00 00    	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1287:	48 89 df             	mov    %rbx,%rdi
+    128a:	31 f6                	xor    %esi,%esi
+    128c:	45 31 ed             	xor    %r13d,%r13d
+    128f:	e8 3c 02 00 00       	call   14d0 <heap.arena_allocator.ArenaAllocator.createNode>
+    1294:	49 89 c7             	mov    %rax,%r15
+    1297:	48 85 c0             	test   %rax,%rax
+    129a:	0f 84 e6 01 00 00    	je     1486 <heap.arena_allocator.ArenaAllocator.alloc+0x246>
+    12a0:	49 8b 57 08          	mov    0x8(%r15),%rdx
+    12a4:	48 83 fa 10          	cmp    $0x10,%rdx
+    12a8:	0f 82 ea 01 00 00    	jb     1498 <heap.arena_allocator.ArenaAllocator.alloc+0x258>
+    12ae:	4c 89 e6             	mov    %r12,%rsi
+    12b1:	4c 89 e1             	mov    %r12,%rcx
+    12b4:	49 8d 47 08          	lea    0x8(%r15),%rax
+    12b8:	49 8d 7c 24 ff       	lea    -0x1(%r12),%rdi
+    12bd:	4d 8d 77 10          	lea    0x10(%r15),%r14
+    12c1:	48 f7 de             	neg    %rsi
+    12c4:	48 03 0c 24          	add    (%rsp),%rcx
+    12c8:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+    12cd:	48 89 7c 24 10       	mov    %rdi,0x10(%rsp)
+    12d2:	48 89 74 24 08       	mov    %rsi,0x8(%rsp)
+    12d7:	48 89 4c 24 20       	mov    %rcx,0x20(%rsp)
+    12dc:	0f 83 21 01 00 00    	jae    1403 <heap.arena_allocator.ArenaAllocator.alloc+0x1c3>
+    12e2:	4c 8b 6b 18          	mov    0x18(%rbx),%r13
+    12e6:	4c 89 f0             	mov    %r14,%rax
+    12e9:	4c 01 e8             	add    %r13,%rax
+    12ec:	0f 82 d6 00 00 00    	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    12f2:	48 89 c1             	mov    %rax,%rcx
+    12f5:	48 03 4c 24 10       	add    0x10(%rsp),%rcx
+    12fa:	0f 82 c8 00 00 00    	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1300:	48 23 4c 24 08       	and    0x8(%rsp),%rcx
+    1305:	48 29 c1             	sub    %rax,%rcx
+    1308:	0f 82 ba 00 00 00    	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    130e:	49 01 cd             	add    %rcx,%r13
+    1311:	0f 82 b1 00 00 00    	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1317:	4c 89 ed             	mov    %r13,%rbp
+    131a:	48 03 2c 24          	add    (%rsp),%rbp
+    131e:	0f 82 a4 00 00 00    	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1324:	48 8d 42 f0          	lea    -0x10(%rdx),%rax
+    1328:	48 39 c5             	cmp    %rax,%rbp
+    132b:	0f 86 4e 01 00 00    	jbe    147f <heap.arena_allocator.ArenaAllocator.alloc+0x23f>
+    1331:	48 83 c5 10          	add    $0x10,%rbp
+    1335:	0f 82 8d 00 00 00    	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    133b:	4c 8b 64 24 58       	mov    0x58(%rsp),%r12
+    1340:	48 8b 3b             	mov    (%rbx),%rdi
+    1343:	48 8b 43 08          	mov    0x8(%rbx),%rax
+    1347:	4c 89 fe             	mov    %r15,%rsi
+    134a:	b9 03 00 00 00       	mov    $0x3,%ecx
+    134f:	49 89 e8             	mov    %rbp,%r8
+    1352:	4d 89 e1             	mov    %r12,%r9
+    1355:	ff 50 08             	call   *0x8(%rax)
+    1358:	a8 01                	test   $0x1,%al
+    135a:	74 6c                	je     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    135c:	48 89 ea             	mov    %rbp,%rdx
+    135f:	90                   	nop
+    1360:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+    1365:	48 89 10             	mov    %rdx,(%rax)
+    1368:	4c 89 f0             	mov    %r14,%rax
+    136b:	4c 8b 6b 18          	mov    0x18(%rbx),%r13
+    136f:	4c 01 e8             	add    %r13,%rax
+    1372:	72 54                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1374:	48 89 c1             	mov    %rax,%rcx
+    1377:	48 03 4c 24 10       	add    0x10(%rsp),%rcx
+    137c:	72 4a                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    137e:	48 23 4c 24 08       	and    0x8(%rsp),%rcx
+    1383:	48 29 c1             	sub    %rax,%rcx
+    1386:	72 40                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1388:	49 01 cd             	add    %rcx,%r13
+    138b:	72 3b                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    138d:	4c 89 ed             	mov    %r13,%rbp
+    1390:	48 03 2c 24          	add    (%rsp),%rbp
+    1394:	72 32                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1396:	48 8d 42 f0          	lea    -0x10(%rdx),%rax
+    139a:	48 39 c5             	cmp    %rax,%rbp
+    139d:	0f 86 dc 00 00 00    	jbe    147f <heap.arena_allocator.ArenaAllocator.alloc+0x23f>
+    13a3:	48 83 c5 10          	add    $0x10,%rbp
+    13a7:	72 1f                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    13a9:	48 8b 3b             	mov    (%rbx),%rdi
+    13ac:	48 8b 43 08          	mov    0x8(%rbx),%rax
+    13b0:	4c 89 fe             	mov    %r15,%rsi
+    13b3:	b9 03 00 00 00       	mov    $0x3,%ecx
+    13b8:	49 89 e8             	mov    %rbp,%r8
+    13bb:	4d 89 e1             	mov    %r12,%r9
+    13be:	ff 50 08             	call   *0x8(%rax)
+    13c1:	48 89 ea             	mov    %rbp,%rdx
+    13c4:	a8 01                	test   $0x1,%al
+    13c6:	75 98                	jne    1360 <heap.arena_allocator.ArenaAllocator.alloc+0x120>
+    13c8:	bf 00 00 00 00       	mov    $0x0,%edi
+    13cd:	be 10 00 00 00       	mov    $0x10,%esi
+    13d2:	31 c9                	xor    %ecx,%ecx
+    13d4:	e8 00 00 00 00       	call   13d9 <heap.arena_allocator.ArenaAllocator.alloc+0x199>
+    13d9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    13e0:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+    13e5:	48 89 28             	mov    %rbp,(%rax)
+    13e8:	49 8b 57 08          	mov    0x8(%r15),%rdx
+    13ec:	49 8d 47 08          	lea    0x8(%r15),%rax
+    13f0:	4d 8d 77 10          	lea    0x10(%r15),%r14
+    13f4:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+    13f9:	48 83 fa 0f          	cmp    $0xf,%rdx
+    13fd:	0f 86 95 00 00 00    	jbe    1498 <heap.arena_allocator.ArenaAllocator.alloc+0x258>
+    1403:	4c 8b 6b 18          	mov    0x18(%rbx),%r13
+    1407:	4c 89 f0             	mov    %r14,%rax
+    140a:	4c 01 e8             	add    %r13,%rax
+    140d:	72 b9                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    140f:	48 89 c1             	mov    %rax,%rcx
+    1412:	48 03 4c 24 10       	add    0x10(%rsp),%rcx
+    1417:	72 af                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1419:	48 23 4c 24 08       	and    0x8(%rsp),%rcx
+    141e:	48 29 c1             	sub    %rax,%rcx
+    1421:	72 a5                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1423:	49 01 cd             	add    %rcx,%r13
+    1426:	72 a0                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1428:	4c 89 ed             	mov    %r13,%rbp
+    142b:	48 03 2c 24          	add    (%rsp),%rbp
+    142f:	72 97                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1431:	4c 8d 62 f0          	lea    -0x10(%rdx),%r12
+    1435:	4c 39 e5             	cmp    %r12,%rbp
+    1438:	76 45                	jbe    147f <heap.arena_allocator.ArenaAllocator.alloc+0x23f>
+    143a:	48 83 c5 10          	add    $0x10,%rbp
+    143e:	72 88                	jb     13c8 <heap.arena_allocator.ArenaAllocator.alloc+0x188>
+    1440:	48 8b 3b             	mov    (%rbx),%rdi
+    1443:	48 8b 43 08          	mov    0x8(%rbx),%rax
+    1447:	4c 8b 4c 24 58       	mov    0x58(%rsp),%r9
+    144c:	4c 89 fe             	mov    %r15,%rsi
+    144f:	b9 03 00 00 00       	mov    $0x3,%ecx
+    1454:	49 89 e8             	mov    %rbp,%r8
+    1457:	ff 50 08             	call   *0x8(%rax)
+    145a:	a8 01                	test   $0x1,%al
+    145c:	75 82                	jne    13e0 <heap.arena_allocator.ArenaAllocator.alloc+0x1a0>
+    145e:	48 8b 54 24 20       	mov    0x20(%rsp),%rdx
+    1463:	48 89 df             	mov    %rbx,%rdi
+    1466:	4c 89 e6             	mov    %r12,%rsi
+    1469:	e8 62 00 00 00       	call   14d0 <heap.arena_allocator.ArenaAllocator.createNode>
+    146e:	49 89 c7             	mov    %rax,%r15
+    1471:	48 85 c0             	test   %rax,%rax
+    1474:	0f 85 6e ff ff ff    	jne    13e8 <heap.arena_allocator.ArenaAllocator.alloc+0x1a8>
+    147a:	45 31 ed             	xor    %r13d,%r13d
+    147d:	eb 07                	jmp    1486 <heap.arena_allocator.ArenaAllocator.alloc+0x246>
+    147f:	4d 01 f5             	add    %r14,%r13
+    1482:	48 89 6b 18          	mov    %rbp,0x18(%rbx)
+    1486:	4c 89 e8             	mov    %r13,%rax
+    1489:	48 83 c4 28          	add    $0x28,%rsp
+    148d:	5b                   	pop    %rbx
+    148e:	41 5c                	pop    %r12
+    1490:	41 5d                	pop    %r13
+    1492:	41 5e                	pop    %r14
+    1494:	41 5f                	pop    %r15
+    1496:	5d                   	pop    %rbp
+    1497:	c3                   	ret
+    1498:	bf 00 00 00 00       	mov    $0x0,%edi
+    149d:	be 24 00 00 00       	mov    $0x24,%esi
+    14a2:	31 c9                	xor    %ecx,%ecx
+    14a4:	e8 00 00 00 00       	call   14a9 <heap.arena_allocator.ArenaAllocator.alloc+0x269>
+    14a9:	bf 00 00 00 00       	mov    $0x0,%edi
+    14ae:	be 13 00 00 00       	mov    $0x13,%esi
+    14b3:	31 c9                	xor    %ecx,%ecx
+    14b5:	e8 00 00 00 00       	call   14ba <heap.arena_allocator.ArenaAllocator.alloc+0x27a>
+    14ba:	bf 00 00 00 00       	mov    $0x0,%edi
+    14bf:	be 1b 00 00 00       	mov    $0x1b,%esi
+    14c4:	31 c9                	xor    %ecx,%ecx
+    14c6:	e8 00 00 00 00       	call   14cb <heap.arena_allocator.ArenaAllocator.alloc+0x28b>
+    14cb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+00000000000014d0 <heap.arena_allocator.ArenaAllocator.createNode>:
+    14d0:	41 56                	push   %r14
+    14d2:	53                   	push   %rbx
+    14d3:	50                   	push   %rax
+    14d4:	48 83 c2 20          	add    $0x20,%rdx
+    14d8:	72 58                	jb     1532 <heap.arena_allocator.ArenaAllocator.createNode+0x62>
+    14da:	48 01 d6             	add    %rdx,%rsi
+    14dd:	72 53                	jb     1532 <heap.arena_allocator.ArenaAllocator.createNode+0x62>
+    14df:	49 89 f6             	mov    %rsi,%r14
+    14e2:	49 d1 ee             	shr    %r14
+    14e5:	49 01 f6             	add    %rsi,%r14
+    14e8:	72 48                	jb     1532 <heap.arena_allocator.ArenaAllocator.createNode+0x62>
+    14ea:	48 89 fb             	mov    %rdi,%rbx
+    14ed:	48 8b 3f             	mov    (%rdi),%rdi
+    14f0:	48 8b 4c 24 18       	mov    0x18(%rsp),%rcx
+    14f5:	4c 89 f6             	mov    %r14,%rsi
+    14f8:	ba 03 00 00 00       	mov    $0x3,%edx
+    14fd:	48 8b 43 08          	mov    0x8(%rbx),%rax
+    1501:	ff 10                	call   *(%rax)
+    1503:	48 85 c0             	test   %rax,%rax
+    1506:	74 22                	je     152a <heap.arena_allocator.ArenaAllocator.createNode+0x5a>
+    1508:	a8 07                	test   $0x7,%al
+    150a:	75 37                	jne    1543 <heap.arena_allocator.ArenaAllocator.createNode+0x73>
+    150c:	4c 89 70 08          	mov    %r14,0x8(%rax)
+    1510:	48 c7 00 00 00 00 00 	movq   $0x0,(%rax)
+    1517:	48 8b 4b 10          	mov    0x10(%rbx),%rcx
+    151b:	48 89 08             	mov    %rcx,(%rax)
+    151e:	48 89 43 10          	mov    %rax,0x10(%rbx)
+    1522:	48 c7 43 18 00 00 00 	movq   $0x0,0x18(%rbx)
+    1529:	00 
+    152a:	48 83 c4 08          	add    $0x8,%rsp
+    152e:	5b                   	pop    %rbx
+    152f:	41 5e                	pop    %r14
+    1531:	c3                   	ret
+    1532:	bf 00 00 00 00       	mov    $0x0,%edi
+    1537:	be 10 00 00 00       	mov    $0x10,%esi
+    153c:	31 c9                	xor    %ecx,%ecx
+    153e:	e8 00 00 00 00       	call   1543 <heap.arena_allocator.ArenaAllocator.createNode+0x73>
+    1543:	bf 00 00 00 00       	mov    $0x0,%edi
+    1548:	be 13 00 00 00       	mov    $0x13,%esi
+    154d:	31 c9                	xor    %ecx,%ecx
+    154f:	e8 00 00 00 00       	call   1554 <heap.arena_allocator.ArenaAllocator.createNode+0x84>
+    1554:	66 66 66 2e 0f 1f 84 	data16 data16 cs nopw 0x0(%rax,%rax,1)
+    155b:	00 00 00 00 00 
+
+0000000000001560 <heap.arena_allocator.ArenaAllocator.resize>:
+    1560:	50                   	push   %rax
+    1561:	40 f6 c7 07          	test   $0x7,%dil
+    1565:	75 74                	jne    15db <heap.arena_allocator.ArenaAllocator.resize+0x7b>
+    1567:	4c 8b 4f 10          	mov    0x10(%rdi),%r9
+    156b:	4d 85 c9             	test   %r9,%r9
+    156e:	74 3c                	je     15ac <heap.arena_allocator.ArenaAllocator.resize+0x4c>
+    1570:	49 8b 49 08          	mov    0x8(%r9),%rcx
+    1574:	48 83 f9 0f          	cmp    $0xf,%rcx
+    1578:	76 72                	jbe    15ec <heap.arena_allocator.ArenaAllocator.resize+0x8c>
+    157a:	48 8b 47 18          	mov    0x18(%rdi),%rax
+    157e:	49 83 c1 10          	add    $0x10,%r9
+    1582:	49 01 c1             	add    %rax,%r9
+    1585:	72 43                	jb     15ca <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    1587:	48 01 d6             	add    %rdx,%rsi
+    158a:	72 3e                	jb     15ca <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    158c:	49 39 f1             	cmp    %rsi,%r9
+    158f:	75 1f                	jne    15b0 <heap.arena_allocator.ArenaAllocator.resize+0x50>
+    1591:	48 89 d6             	mov    %rdx,%rsi
+    1594:	4c 29 c6             	sub    %r8,%rsi
+    1597:	73 1f                	jae    15b8 <heap.arena_allocator.ArenaAllocator.resize+0x58>
+    1599:	48 83 c1 f0          	add    $0xfffffffffffffff0,%rcx
+    159d:	48 29 c1             	sub    %rax,%rcx
+    15a0:	72 28                	jb     15ca <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    15a2:	49 29 d0             	sub    %rdx,%r8
+    15a5:	72 23                	jb     15ca <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    15a7:	4c 39 c1             	cmp    %r8,%rcx
+    15aa:	73 19                	jae    15c5 <heap.arena_allocator.ArenaAllocator.resize+0x65>
+    15ac:	31 c0                	xor    %eax,%eax
+    15ae:	59                   	pop    %rcx
+    15af:	c3                   	ret
+    15b0:	4c 39 c2             	cmp    %r8,%rdx
+    15b3:	0f 93 c0             	setae  %al
+    15b6:	59                   	pop    %rcx
+    15b7:	c3                   	ret
+    15b8:	48 29 f0             	sub    %rsi,%rax
+    15bb:	72 0d                	jb     15ca <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    15bd:	48 89 47 18          	mov    %rax,0x18(%rdi)
+    15c1:	b0 01                	mov    $0x1,%al
+    15c3:	59                   	pop    %rcx
+    15c4:	c3                   	ret
+    15c5:	4c 01 c0             	add    %r8,%rax
+    15c8:	73 f3                	jae    15bd <heap.arena_allocator.ArenaAllocator.resize+0x5d>
+    15ca:	bf 00 00 00 00       	mov    $0x0,%edi
+    15cf:	be 10 00 00 00       	mov    $0x10,%esi
+    15d4:	31 c9                	xor    %ecx,%ecx
+    15d6:	e8 00 00 00 00       	call   15db <heap.arena_allocator.ArenaAllocator.resize+0x7b>
+    15db:	bf 00 00 00 00       	mov    $0x0,%edi
+    15e0:	be 13 00 00 00       	mov    $0x13,%esi
+    15e5:	31 c9                	xor    %ecx,%ecx
+    15e7:	e8 00 00 00 00       	call   15ec <heap.arena_allocator.ArenaAllocator.resize+0x8c>
+    15ec:	bf 00 00 00 00       	mov    $0x0,%edi
+    15f1:	be 24 00 00 00       	mov    $0x24,%esi
+    15f6:	31 c9                	xor    %ecx,%ecx
+    15f8:	e8 00 00 00 00       	call   15fd <heap.arena_allocator.ArenaAllocator.resize+0x9d>
+    15fd:	0f 1f 00             	nopl   (%rax)
+
+0000000000001600 <heap.arena_allocator.ArenaAllocator.free>:
+    1600:	50                   	push   %rax
+    1601:	40 f6 c7 07          	test   $0x7,%dil
+    1605:	75 43                	jne    164a <heap.arena_allocator.ArenaAllocator.free+0x4a>
+    1607:	48 8b 47 10          	mov    0x10(%rdi),%rax
+    160b:	48 85 c0             	test   %rax,%rax
+    160e:	74 27                	je     1637 <heap.arena_allocator.ArenaAllocator.free+0x37>
+    1610:	48 83 78 08 0f       	cmpq   $0xf,0x8(%rax)
+    1615:	76 44                	jbe    165b <heap.arena_allocator.ArenaAllocator.free+0x5b>
+    1617:	48 8b 4f 18          	mov    0x18(%rdi),%rcx
+    161b:	48 83 c0 10          	add    $0x10,%rax
+    161f:	48 01 c8             	add    %rcx,%rax
+    1622:	72 15                	jb     1639 <heap.arena_allocator.ArenaAllocator.free+0x39>
+    1624:	48 01 d6             	add    %rdx,%rsi
+    1627:	72 10                	jb     1639 <heap.arena_allocator.ArenaAllocator.free+0x39>
+    1629:	48 39 f0             	cmp    %rsi,%rax
+    162c:	75 09                	jne    1637 <heap.arena_allocator.ArenaAllocator.free+0x37>
+    162e:	48 29 d1             	sub    %rdx,%rcx
+    1631:	72 06                	jb     1639 <heap.arena_allocator.ArenaAllocator.free+0x39>
+    1633:	48 89 4f 18          	mov    %rcx,0x18(%rdi)
+    1637:	58                   	pop    %rax
+    1638:	c3                   	ret
+    1639:	bf 00 00 00 00       	mov    $0x0,%edi
+    163e:	be 10 00 00 00       	mov    $0x10,%esi
+    1643:	31 c9                	xor    %ecx,%ecx
+    1645:	e8 00 00 00 00       	call   164a <heap.arena_allocator.ArenaAllocator.free+0x4a>
+    164a:	bf 00 00 00 00       	mov    $0x0,%edi
+    164f:	be 13 00 00 00       	mov    $0x13,%esi
+    1654:	31 c9                	xor    %ecx,%ecx
+    1656:	e8 00 00 00 00       	call   165b <heap.arena_allocator.ArenaAllocator.free+0x5b>
+    165b:	bf 00 00 00 00       	mov    $0x0,%edi
+    1660:	be 24 00 00 00       	mov    $0x24,%esi
+    1665:	31 c9                	xor    %ecx,%ecx
+    1667:	e8 00 00 00 00       	call   166c <heap.arena_allocator.ArenaAllocator.free+0x6c>
+
+Disassembly of section .text.unlikely.:
+
+0000000000000000 <builtin.default_panic>:
+   0:	48 83 ec 18          	sub    $0x18,%rsp
+   4:	48 89 d0             	mov    %rdx,%rax
+   7:	48 89 f2             	mov    %rsi,%rdx
+   a:	48 89 fe             	mov    %rdi,%rsi
+   d:	84 c9                	test   %cl,%cl
+   f:	75 05                	jne    16 <builtin.default_panic+0x16>
+  11:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+  16:	48 8d 7c 24 08       	lea    0x8(%rsp),%rdi
+  1b:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+  20:	c6 44 24 10 01       	movb   $0x1,0x10(%rsp)
+  25:	e8 06 00 00 00       	call   30 <debug.panicImpl>
+  2a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000000030 <debug.panicImpl>:
+  30:	55                   	push   %rbp
+  31:	48 89 e5             	mov    %rsp,%rbp
+  34:	41 57                	push   %r15
+  36:	41 56                	push   %r14
+  38:	41 55                	push   %r13
+  3a:	41 54                	push   %r12
+  3c:	53                   	push   %rbx
+  3d:	48 81 ec e8 09 00 00 	sub    $0x9e8,%rsp
+  44:	48 8d 85 f0 f6 ff ff 	lea    -0x910(%rbp),%rax
+  4b:	c5 f8 57 c0          	vxorps %xmm0,%xmm0,%xmm0
+  4f:	49 89 d7             	mov    %rdx,%r15
+  52:	48 89 f3             	mov    %rsi,%rbx
+  55:	48 89 7d a8          	mov    %rdi,-0x58(%rbp)
+  59:	48 8d bd a0 fb ff ff 	lea    -0x460(%rbp),%rdi
+  60:	48 8d 95 20 fe ff ff 	lea    -0x1e0(%rbp),%rdx
+  67:	be 0b 00 00 00       	mov    $0xb,%esi
+  6c:	48 89 45 b8          	mov    %rax,-0x48(%rbp)
+  70:	48 8d 85 f0 f7 ff ff 	lea    -0x810(%rbp),%rax
+  77:	48 c7 45 c0 20 00 00 	movq   $0x20,-0x40(%rbp)
+  7e:	00 
+  7f:	c5 fc 11 85 80 fe ff 	vmovups %ymm0,-0x180(%rbp)
+  86:	ff 
+  87:	48 c7 45 b0 00 00 00 	movq   $0x0,-0x50(%rbp)
+  8e:	00 
+  8f:	c5 fc 11 85 20 fe ff 	vmovups %ymm0,-0x1e0(%rbp)
+  96:	ff 
+  97:	c5 fc 11 85 40 fe ff 	vmovups %ymm0,-0x1c0(%rbp)
+  9e:	ff 
+  9f:	c5 fc 11 85 60 fe ff 	vmovups %ymm0,-0x1a0(%rbp)
+  a6:	ff 
+  a7:	c5 fc 11 85 98 fe ff 	vmovups %ymm0,-0x168(%rbp)
+  ae:	ff 
+  af:	48 89 85 a8 fb ff ff 	mov    %rax,-0x458(%rbp)
+  b6:	48 c7 85 b0 fb ff ff 	movq   $0x20,-0x450(%rbp)
+  bd:	20 00 00 00 
+  c1:	48 c7 85 a0 fb ff ff 	movq   $0x0,-0x460(%rbp)
+  c8:	00 00 00 00 
+  cc:	c5 f8 77             	vzeroupper
+  cf:	e8 00 00 00 00       	call   d4 <debug.panicImpl+0xa4>
+  d4:	66 85 c0             	test   %ax,%ax
+  d7:	75 57                	jne    130 <debug.panicImpl+0x100>
+  d9:	48 8d bd a0 fb ff ff 	lea    -0x460(%rbp),%rdi
+  e0:	48 8d 95 20 fe ff ff 	lea    -0x1e0(%rbp),%rdx
+  e7:	be 04 00 00 00       	mov    $0x4,%esi
+  ec:	e8 00 00 00 00       	call   f1 <debug.panicImpl+0xc1>
+  f1:	66 85 c0             	test   %ax,%ax
+  f4:	75 3a                	jne    130 <debug.panicImpl+0x100>
+  f6:	48 8d bd a0 fb ff ff 	lea    -0x460(%rbp),%rdi
+  fd:	48 8d 95 20 fe ff ff 	lea    -0x1e0(%rbp),%rdx
+ 104:	be 07 00 00 00       	mov    $0x7,%esi
+ 109:	e8 00 00 00 00       	call   10e <debug.panicImpl+0xde>
+ 10e:	66 85 c0             	test   %ax,%ax
+ 111:	75 1d                	jne    130 <debug.panicImpl+0x100>
+ 113:	48 8d bd a0 fb ff ff 	lea    -0x460(%rbp),%rdi
+ 11a:	48 8d 95 20 fe ff ff 	lea    -0x1e0(%rbp),%rdx
+ 121:	be 08 00 00 00       	mov    $0x8,%esi
+ 126:	e8 00 00 00 00       	call   12b <debug.panicImpl+0xfb>
+ 12b:	66 85 c0             	test   %ax,%ax
+ 12e:	74 0c                	je     13c <debug.panicImpl+0x10c>
+ 130:	48 8d bd a0 fb ff ff 	lea    -0x460(%rbp),%rdi
+ 137:	e8 64 0c 00 00       	call   da0 <builtin.returnError>
+ 13c:	64 48 8b 04 25 00 00 	mov    %fs:0x0,%rax
+ 143:	00 00 
+ 145:	48 85 c0             	test   %rax,%rax
+ 148:	0f 85 c6 08 00 00    	jne    a14 <debug.panicImpl+0x9e4>
+ 14e:	64 48 c7 04 25 00 00 	movq   $0x1,%fs:0x0
+ 155:	00 00 01 00 00 00 
+ 15b:	f0 fe 05 00 00 00 00 	lock incb 0x0(%rip)        # 162 <debug.panicImpl+0x132>
+ 162:	f0 0f ba 2d 00 00 00 	lock btsl $0x0,0x0(%rip)        # 16b <debug.panicImpl+0x13b>
+ 169:	00 00 
+ 16b:	73 05                	jae    172 <debug.panicImpl+0x142>
+ 16d:	e8 ce 0c 00 00       	call   e40 <Thread.Mutex.FutexImpl.lockSlow>
+ 172:	64 80 3c 25 00 00 00 	cmpb   $0x1,%fs:0x0
+ 179:	00 01 
+ 17b:	c7 45 c8 02 00 00 00 	movl   $0x2,-0x38(%rbp)
+ 182:	48 89 5d d0          	mov    %rbx,-0x30(%rbp)
+ 186:	75 0b                	jne    193 <debug.panicImpl+0x163>
+ 188:	64 44 8b 34 25 00 00 	mov    %fs:0x0,%r14d
+ 18f:	00 00 
+ 191:	eb 1c                	jmp    1af <debug.panicImpl+0x17f>
+ 193:	b8 ba 00 00 00       	mov    $0xba,%eax
+ 198:	0f 05                	syscall
+ 19a:	49 89 c6             	mov    %rax,%r14
+ 19d:	64 c6 04 25 00 00 00 	movb   $0x1,%fs:0x0
+ 1a4:	00 01 
+ 1a6:	64 44 89 34 25 00 00 	mov    %r14d,%fs:0x0
+ 1ad:	00 00 
+ 1af:	45 31 ed             	xor    %r13d,%r13d
+ 1b2:	48 8d 9d f0 f7 ff ff 	lea    -0x810(%rbp),%rbx
+ 1b9:	4c 8d 65 b0          	lea    -0x50(%rbp),%r12
+ 1bd:	0f 1f 00             	nopl   (%rax)
+ 1c0:	49 83 fd 07          	cmp    $0x7,%r13
+ 1c4:	0f 87 be 08 00 00    	ja     a88 <debug.panicImpl+0xa58>
+ 1ca:	41 b8 07 00 00 00    	mov    $0x7,%r8d
+ 1d0:	49 8d 8d 00 00 00 00 	lea    0x0(%r13),%rcx
+ 1d7:	48 89 df             	mov    %rbx,%rdi
+ 1da:	4c 89 e6             	mov    %r12,%rsi
+ 1dd:	ba 02 00 00 00       	mov    $0x2,%edx
+ 1e2:	4d 29 e8             	sub    %r13,%r8
+ 1e5:	e8 00 00 00 00       	call   1ea <debug.panicImpl+0x1ba>
+ 1ea:	66 83 bd f8 f7 ff ff 	cmpw   $0x0,-0x808(%rbp)
+ 1f1:	00 
+ 1f2:	0f 85 b2 04 00 00    	jne    6aa <debug.panicImpl+0x67a>
+ 1f8:	4c 03 ad f0 f7 ff ff 	add    -0x810(%rbp),%r13
+ 1ff:	0f 82 64 07 00 00    	jb     969 <debug.panicImpl+0x939>
+ 205:	49 83 fd 07          	cmp    $0x7,%r13
+ 209:	75 b5                	jne    1c0 <debug.panicImpl+0x190>
+ 20b:	c5 fc 28 05 00 00 00 	vmovaps 0x0(%rip),%ymm0        # 213 <debug.panicImpl+0x1e3>
+ 212:	00 
+ 213:	b9 21 00 00 00       	mov    $0x21,%ecx
+ 218:	c6 85 10 f8 ff ff aa 	movb   $0xaa,-0x7f0(%rbp)
+ 21f:	c5 fc 11 85 f0 f7 ff 	vmovups %ymm0,-0x810(%rbp)
+ 226:	ff 
+ 227:	41 83 fe 64          	cmp    $0x64,%r14d
+ 22b:	0f 82 e1 00 00 00    	jb     312 <debug.panicImpl+0x2e2>
+ 231:	44 89 f0             	mov    %r14d,%eax
+ 234:	44 89 f6             	mov    %r14d,%esi
+ 237:	48 69 d0 1f 85 eb 51 	imul   $0x51eb851f,%rax,%rdx
+ 23e:	48 c1 ea 25          	shr    $0x25,%rdx
+ 242:	6b ca 64             	imul   $0x64,%edx,%ecx
+ 245:	29 ce                	sub    %ecx,%esi
+ 247:	0f b7 8c 36 00 00 00 	movzwl 0x0(%rsi,%rsi,1),%ecx
+ 24e:	00 
+ 24f:	66 89 8d 0f f8 ff ff 	mov    %cx,-0x7f1(%rbp)
+ 256:	b9 1f 00 00 00       	mov    $0x1f,%ecx
+ 25b:	41 81 fe 0f 27 00 00 	cmp    $0x270f,%r14d
+ 262:	0f 86 c1 00 00 00    	jbe    329 <debug.panicImpl+0x2f9>
+ 268:	89 d1                	mov    %edx,%ecx
+ 26a:	48 69 c9 29 5c 8f 02 	imul   $0x28f5c29,%rcx,%rcx
+ 271:	48 c1 e9 20          	shr    $0x20,%rcx
+ 275:	6b c9 64             	imul   $0x64,%ecx,%ecx
+ 278:	29 ca                	sub    %ecx,%edx
+ 27a:	0f b7 8c 12 00 00 00 	movzwl 0x0(%rdx,%rdx,1),%ecx
+ 281:	00 
+ 282:	ba 59 17 b7 d1       	mov    $0xd1b71759,%edx
+ 287:	48 0f af d0          	imul   %rax,%rdx
+ 28b:	66 89 8d 0d f8 ff ff 	mov    %cx,-0x7f3(%rbp)
+ 292:	48 c1 ea 2d          	shr    $0x2d,%rdx
+ 296:	b9 1d 00 00 00       	mov    $0x1d,%ecx
+ 29b:	41 81 fe 40 42 0f 00 	cmp    $0xf4240,%r14d
+ 2a2:	0f 82 81 00 00 00    	jb     329 <debug.panicImpl+0x2f9>
+ 2a8:	89 d1                	mov    %edx,%ecx
+ 2aa:	48 69 c9 29 5c 8f 02 	imul   $0x28f5c29,%rcx,%rcx
+ 2b1:	48 c1 e9 20          	shr    $0x20,%rcx
+ 2b5:	6b c9 64             	imul   $0x64,%ecx,%ecx
+ 2b8:	29 ca                	sub    %ecx,%edx
+ 2ba:	0f b7 8c 12 00 00 00 	movzwl 0x0(%rdx,%rdx,1),%ecx
+ 2c1:	00 
+ 2c2:	48 69 d0 83 de 1b 43 	imul   $0x431bde83,%rax,%rdx
+ 2c9:	48 c1 ea 32          	shr    $0x32,%rdx
+ 2cd:	66 89 8d 0b f8 ff ff 	mov    %cx,-0x7f5(%rbp)
+ 2d4:	b9 1b 00 00 00       	mov    $0x1b,%ecx
+ 2d9:	41 81 fe 00 e1 f5 05 	cmp    $0x5f5e100,%r14d
+ 2e0:	72 47                	jb     329 <debug.panicImpl+0x2f9>
+ 2e2:	69 ca 7b 14 00 00    	imul   $0x147b,%edx,%ecx
+ 2e8:	4c 69 f0 89 3b e6 55 	imul   $0x55e63b89,%rax,%r14
+ 2ef:	c1 e9 13             	shr    $0x13,%ecx
+ 2f2:	6b c9 64             	imul   $0x64,%ecx,%ecx
+ 2f5:	49 c1 ee 39          	shr    $0x39,%r14
+ 2f9:	29 ca                	sub    %ecx,%edx
+ 2fb:	0f b7 ca             	movzwl %dx,%ecx
+ 2fe:	0f b7 8c 09 00 00 00 	movzwl 0x0(%rcx,%rcx,1),%ecx
+ 305:	00 
+ 306:	66 89 8d 09 f8 ff ff 	mov    %cx,-0x7f7(%rbp)
+ 30d:	b9 19 00 00 00       	mov    $0x19,%ecx
+ 312:	41 83 fe 0a          	cmp    $0xa,%r14d
+ 316:	73 1a                	jae    332 <debug.panicImpl+0x302>
+ 318:	41 80 c6 30          	add    $0x30,%r14b
+ 31c:	44 88 b4 0d ef f7 ff 	mov    %r14b,-0x811(%rbp,%rcx,1)
+ 323:	ff 
+ 324:	48 ff c9             	dec    %rcx
+ 327:	eb 20                	jmp    349 <debug.panicImpl+0x319>
+ 329:	41 89 d6             	mov    %edx,%r14d
+ 32c:	41 83 fe 0a          	cmp    $0xa,%r14d
+ 330:	72 e6                	jb     318 <debug.panicImpl+0x2e8>
+ 332:	44 89 f0             	mov    %r14d,%eax
+ 335:	0f b7 84 00 00 00 00 	movzwl 0x0(%rax,%rax,1),%eax
+ 33c:	00 
+ 33d:	66 89 84 0d ee f7 ff 	mov    %ax,-0x812(%rbp,%rcx,1)
+ 344:	ff 
+ 345:	48 83 c1 fe          	add    $0xfffffffffffffffe,%rcx
+ 349:	ba 21 00 00 00       	mov    $0x21,%edx
+ 34e:	48 8d b4 0d f0 f7 ff 	lea    -0x810(%rbp,%rcx,1),%rsi
+ 355:	ff 
+ 356:	48 8d 7d b0          	lea    -0x50(%rbp),%rdi
+ 35a:	4c 8d 45 c8          	lea    -0x38(%rbp),%r8
+ 35e:	48 29 ca             	sub    %rcx,%rdx
+ 361:	b9 00 00 00 00       	mov    $0x0,%ecx
+ 366:	c5 f8 77             	vzeroupper
+ 369:	e8 00 00 00 00       	call   36e <debug.panicImpl+0x33e>
+ 36e:	66 85 c0             	test   %ax,%ax
+ 371:	0f 85 39 03 00 00    	jne    6b0 <debug.panicImpl+0x680>
+ 377:	45 31 e4             	xor    %r12d,%r12d
+ 37a:	48 8d 9d f0 f7 ff ff 	lea    -0x810(%rbp),%rbx
+ 381:	4c 8d 75 b0          	lea    -0x50(%rbp),%r14
+ 385:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+ 38c:	00 00 00 00 
+ 390:	49 83 fc 08          	cmp    $0x8,%r12
+ 394:	0f 87 ee 06 00 00    	ja     a88 <debug.panicImpl+0xa58>
+ 39a:	41 b8 08 00 00 00    	mov    $0x8,%r8d
+ 3a0:	49 8d 8c 24 00 00 00 	lea    0x0(%r12),%rcx
+ 3a7:	00 
+ 3a8:	48 89 df             	mov    %rbx,%rdi
+ 3ab:	4c 89 f6             	mov    %r14,%rsi
+ 3ae:	ba 02 00 00 00       	mov    $0x2,%edx
+ 3b3:	4d 29 e0             	sub    %r12,%r8
+ 3b6:	e8 00 00 00 00       	call   3bb <debug.panicImpl+0x38b>
+ 3bb:	66 83 bd f8 f7 ff ff 	cmpw   $0x0,-0x808(%rbp)
+ 3c2:	00 
+ 3c3:	0f 85 e1 02 00 00    	jne    6aa <debug.panicImpl+0x67a>
+ 3c9:	4c 03 a5 f0 f7 ff ff 	add    -0x810(%rbp),%r12
+ 3d0:	0f 82 93 05 00 00    	jb     969 <debug.panicImpl+0x939>
+ 3d6:	49 83 fc 08          	cmp    $0x8,%r12
+ 3da:	75 b4                	jne    390 <debug.panicImpl+0x360>
+ 3dc:	48 8b 75 d0          	mov    -0x30(%rbp),%rsi
+ 3e0:	48 8d 7d b0          	lea    -0x50(%rbp),%rdi
+ 3e4:	4c 8d 45 c8          	lea    -0x38(%rbp),%r8
+ 3e8:	b9 00 00 00 00       	mov    $0x0,%ecx
+ 3ed:	4c 89 fa             	mov    %r15,%rdx
+ 3f0:	e8 00 00 00 00       	call   3f5 <debug.panicImpl+0x3c5>
+ 3f5:	66 85 c0             	test   %ax,%ax
+ 3f8:	0f 85 ac 02 00 00    	jne    6aa <debug.panicImpl+0x67a>
+ 3fe:	31 c0                	xor    %eax,%eax
+ 400:	48 8d 9d f0 f7 ff ff 	lea    -0x810(%rbp),%rbx
+ 407:	4c 8d 75 b0          	lea    -0x50(%rbp),%r14
+ 40b:	48 85 c0             	test   %rax,%rax
+ 40e:	75 35                	jne    445 <debug.panicImpl+0x415>
+ 410:	b9 00 00 00 00       	mov    $0x0,%ecx
+ 415:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 41b:	48 89 df             	mov    %rbx,%rdi
+ 41e:	4c 89 f6             	mov    %r14,%rsi
+ 421:	ba 02 00 00 00       	mov    $0x2,%edx
+ 426:	e8 00 00 00 00       	call   42b <debug.panicImpl+0x3fb>
+ 42b:	66 83 bd f8 f7 ff ff 	cmpw   $0x0,-0x808(%rbp)
+ 432:	00 
+ 433:	0f 85 71 02 00 00    	jne    6aa <debug.panicImpl+0x67a>
+ 439:	48 8b 85 f0 f7 ff ff 	mov    -0x810(%rbp),%rax
+ 440:	48 85 c0             	test   %rax,%rax
+ 443:	74 cb                	je     410 <debug.panicImpl+0x3e0>
+ 445:	48 83 f8 01          	cmp    $0x1,%rax
+ 449:	0f 85 39 06 00 00    	jne    a88 <debug.panicImpl+0xa58>
+ 44f:	80 3d 00 00 00 00 00 	cmpb   $0x0,0x0(%rip)        # 456 <debug.panicImpl+0x426>
+ 456:	48 8d 85 f0 f5 ff ff 	lea    -0xa10(%rbp),%rax
+ 45d:	48 89 45 88          	mov    %rax,-0x78(%rbp)
+ 461:	48 c7 45 90 20 00 00 	movq   $0x20,-0x70(%rbp)
+ 468:	00 
+ 469:	48 c7 45 80 00 00 00 	movq   $0x0,-0x80(%rbp)
+ 470:	00 
+ 471:	75 7b                	jne    4ee <debug.panicImpl+0x4be>
+ 473:	80 3d 00 00 00 00 00 	cmpb   $0x0,0x0(%rip)        # 47a <debug.panicImpl+0x44a>
+ 47a:	75 33                	jne    4af <debug.panicImpl+0x47f>
+ 47c:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # 484 <debug.panicImpl+0x454>
+ 483:	00 
+ 484:	c6 05 00 00 00 00 01 	movb   $0x1,0x0(%rip)        # 48b <debug.panicImpl+0x45b>
+ 48b:	c5 f8 29 85 f0 f7 ff 	vmovaps %xmm0,-0x810(%rbp)
+ 492:	ff 
+ 493:	c5 f8 57 c0          	vxorps %xmm0,%xmm0,%xmm0
+ 497:	c5 f8 29 85 00 f8 ff 	vmovaps %xmm0,-0x800(%rbp)
+ 49e:	ff 
+ 49f:	c5 fc 10 85 f0 f7 ff 	vmovups -0x810(%rbp),%ymm0
+ 4a6:	ff 
+ 4a7:	c5 fc 11 05 00 00 00 	vmovups %ymm0,0x0(%rip)        # 4af <debug.panicImpl+0x47f>
+ 4ae:	00 
+ 4af:	c5 f8 57 c0          	vxorps %xmm0,%xmm0,%xmm0
+ 4b3:	c5 f8 11 05 00 00 00 	vmovups %xmm0,0x0(%rip)        # 4bb <debug.panicImpl+0x48b>
+ 4ba:	00 
+ 4bb:	48 c7 05 00 00 00 00 	movq   $0x0,0x0(%rip)        # 4c6 <debug.panicImpl+0x496>
+ 4c2:	00 00 00 00 
+ 4c6:	48 c7 05 00 00 00 00 	movq   $0x0,0x0(%rip)        # 4d1 <debug.panicImpl+0x4a1>
+ 4cd:	00 00 00 00 
+ 4d1:	48 c7 05 00 00 00 00 	movq   $0x0,0x0(%rip)        # 4dc <debug.panicImpl+0x4ac>
+ 4d8:	00 00 00 00 
+ 4dc:	48 c7 05 00 00 00 00 	movq   $0x0,0x0(%rip)        # 4e7 <debug.panicImpl+0x4b7>
+ 4e3:	00 00 00 00 
+ 4e7:	c6 05 00 00 00 00 01 	movb   $0x1,0x0(%rip)        # 4ee <debug.panicImpl+0x4be>
+ 4ee:	49 bd aa aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaaa,%r13
+ 4f5:	aa aa aa 
+ 4f8:	48 8d 95 f0 f7 ff ff 	lea    -0x810(%rbp),%rdx
+ 4ff:	45 31 c0             	xor    %r8d,%r8d
+ 502:	bf 02 00 00 00       	mov    $0x2,%edi
+ 507:	be 13 54 00 00       	mov    $0x5413,%esi
+ 50c:	0f 1f 40 00          	nopl   0x0(%rax)
+ 510:	4c 89 ad f0 f7 ff ff 	mov    %r13,-0x810(%rbp)
+ 517:	b8 10 00 00 00       	mov    $0x10,%eax
+ 51c:	0f 05                	syscall
+ 51e:	89 c1                	mov    %eax,%ecx
+ 520:	f7 d9                	neg    %ecx
+ 522:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+ 528:	41 0f 42 c8          	cmovb  %r8d,%ecx
+ 52c:	66 83 f9 04          	cmp    $0x4,%cx
+ 530:	74 de                	je     510 <debug.panicImpl+0x4e0>
+ 532:	48 8d 9d f0 f7 ff ff 	lea    -0x810(%rbp),%rbx
+ 539:	0f b7 c1             	movzwl %cx,%eax
+ 53c:	ba a8 03 00 00       	mov    $0x3a8,%edx
+ 541:	be aa 00 00 00       	mov    $0xaa,%esi
+ 546:	48 89 df             	mov    %rbx,%rdi
+ 549:	85 c0                	test   %eax,%eax
+ 54b:	c5 f8 77             	vzeroupper
+ 54e:	e8 00 00 00 00       	call   553 <debug.panicImpl+0x523>
+ 553:	48 89 df             	mov    %rbx,%rdi
+ 556:	e8 00 00 00 00       	call   55b <debug.panicImpl+0x52b>
+ 55b:	48 85 c0             	test   %rax,%rax
+ 55e:	75 6a                	jne    5ca <debug.panicImpl+0x59a>
+ 560:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+ 564:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 56b <debug.panicImpl+0x53b>
+ 56b:	48 8b 4d 08          	mov    0x8(%rbp),%rcx
+ 56f:	48 8b 9d 98 f8 ff ff 	mov    -0x768(%rbp),%rbx
+ 576:	be a8 03 00 00       	mov    $0x3a8,%esi
+ 57b:	ba 03 00 00 00       	mov    $0x3,%edx
+ 580:	c5 f8 10 00          	vmovups (%rax),%xmm0
+ 584:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 58b <debug.panicImpl+0x55b>
+ 58b:	c5 f8 29 85 e0 fc ff 	vmovaps %xmm0,-0x320(%rbp)
+ 592:	ff 
+ 593:	ff 10                	call   *(%rax)
+ 595:	48 85 c0             	test   %rax,%rax
+ 598:	0f 85 0c 05 00 00    	jne    aaa <debug.panicImpl+0xa7a>
+ 59e:	48 8d 5d 80          	lea    -0x80(%rbp),%rbx
+ 5a2:	48 89 df             	mov    %rbx,%rdi
+ 5a5:	e8 f6 07 00 00       	call   da0 <builtin.returnError>
+ 5aa:	48 89 df             	mov    %rbx,%rdi
+ 5ad:	e8 ee 07 00 00       	call   da0 <builtin.returnError>
+ 5b2:	48 89 df             	mov    %rbx,%rdi
+ 5b5:	e8 e6 07 00 00       	call   da0 <builtin.returnError>
+ 5ba:	48 89 df             	mov    %rbx,%rdi
+ 5bd:	e8 de 07 00 00       	call   da0 <builtin.returnError>
+ 5c2:	48 c7 45 80 00 00 00 	movq   $0x0,-0x80(%rbp)
+ 5c9:	00 
+ 5ca:	be 00 00 00 00       	mov    $0x0,%esi
+ 5cf:	80 be 40 01 00 00 00 	cmpb   $0x0,0x140(%rsi)
+ 5d6:	75 75                	jne    64d <debug.panicImpl+0x61d>
+ 5d8:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+ 5dc:	48 8d b5 a0 fb ff ff 	lea    -0x460(%rbp),%rsi
+ 5e3:	c5 f8 10 00          	vmovups (%rax),%xmm0
+ 5e7:	c5 f8 29 85 a0 fb ff 	vmovaps %xmm0,-0x460(%rbp)
+ 5ee:	ff 
+ 5ef:	c5 f8 57 c0          	vxorps %xmm0,%xmm0,%xmm0
+ 5f3:	48 89 ad b0 fb ff ff 	mov    %rbp,-0x450(%rbp)
+ 5fa:	48 c7 85 d8 fc ff ff 	movq   $0x0,-0x328(%rbp)
+ 601:	00 00 00 00 
+ 605:	c5 fc 11 85 b8 fb ff 	vmovups %ymm0,-0x448(%rbp)
+ 60c:	ff 
+ 60d:	c5 fc 11 85 d8 fb ff 	vmovups %ymm0,-0x428(%rbp)
+ 614:	ff 
+ 615:	c5 fc 11 85 f8 fb ff 	vmovups %ymm0,-0x408(%rbp)
+ 61c:	ff 
+ 61d:	c5 fc 11 85 18 fc ff 	vmovups %ymm0,-0x3e8(%rbp)
+ 624:	ff 
+ 625:	c5 fc 11 85 38 fc ff 	vmovups %ymm0,-0x3c8(%rbp)
+ 62c:	ff 
+ 62d:	c5 fc 11 85 58 fc ff 	vmovups %ymm0,-0x3a8(%rbp)
+ 634:	ff 
+ 635:	c5 fc 11 85 78 fc ff 	vmovups %ymm0,-0x388(%rbp)
+ 63c:	ff 
+ 63d:	c5 fc 11 85 98 fc ff 	vmovups %ymm0,-0x368(%rbp)
+ 644:	ff 
+ 645:	c5 fc 11 85 b8 fc ff 	vmovups %ymm0,-0x348(%rbp)
+ 64c:	ff 
+ 64d:	48 8d 9d e0 fc ff ff 	lea    -0x320(%rbp),%rbx
+ 654:	ba 40 01 00 00       	mov    $0x140,%edx
+ 659:	48 89 df             	mov    %rbx,%rdi
+ 65c:	c5 f8 77             	vzeroupper
+ 65f:	e8 00 00 00 00       	call   664 <debug.panicImpl+0x634>
+ 664:	48 8d bd 70 ff ff ff 	lea    -0x90(%rbp),%rdi
+ 66b:	48 89 de             	mov    %rbx,%rsi
+ 66e:	e8 00 00 00 00       	call   673 <debug.panicImpl+0x643>
+ 673:	80 bd 78 ff ff ff 00 	cmpb   $0x0,-0x88(%rbp)
+ 67a:	75 71                	jne    6ed <debug.panicImpl+0x6bd>
+ 67c:	80 bd 18 fe ff ff 00 	cmpb   $0x0,-0x1e8(%rbp)
+ 683:	0f 85 d7 00 00 00    	jne    760 <debug.panicImpl+0x730>
+ 689:	31 c0                	xor    %eax,%eax
+ 68b:	87 05 00 00 00 00    	xchg   %eax,0x0(%rip)        # 691 <debug.panicImpl+0x661>
+ 691:	45 31 c0             	xor    %r8d,%r8d
+ 694:	83 f8 03             	cmp    $0x3,%eax
+ 697:	0f 84 fd 00 00 00    	je     79a <debug.panicImpl+0x76a>
+ 69d:	85 c0                	test   %eax,%eax
+ 69f:	0f 84 8c 01 00 00    	je     831 <debug.panicImpl+0x801>
+ 6a5:	e9 29 01 00 00       	jmp    7d3 <debug.panicImpl+0x7a3>
+ 6aa:	48 8d 7d b0          	lea    -0x50(%rbp),%rdi
+ 6ae:	eb 1f                	jmp    6cf <debug.panicImpl+0x69f>
+ 6b0:	48 8d 5d b0          	lea    -0x50(%rbp),%rbx
+ 6b4:	48 89 df             	mov    %rbx,%rdi
+ 6b7:	e8 e4 06 00 00       	call   da0 <builtin.returnError>
+ 6bc:	48 89 df             	mov    %rbx,%rdi
+ 6bf:	e8 dc 06 00 00       	call   da0 <builtin.returnError>
+ 6c4:	48 89 df             	mov    %rbx,%rdi
+ 6c7:	e8 d4 06 00 00       	call   da0 <builtin.returnError>
+ 6cc:	48 89 df             	mov    %rbx,%rdi
+ 6cf:	e8 cc 06 00 00       	call   da0 <builtin.returnError>
+ 6d4:	48 8d 5d b0          	lea    -0x50(%rbp),%rbx
+ 6d8:	48 89 df             	mov    %rbx,%rdi
+ 6db:	e8 c0 06 00 00       	call   da0 <builtin.returnError>
+ 6e0:	48 89 df             	mov    %rbx,%rdi
+ 6e3:	e8 b8 06 00 00       	call   da0 <builtin.returnError>
+ 6e8:	e8 53 05 00 00       	call   c40 <os.abort>
+ 6ed:	80 bd e8 fc ff ff 00 	cmpb   $0x0,-0x318(%rbp)
+ 6f4:	0f 84 6f 02 00 00    	je     969 <debug.panicImpl+0x939>
+ 6fa:	4c 8b bd e0 fc ff ff 	mov    -0x320(%rbp),%r15
+ 701:	4c 39 bd 70 ff ff ff 	cmp    %r15,-0x90(%rbp)
+ 708:	0f 84 5b 02 00 00    	je     969 <debug.panicImpl+0x939>
+ 70e:	48 8d 7d 98          	lea    -0x68(%rbp),%rdi
+ 712:	48 8d b5 e0 fc ff ff 	lea    -0x320(%rbp),%rsi
+ 719:	e8 00 00 00 00       	call   71e <debug.panicImpl+0x6ee>
+ 71e:	80 7d a0 00          	cmpb   $0x0,-0x60(%rbp)
+ 722:	0f 84 54 ff ff ff    	je     67c <debug.panicImpl+0x64c>
+ 728:	48 8d 5d 98          	lea    -0x68(%rbp),%rbx
+ 72c:	4c 8d b5 e0 fc ff ff 	lea    -0x320(%rbp),%r14
+ 733:	66 66 66 66 2e 0f 1f 	data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+ 73a:	84 00 00 00 00 00 
+ 740:	4c 39 7d 98          	cmp    %r15,-0x68(%rbp)
+ 744:	0f 84 1f 02 00 00    	je     969 <debug.panicImpl+0x939>
+ 74a:	48 89 df             	mov    %rbx,%rdi
+ 74d:	4c 89 f6             	mov    %r14,%rsi
+ 750:	e8 00 00 00 00       	call   755 <debug.panicImpl+0x725>
+ 755:	80 7d a0 00          	cmpb   $0x0,-0x60(%rbp)
+ 759:	75 e5                	jne    740 <debug.panicImpl+0x710>
+ 75b:	e9 1c ff ff ff       	jmp    67c <debug.panicImpl+0x64c>
+ 760:	66 83 bd 10 fe ff ff 	cmpw   $0x0,-0x1f0(%rbp)
+ 767:	00 
+ 768:	0f 85 fb 01 00 00    	jne    969 <debug.panicImpl+0x939>
+ 76e:	48 8b 9d 00 fd ff ff 	mov    -0x300(%rbp),%rbx
+ 775:	4c 8b a5 08 fd ff ff 	mov    -0x2f8(%rbp),%r12
+ 77c:	4c 8b b5 60 fd ff ff 	mov    -0x2a0(%rbp),%r14
+ 783:	4d 85 f6             	test   %r14,%r14
+ 786:	0f 85 b6 00 00 00    	jne    842 <debug.panicImpl+0x812>
+ 78c:	41 bf 08 00 00 00    	mov    $0x8,%r15d
+ 792:	45 31 f6             	xor    %r14d,%r14d
+ 795:	e9 c0 00 00 00       	jmp    85a <debug.panicImpl+0x82a>
+ 79a:	b8 ca 00 00 00       	mov    $0xca,%eax
+ 79f:	bf 00 00 00 00       	mov    $0x0,%edi
+ 7a4:	be 81 00 00 00       	mov    $0x81,%esi
+ 7a9:	ba 01 00 00 00       	mov    $0x1,%edx
+ 7ae:	0f 05                	syscall
+ 7b0:	89 c1                	mov    %eax,%ecx
+ 7b2:	f7 d9                	neg    %ecx
+ 7b4:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+ 7ba:	44 0f 43 c1          	cmovae %ecx,%r8d
+ 7be:	66 41 83 f8 16       	cmp    $0x16,%r8w
+ 7c3:	77 6c                	ja     831 <debug.panicImpl+0x801>
+ 7c5:	41 0f b7 c0          	movzwl %r8w,%eax
+ 7c9:	b9 01 40 40 00       	mov    $0x404001,%ecx
+ 7ce:	0f a3 c1             	bt     %eax,%ecx
+ 7d1:	73 5e                	jae    831 <debug.panicImpl+0x801>
+ 7d3:	f0 fe 0d 00 00 00 00 	lock decb 0x0(%rip)        # 7da <debug.panicImpl+0x7aa>
+ 7da:	75 05                	jne    7e1 <debug.panicImpl+0x7b1>
+ 7dc:	e8 5f 04 00 00       	call   c40 <os.abort>
+ 7e1:	45 31 c0             	xor    %r8d,%r8d
+ 7e4:	48 8d bd f0 f7 ff ff 	lea    -0x810(%rbp),%rdi
+ 7eb:	41 b9 11 08 40 00    	mov    $0x400811,%r9d
+ 7f1:	be 80 00 00 00       	mov    $0x80,%esi
+ 7f6:	c7 85 f0 f7 ff ff 00 	movl   $0x0,-0x810(%rbp)
+ 7fd:	00 00 00 
+ 800:	b8 ca 00 00 00       	mov    $0xca,%eax
+ 805:	31 d2                	xor    %edx,%edx
+ 807:	45 31 d2             	xor    %r10d,%r10d
+ 80a:	0f 05                	syscall
+ 80c:	89 c1                	mov    %eax,%ecx
+ 80e:	f7 d9                	neg    %ecx
+ 810:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+ 816:	41 0f 42 c8          	cmovb  %r8d,%ecx
+ 81a:	0f b7 c1             	movzwl %cx,%eax
+ 81d:	66 83 f8 16          	cmp    $0x16,%ax
+ 821:	77 0b                	ja     82e <debug.panicImpl+0x7fe>
+ 823:	41 0f a3 c1          	bt     %eax,%r9d
+ 827:	72 d7                	jb     800 <debug.panicImpl+0x7d0>
+ 829:	83 f8 0e             	cmp    $0xe,%eax
+ 82c:	74 03                	je     831 <debug.panicImpl+0x801>
+ 82e:	83 f8 6e             	cmp    $0x6e,%eax
+ 831:	bf 00 00 00 00       	mov    $0x0,%edi
+ 836:	be 18 00 00 00       	mov    $0x18,%esi
+ 83b:	31 c9                	xor    %ecx,%ecx
+ 83d:	e8 be f7 ff ff       	call   0 <builtin.default_panic>
+ 842:	4c 89 f0             	mov    %r14,%rax
+ 845:	48 c1 e8 3c          	shr    $0x3c,%rax
+ 849:	0f 85 1a 01 00 00    	jne    969 <debug.panicImpl+0x939>
+ 84f:	4c 8b bd 50 fd ff ff 	mov    -0x2b0(%rbp),%r15
+ 856:	49 c1 e6 04          	shl    $0x4,%r14
+ 85a:	4d 85 f6             	test   %r14,%r14
+ 85d:	74 35                	je     894 <debug.panicImpl+0x864>
+ 85f:	4c 89 ff             	mov    %r15,%rdi
+ 862:	be aa 00 00 00       	mov    $0xaa,%esi
+ 867:	4c 89 f2             	mov    %r14,%rdx
+ 86a:	e8 00 00 00 00       	call   86f <debug.panicImpl+0x83f>
+ 86f:	4c 8b 45 08          	mov    0x8(%rbp),%r8
+ 873:	48 89 df             	mov    %rbx,%rdi
+ 876:	4c 89 fe             	mov    %r15,%rsi
+ 879:	4c 89 f2             	mov    %r14,%rdx
+ 87c:	b9 03 00 00 00       	mov    $0x3,%ecx
+ 881:	41 ff 54 24 10       	call   *0x10(%r12)
+ 886:	48 8b 9d 00 fd ff ff 	mov    -0x300(%rbp),%rbx
+ 88d:	4c 8b a5 08 fd ff ff 	mov    -0x2f8(%rbp),%r12
+ 894:	4c 8b b5 48 fd ff ff 	mov    -0x2b8(%rbp),%r14
+ 89b:	4d 85 f6             	test   %r14,%r14
+ 89e:	75 0f                	jne    8af <debug.panicImpl+0x87f>
+ 8a0:	4c 89 65 d0          	mov    %r12,-0x30(%rbp)
+ 8a4:	41 bf 08 00 00 00    	mov    $0x8,%r15d
+ 8aa:	45 31 f6             	xor    %r14d,%r14d
+ 8ad:	eb 1c                	jmp    8cb <debug.panicImpl+0x89b>
+ 8af:	4c 89 f0             	mov    %r14,%rax
+ 8b2:	48 c1 e8 3b          	shr    $0x3b,%rax
+ 8b6:	0f 85 ad 00 00 00    	jne    969 <debug.panicImpl+0x939>
+ 8bc:	4c 8b bd 38 fd ff ff 	mov    -0x2c8(%rbp),%r15
+ 8c3:	49 c1 e6 05          	shl    $0x5,%r14
+ 8c7:	4c 89 65 d0          	mov    %r12,-0x30(%rbp)
+ 8cb:	4c 8d a5 38 fd ff ff 	lea    -0x2c8(%rbp),%r12
+ 8d2:	4d 85 f6             	test   %r14,%r14
+ 8d5:	74 3b                	je     912 <debug.panicImpl+0x8e2>
+ 8d7:	4c 89 ff             	mov    %r15,%rdi
+ 8da:	be aa 00 00 00       	mov    $0xaa,%esi
+ 8df:	4c 89 f2             	mov    %r14,%rdx
+ 8e2:	e8 00 00 00 00       	call   8e7 <debug.panicImpl+0x8b7>
+ 8e7:	4c 8b 45 08          	mov    0x8(%rbp),%r8
+ 8eb:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+ 8ef:	48 89 df             	mov    %rbx,%rdi
+ 8f2:	4c 89 fe             	mov    %r15,%rsi
+ 8f5:	4c 89 f2             	mov    %r14,%rdx
+ 8f8:	b9 03 00 00 00       	mov    $0x3,%ecx
+ 8fd:	ff 50 10             	call   *0x10(%rax)
+ 900:	48 8b 9d 00 fd ff ff 	mov    -0x300(%rbp),%rbx
+ 907:	48 8b 85 08 fd ff ff 	mov    -0x2f8(%rbp),%rax
+ 90e:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+ 912:	c5 fc 28 05 00 00 00 	vmovaps 0x0(%rip),%ymm0        # 91a <debug.panicImpl+0x8ea>
+ 919:	00 
+ 91a:	c4 c1 7c 11 84 24 98 	vmovups %ymm0,0x98(%r12)
+ 921:	00 00 00 
+ 924:	c4 c1 7c 11 84 24 80 	vmovups %ymm0,0x80(%r12)
+ 92b:	00 00 00 
+ 92e:	c4 c1 7c 11 44 24 60 	vmovups %ymm0,0x60(%r12)
+ 935:	c4 c1 7c 11 44 24 40 	vmovups %ymm0,0x40(%r12)
+ 93c:	c4 c1 7c 11 44 24 20 	vmovups %ymm0,0x20(%r12)
+ 943:	c4 c1 7c 11 04 24    	vmovups %ymm0,(%r12)
+ 949:	4c 8b b5 00 fe ff ff 	mov    -0x200(%rbp),%r14
+ 950:	4d 85 f6             	test   %r14,%r14
+ 953:	75 0b                	jne    960 <debug.panicImpl+0x930>
+ 955:	41 bc 08 00 00 00    	mov    $0x8,%r12d
+ 95b:	45 31 f6             	xor    %r14d,%r14d
+ 95e:	eb 28                	jmp    988 <debug.panicImpl+0x958>
+ 960:	4c 89 f0             	mov    %r14,%rax
+ 963:	48 c1 e8 3b          	shr    $0x3b,%rax
+ 967:	74 14                	je     97d <debug.panicImpl+0x94d>
+ 969:	bf 00 00 00 00       	mov    $0x0,%edi
+ 96e:	be 10 00 00 00       	mov    $0x10,%esi
+ 973:	31 c9                	xor    %ecx,%ecx
+ 975:	c5 f8 77             	vzeroupper
+ 978:	e8 83 f6 ff ff       	call   0 <builtin.default_panic>
+ 97d:	4c 8b a5 f0 fd ff ff 	mov    -0x210(%rbp),%r12
+ 984:	49 c1 e6 05          	shl    $0x5,%r14
+ 988:	48 8d 8d f0 fd ff ff 	lea    -0x210(%rbp),%rcx
+ 98f:	4d 85 f6             	test   %r14,%r14
+ 992:	75 0a                	jne    99e <debug.panicImpl+0x96e>
+ 994:	4c 8b 7d 08          	mov    0x8(%rbp),%r15
+ 998:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+ 99c:	eb 44                	jmp    9e2 <debug.panicImpl+0x9b2>
+ 99e:	4c 89 e7             	mov    %r12,%rdi
+ 9a1:	be aa 00 00 00       	mov    $0xaa,%esi
+ 9a6:	4c 89 f2             	mov    %r14,%rdx
+ 9a9:	c5 f8 77             	vzeroupper
+ 9ac:	e8 00 00 00 00       	call   9b1 <debug.panicImpl+0x981>
+ 9b1:	4c 8b 7d 08          	mov    0x8(%rbp),%r15
+ 9b5:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+ 9b9:	48 89 df             	mov    %rbx,%rdi
+ 9bc:	4c 89 e6             	mov    %r12,%rsi
+ 9bf:	4c 89 f2             	mov    %r14,%rdx
+ 9c2:	b9 03 00 00 00       	mov    $0x3,%ecx
+ 9c7:	4d 89 f8             	mov    %r15,%r8
+ 9ca:	ff 50 10             	call   *0x10(%rax)
+ 9cd:	48 8b 9d 00 fd ff ff 	mov    -0x300(%rbp),%rbx
+ 9d4:	48 8b 85 08 fd ff ff 	mov    -0x2f8(%rbp),%rax
+ 9db:	48 8d 8d f0 fd ff ff 	lea    -0x210(%rbp),%rcx
+ 9e2:	c5 f8 28 05 00 00 00 	vmovaps 0x0(%rip),%xmm0        # 9ea <debug.panicImpl+0x9ba>
+ 9e9:	00 
+ 9ea:	4c 89 69 10          	mov    %r13,0x10(%rcx)
+ 9ee:	ba a8 03 00 00       	mov    $0x3a8,%edx
+ 9f3:	48 89 df             	mov    %rbx,%rdi
+ 9f6:	4d 89 f8             	mov    %r15,%r8
+ 9f9:	c5 f8 11 01          	vmovups %xmm0,(%rcx)
+ 9fd:	b9 03 00 00 00       	mov    $0x3,%ecx
+ a02:	48 8b b5 28 fd ff ff 	mov    -0x2d8(%rbp),%rsi
+ a09:	c5 f8 77             	vzeroupper
+ a0c:	ff 50 10             	call   *0x10(%rax)
+ a0f:	e9 75 fc ff ff       	jmp    689 <debug.panicImpl+0x659>
+ a14:	48 83 f8 01          	cmp    $0x1,%rax
+ a18:	0f 85 be fd ff ff    	jne    7dc <debug.panicImpl+0x7ac>
+ a1e:	45 31 ff             	xor    %r15d,%r15d
+ a21:	48 8d 9d f0 f7 ff ff 	lea    -0x810(%rbp),%rbx
+ a28:	4c 8d 75 b0          	lea    -0x50(%rbp),%r14
+ a2c:	64 48 c7 04 25 00 00 	movq   $0x2,%fs:0x0
+ a33:	00 00 02 00 00 00 
+ a39:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+ a40:	49 83 ff 23          	cmp    $0x23,%r15
+ a44:	77 42                	ja     a88 <debug.panicImpl+0xa58>
+ a46:	41 b8 23 00 00 00    	mov    $0x23,%r8d
+ a4c:	49 8d 8f 00 00 00 00 	lea    0x0(%r15),%rcx
+ a53:	48 89 df             	mov    %rbx,%rdi
+ a56:	4c 89 f6             	mov    %r14,%rsi
+ a59:	ba 02 00 00 00       	mov    $0x2,%edx
+ a5e:	4d 29 f8             	sub    %r15,%r8
+ a61:	e8 00 00 00 00       	call   a66 <debug.panicImpl+0xa36>
+ a66:	66 83 bd f8 f7 ff ff 	cmpw   $0x0,-0x808(%rbp)
+ a6d:	00 
+ a6e:	75 29                	jne    a99 <debug.panicImpl+0xa69>
+ a70:	4c 03 bd f0 f7 ff ff 	add    -0x810(%rbp),%r15
+ a77:	0f 82 ec fe ff ff    	jb     969 <debug.panicImpl+0x939>
+ a7d:	49 83 ff 23          	cmp    $0x23,%r15
+ a81:	75 bd                	jne    a40 <debug.panicImpl+0xa10>
+ a83:	e9 54 fd ff ff       	jmp    7dc <debug.panicImpl+0x7ac>
+ a88:	bf 00 00 00 00       	mov    $0x0,%edi
+ a8d:	be 24 00 00 00       	mov    $0x24,%esi
+ a92:	31 c9                	xor    %ecx,%ecx
+ a94:	e8 67 f5 ff ff       	call   0 <builtin.default_panic>
+ a99:	48 8d 5d b0          	lea    -0x50(%rbp),%rbx
+ a9d:	48 89 df             	mov    %rbx,%rdi
+ aa0:	e8 fb 02 00 00       	call   da0 <builtin.returnError>
+ aa5:	e9 2e fc ff ff       	jmp    6d8 <debug.panicImpl+0x6a8>
+ aaa:	ba a8 03 00 00       	mov    $0x3a8,%edx
+ aaf:	48 89 c7             	mov    %rax,%rdi
+ ab2:	be aa 00 00 00       	mov    $0xaa,%esi
+ ab7:	49 89 c6             	mov    %rax,%r14
+ aba:	e8 00 00 00 00       	call   abf <debug.panicImpl+0xa8f>
+ abf:	41 f6 c6 07          	test   $0x7,%r14b
+ ac3:	0f 85 5e 01 00 00    	jne    c27 <debug.panicImpl+0xbf7>
+ ac9:	48 8d b5 f0 f7 ff ff 	lea    -0x810(%rbp),%rsi
+ ad0:	ba a8 03 00 00       	mov    $0x3a8,%edx
+ ad5:	4c 89 f7             	mov    %r14,%rdi
+ ad8:	e8 00 00 00 00       	call   add <debug.panicImpl+0xaad>
+ add:	c5 f8 10 05 00 00 00 	vmovups 0x0(%rip),%xmm0        # ae5 <debug.panicImpl+0xab5>
+ ae4:	00 
+ ae5:	c5 f8 28 95 e0 fc ff 	vmovaps -0x320(%rbp),%xmm2
+ aec:	ff 
+ aed:	c5 fc 10 1d 00 00 00 	vmovups 0x0(%rip),%ymm3        # af5 <debug.panicImpl+0xac5>
+ af4:	00 
+ af5:	48 b8 00 00 00 00 00 	movabs $0x100000000000000,%rax
+ afc:	00 00 01 
+ aff:	48 8d b5 20 fe ff ff 	lea    -0x1e0(%rbp),%rsi
+ b06:	c5 f8 29 85 a0 fb ff 	vmovaps %xmm0,-0x460(%rbp)
+ b0d:	ff 
+ b0e:	c5 f8 57 c0          	vxorps %xmm0,%xmm0,%xmm0
+ b12:	c5 f8 29 95 20 fe ff 	vmovaps %xmm2,-0x1e0(%rbp)
+ b19:	ff 
+ b1a:	c5 fc 10 15 00 00 00 	vmovups 0x0(%rip),%ymm2        # b22 <debug.panicImpl+0xaf2>
+ b21:	00 
+ b22:	c5 f8 29 85 b0 fb ff 	vmovaps %xmm0,-0x450(%rbp)
+ b29:	ff 
+ b2a:	c5 f8 10 8d a0 fb ff 	vmovups -0x460(%rbp),%xmm1
+ b31:	ff 
+ b32:	c5 f8 10 a5 b0 fb ff 	vmovups -0x450(%rbp),%xmm4
+ b39:	ff 
+ b3a:	c5 f8 11 8d 40 fe ff 	vmovups %xmm1,-0x1c0(%rbp)
+ b41:	ff 
+ b42:	c5 f8 11 a5 50 fe ff 	vmovups %xmm4,-0x1b0(%rbp)
+ b49:	ff 
+ b4a:	c5 fc 11 9d 78 fe ff 	vmovups %ymm3,-0x188(%rbp)
+ b51:	ff 
+ b52:	c5 fc 11 95 98 fe ff 	vmovups %ymm2,-0x168(%rbp)
+ b59:	ff 
+ b5a:	c5 fc 10 1d 00 00 00 	vmovups 0x0(%rip),%ymm3        # b62 <debug.panicImpl+0xb32>
+ b61:	00 
+ b62:	c5 fc 10 15 00 00 00 	vmovups 0x0(%rip),%ymm2        # b6a <debug.panicImpl+0xb3a>
+ b69:	00 
+ b6a:	c5 f8 10 0d 00 00 00 	vmovups 0x0(%rip),%xmm1        # b72 <debug.panicImpl+0xb42>
+ b71:	00 
+ b72:	c5 fc 11 9d b8 fe ff 	vmovups %ymm3,-0x148(%rbp)
+ b79:	ff 
+ b7a:	c5 fc 11 95 d8 fe ff 	vmovups %ymm2,-0x128(%rbp)
+ b81:	ff 
+ b82:	c5 fc 10 1d 00 00 00 	vmovups 0x0(%rip),%ymm3        # b8a <debug.panicImpl+0xb5a>
+ b89:	00 
+ b8a:	c5 fc 10 15 00 00 00 	vmovups 0x0(%rip),%ymm2        # b92 <debug.panicImpl+0xb62>
+ b91:	00 
+ b92:	c5 fc 11 9d f8 fe ff 	vmovups %ymm3,-0x108(%rbp)
+ b99:	ff 
+ b9a:	c5 fc 11 95 10 ff ff 	vmovups %ymm2,-0xf0(%rbp)
+ ba1:	ff 
+ ba2:	c5 f8 29 8d 30 ff ff 	vmovaps %xmm1,-0xd0(%rbp)
+ ba9:	ff 
+ baa:	48 c7 85 40 ff ff ff 	movq   $0x0,-0xc0(%rbp)
+ bb1:	00 00 00 00 
+ bb5:	c7 85 4a ff ff ff 00 	movl   $0x0,-0xb6(%rbp)
+ bbc:	00 00 00 
+ bbf:	66 c7 85 4e ff ff ff 	movw   $0x0,-0xb2(%rbp)
+ bc6:	00 00 
+ bc8:	48 89 ad 30 fe ff ff 	mov    %rbp,-0x1d0(%rbp)
+ bcf:	48 c7 85 38 fe ff ff 	movq   $0x0,-0x1c8(%rbp)
+ bd6:	00 00 00 00 
+ bda:	48 89 9d 60 fe ff ff 	mov    %rbx,-0x1a0(%rbp)
+ be1:	4c 89 b5 68 fe ff ff 	mov    %r14,-0x198(%rbp)
+ be8:	48 c7 85 70 fe ff ff 	movq   $0x0,-0x190(%rbp)
+ bef:	00 00 00 00 
+ bf3:	66 c7 85 48 ff ff ff 	movw   $0xaaaa,-0xb8(%rbp)
+ bfa:	aa aa 
+ bfc:	48 c7 85 50 ff ff ff 	movq   $0x0,-0xb0(%rbp)
+ c03:	00 00 00 00 
+ c07:	c6 85 58 ff ff ff 01 	movb   $0x1,-0xa8(%rbp)
+ c0e:	48 89 85 59 ff ff ff 	mov    %rax,-0xa7(%rbp)
+ c15:	80 be 40 01 00 00 00 	cmpb   $0x0,0x140(%rsi)
+ c1c:	0f 84 b6 f9 ff ff    	je     5d8 <debug.panicImpl+0x5a8>
+ c22:	e9 26 fa ff ff       	jmp    64d <debug.panicImpl+0x61d>
+ c27:	bf 00 00 00 00       	mov    $0x0,%edi
+ c2c:	be 13 00 00 00       	mov    $0x13,%esi
+ c31:	31 c9                	xor    %ecx,%ecx
+ c33:	e8 c8 f3 ff ff       	call   0 <builtin.default_panic>
+ c38:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+ c3f:	00 
+
+0000000000000c40 <os.abort>:
+ c40:	48 81 ec 18 01 00 00 	sub    $0x118,%rsp
+ c47:	48 8d 44 24 18       	lea    0x18(%rsp),%rax
+ c4c:	48 89 e7             	mov    %rsp,%rdi
+ c4f:	be 06 00 00 00       	mov    $0x6,%esi
+ c54:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+ c59:	48 c7 44 24 10 20 00 	movq   $0x20,0x10(%rsp)
+ c60:	00 00 
+ c62:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
+ c69:	00 
+ c6a:	e8 00 00 00 00       	call   c6f <os.abort+0x2f>
+ c6f:	66 85 c0             	test   %ax,%ax
+ c72:	74 08                	je     c7c <os.abort+0x3c>
+ c74:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
+ c7b:	00 
+ c7c:	b8 0e 00 00 00       	mov    $0xe,%eax
+ c81:	be 00 00 00 00       	mov    $0x0,%esi
+ c86:	41 ba 08 00 00 00    	mov    $0x8,%r10d
+ c8c:	31 ff                	xor    %edi,%edi
+ c8e:	31 d2                	xor    %edx,%edx
+ c90:	0f 05                	syscall
+ c92:	89 c1                	mov    %eax,%ecx
+ c94:	45 31 c0             	xor    %r8d,%r8d
+ c97:	f7 d9                	neg    %ecx
+ c99:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+ c9f:	41 0f 42 c8          	cmovb  %r8d,%ecx
+ ca3:	66 83 f9 16          	cmp    $0x16,%cx
+ ca7:	0f 84 9e 00 00 00    	je     d4b <os.abort+0x10b>
+ cad:	0f b7 c1             	movzwl %cx,%eax
+ cb0:	83 f8 0e             	cmp    $0xe,%eax
+ cb3:	0f 84 92 00 00 00    	je     d4b <os.abort+0x10b>
+ cb9:	85 c0                	test   %eax,%eax
+ cbb:	0f 85 8a 00 00 00    	jne    d4b <os.abort+0x10b>
+ cc1:	b1 01                	mov    $0x1,%cl
+ cc3:	66 66 66 66 2e 0f 1f 	data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+ cca:	84 00 00 00 00 00 
+ cd0:	31 c0                	xor    %eax,%eax
+ cd2:	f0 0f b0 0d 00 00 00 	lock cmpxchg %cl,0x0(%rip)        # cda <os.abort+0x9a>
+ cd9:	00 
+ cda:	75 f4                	jne    cd0 <os.abort+0x90>
+ cdc:	48 89 e7             	mov    %rsp,%rdi
+ cdf:	ba 00 00 00 00       	mov    $0x0,%edx
+ ce4:	be 06 00 00 00       	mov    $0x6,%esi
+ ce9:	e8 00 00 00 00       	call   cee <os.abort+0xae>
+ cee:	66 83 f8 10          	cmp    $0x10,%ax
+ cf2:	74 68                	je     d5c <os.abort+0x11c>
+ cf4:	0f b7 c0             	movzwl %ax,%eax
+ cf7:	85 c0                	test   %eax,%eax
+ cf9:	75 72                	jne    d6d <os.abort+0x12d>
+ cfb:	b8 ba 00 00 00       	mov    $0xba,%eax
+ d00:	0f 05                	syscall
+ d02:	48 63 f8             	movslq %eax,%rdi
+ d05:	b8 c8 00 00 00       	mov    $0xc8,%eax
+ d0a:	be 06 00 00 00       	mov    $0x6,%esi
+ d0f:	41 ba 08 00 00 00    	mov    $0x8,%r10d
+ d15:	31 d2                	xor    %edx,%edx
+ d17:	45 31 c0             	xor    %r8d,%r8d
+ d1a:	0f 05                	syscall
+ d1c:	b8 0e 00 00 00       	mov    $0xe,%eax
+ d21:	bf 01 00 00 00       	mov    $0x1,%edi
+ d26:	be 00 00 00 00       	mov    $0x0,%esi
+ d2b:	0f 05                	syscall
+ d2d:	89 c1                	mov    %eax,%ecx
+ d2f:	f7 d9                	neg    %ecx
+ d31:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+ d37:	41 0f 42 c8          	cmovb  %r8d,%ecx
+ d3b:	66 85 c9             	test   %cx,%cx
+ d3e:	74 3e                	je     d7e <os.abort+0x13e>
+ d40:	0f b7 c1             	movzwl %cx,%eax
+ d43:	83 f8 0e             	cmp    $0xe,%eax
+ d46:	74 03                	je     d4b <os.abort+0x10b>
+ d48:	83 f8 16             	cmp    $0x16,%eax
+ d4b:	bf 00 00 00 00       	mov    $0x0,%edi
+ d50:	be 18 00 00 00       	mov    $0x18,%esi
+ d55:	31 c9                	xor    %ecx,%ecx
+ d57:	e8 a4 f2 ff ff       	call   0 <builtin.default_panic>
+ d5c:	bf 00 00 00 00       	mov    $0x0,%edi
+ d61:	be 17 00 00 00       	mov    $0x17,%esi
+ d66:	31 c9                	xor    %ecx,%ecx
+ d68:	e8 93 f2 ff ff       	call   0 <builtin.default_panic>
+ d6d:	bf 00 00 00 00       	mov    $0x0,%edi
+ d72:	be 17 00 00 00       	mov    $0x17,%esi
+ d77:	31 c9                	xor    %ecx,%ecx
+ d79:	e8 82 f2 ff ff       	call   0 <builtin.default_panic>
+ d7e:	48 89 e7             	mov    %rsp,%rdi
+ d81:	be 09 00 00 00       	mov    $0x9,%esi
+ d86:	c6 04 25 00 00 00 00 	movb   $0x0,0x0
+ d8d:	00 
+ d8e:	e8 00 00 00 00       	call   d93 <os.abort+0x153>
+ d93:	e8 00 00 00 00       	call   d98 <os.abort+0x158>
+ d98:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+ d9f:	00 
+
+0000000000000da0 <builtin.returnError>:
+ da0:	50                   	push   %rax
+ da1:	48 8b 07             	mov    (%rdi),%rax
+ da4:	48 3b 47 10          	cmp    0x10(%rdi),%rax
+ da8:	73 10                	jae    dba <builtin.returnError+0x1a>
+ daa:	48 8b 4f 08          	mov    0x8(%rdi),%rcx
+ dae:	48 8b 54 24 08       	mov    0x8(%rsp),%rdx
+ db3:	48 89 14 c1          	mov    %rdx,(%rcx,%rax,8)
+ db7:	48 8b 07             	mov    (%rdi),%rax
+ dba:	48 ff c0             	inc    %rax
+ dbd:	74 05                	je     dc4 <builtin.returnError+0x24>
+ dbf:	48 89 07             	mov    %rax,(%rdi)
+ dc2:	58                   	pop    %rax
+ dc3:	c3                   	ret
+ dc4:	bf 00 00 00 00       	mov    $0x0,%edi
+ dc9:	be 10 00 00 00       	mov    $0x10,%esi
+ dce:	31 c9                	xor    %ecx,%ecx
+ dd0:	e8 2b f2 ff ff       	call   0 <builtin.default_panic>
+ dd5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+ ddc:	00 00 00 00 
+
+0000000000000de0 <Thread.Futex.wait>:
+ de0:	50                   	push   %rax
+ de1:	89 f2                	mov    %esi,%edx
+ de3:	b8 ca 00 00 00       	mov    $0xca,%eax
+ de8:	be 80 00 00 00       	mov    $0x80,%esi
+ ded:	45 31 d2             	xor    %r10d,%r10d
+ df0:	0f 05                	syscall
+ df2:	89 c1                	mov    %eax,%ecx
+ df4:	45 31 c0             	xor    %r8d,%r8d
+ df7:	f7 d9                	neg    %ecx
+ df9:	48 3d 01 f0 ff ff    	cmp    $0xfffffffffffff001,%rax
+ dff:	41 0f 42 c8          	cmovb  %r8d,%ecx
+ e03:	0f b7 c1             	movzwl %cx,%eax
+ e06:	66 83 f8 16          	cmp    $0x16,%ax
+ e0a:	77 11                	ja     e1d <Thread.Futex.wait+0x3d>
+ e0c:	b9 11 08 40 00       	mov    $0x400811,%ecx
+ e11:	0f a3 c1             	bt     %eax,%ecx
+ e14:	73 02                	jae    e18 <Thread.Futex.wait+0x38>
+ e16:	58                   	pop    %rax
+ e17:	c3                   	ret
+ e18:	83 f8 0e             	cmp    $0xe,%eax
+ e1b:	74 03                	je     e20 <Thread.Futex.wait+0x40>
+ e1d:	83 f8 6e             	cmp    $0x6e,%eax
+ e20:	bf 00 00 00 00       	mov    $0x0,%edi
+ e25:	be 18 00 00 00       	mov    $0x18,%esi
+ e2a:	31 c9                	xor    %ecx,%ecx
+ e2c:	e8 cf f1 ff ff       	call   0 <builtin.default_panic>
+ e31:	66 66 66 66 66 66 2e 	data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+ e38:	0f 1f 84 00 00 00 00 
+ e3f:	00 
+
+0000000000000e40 <Thread.Mutex.FutexImpl.lockSlow>:
+ e40:	50                   	push   %rax
+ e41:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # e47 <Thread.Mutex.FutexImpl.lockSlow+0x7>
+ e47:	83 f8 03             	cmp    $0x3,%eax
+ e4a:	74 0f                	je     e5b <Thread.Mutex.FutexImpl.lockSlow+0x1b>
+ e4c:	b8 03 00 00 00       	mov    $0x3,%eax
+ e51:	87 05 00 00 00 00    	xchg   %eax,0x0(%rip)        # e57 <Thread.Mutex.FutexImpl.lockSlow+0x17>
+ e57:	85 c0                	test   %eax,%eax
+ e59:	74 1e                	je     e79 <Thread.Mutex.FutexImpl.lockSlow+0x39>
+ e5b:	bf 00 00 00 00       	mov    $0x0,%edi
+ e60:	be 03 00 00 00       	mov    $0x3,%esi
+ e65:	e8 76 ff ff ff       	call   de0 <Thread.Futex.wait>
+ e6a:	b8 03 00 00 00       	mov    $0x3,%eax
+ e6f:	87 05 00 00 00 00    	xchg   %eax,0x0(%rip)        # e75 <Thread.Mutex.FutexImpl.lockSlow+0x35>
+ e75:	85 c0                	test   %eax,%eax
+ e77:	75 e2                	jne    e5b <Thread.Mutex.FutexImpl.lockSlow+0x1b>
+ e79:	58                   	pop    %rax
+ e7a:	c3                   	ret
