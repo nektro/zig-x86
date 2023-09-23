@@ -1,7 +1,6 @@
 const std = @import("std");
 const string = []const u8;
 const x86 = @This();
-const Reader = @import("./Reader.zig");
 
 pub usingnamespace @import("./mnemonic.zig");
 
@@ -117,27 +116,7 @@ const OperandType = enum {
 
 //
 
-pub const BytesToInstructionIter = struct {
-    reader: Reader,
-
-    pub fn init(reader: anytype) BytesToInstructionIter {
-        return .{
-            .reader = Reader.from(reader),
-        };
-    }
-
-    pub fn next(iter: BytesToInstructionIter) !?Instruction {
-        const b = iter.reader.readByte() catch |err| switch (err) {
-            error.EndOfStream => return null,
-            else => |e| return e,
-        };
-        switch (b) {
-            0xC3 => return .{ .mnemonic = .RET },
-
-            else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
-        }
-    }
-};
+pub const BytesToInstructionIter = @import("./BytesToInstructionIter.zig");
 
 pub const Instruction = struct {
     mnemonic: x86.Mnemonic,
