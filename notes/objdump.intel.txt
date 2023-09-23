@@ -1,0 +1,2530 @@
+
+add.o:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00000000 <add>:
+       0:	83 ec 0c             	sub    esp,0xc
+       3:	8b 44 24 10          	mov    eax,DWORD PTR [esp+0x10]
+       7:	03 44 24 14          	add    eax,DWORD PTR [esp+0x14]
+       b:	70 04                	jo     11 <add+0x11>
+       d:	83 c4 0c             	add    esp,0xc
+      10:	c3                   	ret
+      11:	b9 25 00 00 00       	mov    ecx,0x25
+      16:	ba 10 00 00 00       	mov    edx,0x10
+      1b:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+      22:	00 
+      23:	e8 fc ff ff ff       	call   24 <add+0x24>
+      28:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [eax+eax*1+0x0]
+      2f:	00 
+
+00000030 <os.raise>:
+      30:	55                   	push   ebp
+      31:	53                   	push   ebx
+      32:	57                   	push   edi
+      33:	56                   	push   esi
+      34:	81 ec 9c 00 00 00    	sub    esp,0x9c
+      3a:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR ds:0x0
+      41:	89 4c 24 0c          	mov    DWORD PTR [esp+0xc],ecx
+      45:	89 d5                	mov    ebp,edx
+      47:	8d 54 24 10          	lea    edx,[esp+0x10]
+      4b:	b8 af 00 00 00       	mov    eax,0xaf
+      50:	31 db                	xor    ebx,ebx
+      52:	b9 f0 05 00 00       	mov    ecx,0x5f0
+      57:	be 08 00 00 00       	mov    esi,0x8
+      5c:	31 ff                	xor    edi,edi
+      5e:	0f 29 84 24 80 00 00 	movaps XMMWORD PTR [esp+0x80],xmm0
+      65:	00 
+      66:	0f 29 44 24 70       	movaps XMMWORD PTR [esp+0x70],xmm0
+      6b:	0f 29 44 24 60       	movaps XMMWORD PTR [esp+0x60],xmm0
+      70:	0f 29 44 24 50       	movaps XMMWORD PTR [esp+0x50],xmm0
+      75:	0f 29 44 24 40       	movaps XMMWORD PTR [esp+0x40],xmm0
+      7a:	0f 29 44 24 30       	movaps XMMWORD PTR [esp+0x30],xmm0
+      7f:	0f 29 44 24 20       	movaps XMMWORD PTR [esp+0x20],xmm0
+      84:	0f 29 44 24 10       	movaps XMMWORD PTR [esp+0x10],xmm0
+      89:	cd 80                	int    0x80
+      8b:	89 c1                	mov    ecx,eax
+      8d:	f7 d9                	neg    ecx
+      8f:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+      94:	0f 42 cf             	cmovb  ecx,edi
+      97:	66 85 c9             	test   cx,cx
+      9a:	75 6e                	jne    10a <os.raise+0xda>
+      9c:	b8 e0 00 00 00       	mov    eax,0xe0
+      a1:	cd 80                	int    0x80
+      a3:	89 c3                	mov    ebx,eax
+      a5:	89 e8                	mov    eax,ebp
+      a7:	31 d2                	xor    edx,edx
+      a9:	0f b6 c8             	movzx  ecx,al
+      ac:	b8 ee 00 00 00       	mov    eax,0xee
+      b1:	cd 80                	int    0x80
+      b3:	89 c5                	mov    ebp,eax
+      b5:	8d 4c 24 10          	lea    ecx,[esp+0x10]
+      b9:	b8 af 00 00 00       	mov    eax,0xaf
+      be:	bb 02 00 00 00       	mov    ebx,0x2
+      c3:	cd 80                	int    0x80
+      c5:	89 c1                	mov    ecx,eax
+      c7:	f7 d9                	neg    ecx
+      c9:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+      ce:	0f 42 cf             	cmovb  ecx,edi
+      d1:	66 85 c9             	test   cx,cx
+      d4:	75 34                	jne    10a <os.raise+0xda>
+      d6:	31 c0                	xor    eax,eax
+      d8:	81 fd 01 f0 ff ff    	cmp    ebp,0xfffff001
+      de:	72 07                	jb     e7 <os.raise+0xb7>
+      e0:	0f b7 cd             	movzx  ecx,bp
+      e3:	85 c9                	test   ecx,ecx
+      e5:	75 0b                	jne    f2 <os.raise+0xc2>
+      e7:	81 c4 9c 00 00 00    	add    esp,0x9c
+      ed:	5e                   	pop    esi
+      ee:	5f                   	pop    edi
+      ef:	5b                   	pop    ebx
+      f0:	5d                   	pop    ebp
+      f1:	c3                   	ret
+      f2:	8b 74 24 0c          	mov    esi,DWORD PTR [esp+0xc]
+      f6:	89 f1                	mov    ecx,esi
+      f8:	e8 9c 0c 00 00       	call   d99 <debug.StackIterator.next_internal+0x49>
+      fd:	89 f1                	mov    ecx,esi
+      ff:	e8 9c 0c 00 00       	call   da0 <debug.StackIterator.next_internal+0x50>
+     104:	66 b8 0f 00          	mov    ax,0xf
+     108:	eb dd                	jmp    e7 <os.raise+0xb7>
+     10a:	0f b7 c1             	movzx  eax,cx
+     10d:	83 f8 0e             	cmp    eax,0xe
+     110:	74 03                	je     115 <os.raise+0xe5>
+     112:	83 f8 16             	cmp    eax,0x16
+     115:	b9 e1 00 00 00       	mov    ecx,0xe1
+     11a:	ba 18 00 00 00       	mov    edx,0x18
+     11f:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     126:	00 
+     127:	e8 fc ff ff ff       	call   128 <os.raise+0xf8>
+     12c:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+
+00000130 <os.sigaction>:
+     130:	55                   	push   ebp
+     131:	53                   	push   ebx
+     132:	57                   	push   edi
+     133:	56                   	push   esi
+     134:	83 ec 2c             	sub    esp,0x2c
+     137:	89 d0                	mov    eax,edx
+     139:	24 3f                	and    al,0x3f
+     13b:	3c 09                	cmp    al,0x9
+     13d:	0f 84 c1 00 00 00    	je     204 <os.sigaction+0xd4>
+     143:	8b 44 24 40          	mov    eax,DWORD PTR [esp+0x40]
+     147:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR ds:0x0
+     14e:	89 cf                	mov    edi,ecx
+     150:	c7 44 24 20 aa aa aa 	mov    DWORD PTR [esp+0x20],0xaaaaaaaa
+     157:	aa 
+     158:	85 c0                	test   eax,eax
+     15a:	0f 29 44 24 10       	movaps XMMWORD PTR [esp+0x10],xmm0
+     15f:	74 4a                	je     1ab <os.sigaction+0x7b>
+     161:	8b 88 84 00 00 00    	mov    ecx,DWORD PTR [eax+0x84]
+     167:	8b 30                	mov    esi,DWORD PTR [eax]
+     169:	bb b0 0e 00 00       	mov    ebx,0xeb0
+     16e:	bd a0 0e 00 00       	mov    ebp,0xea0
+     173:	f6 c1 04             	test   cl,0x4
+     176:	89 74 24 10          	mov    DWORD PTR [esp+0x10],esi
+     17a:	8d 74 24 1c          	lea    esi,[esp+0x1c]
+     17e:	0f 44 eb             	cmove  ebp,ebx
+     181:	81 c9 00 00 00 04    	or     ecx,0x4000000
+     187:	8d 58 0c             	lea    ebx,[eax+0xc]
+     18a:	89 4c 24 14          	mov    DWORD PTR [esp+0x14],ecx
+     18e:	8d 48 04             	lea    ecx,[eax+0x4]
+     191:	39 de                	cmp    esi,ebx
+     193:	89 6c 24 18          	mov    DWORD PTR [esp+0x18],ebp
+     197:	73 08                	jae    1a1 <os.sigaction+0x71>
+     199:	8d 74 24 24          	lea    esi,[esp+0x24]
+     19d:	39 f1                	cmp    ecx,esi
+     19f:	72 7a                	jb     21b <os.sigaction+0xeb>
+     1a1:	f2 0f 10 01          	movsd  xmm0,QWORD PTR [ecx]
+     1a5:	f2 0f 11 44 24 1c    	movsd  QWORD PTR [esp+0x1c],xmm0
+     1ab:	85 c0                	test   eax,eax
+     1ad:	8d 4c 24 10          	lea    ecx,[esp+0x10]
+     1b1:	0f b6 da             	movzx  ebx,dl
+     1b4:	be 08 00 00 00       	mov    esi,0x8
+     1b9:	0f 44 c8             	cmove  ecx,eax
+     1bc:	83 e3 3f             	and    ebx,0x3f
+     1bf:	b8 ae 00 00 00       	mov    eax,0xae
+     1c4:	31 d2                	xor    edx,edx
+     1c6:	cd 80                	int    0x80
+     1c8:	89 c1                	mov    ecx,eax
+     1ca:	31 ed                	xor    ebp,ebp
+     1cc:	f7 d8                	neg    eax
+     1ce:	66 85 c9             	test   cx,cx
+     1d1:	0f 44 c5             	cmove  eax,ebp
+     1d4:	81 f9 01 f0 ff ff    	cmp    ecx,0xfffff001
+     1da:	0f 42 c5             	cmovb  eax,ebp
+     1dd:	66 85 c0             	test   ax,ax
+     1e0:	75 08                	jne    1ea <os.sigaction+0xba>
+     1e2:	83 c4 2c             	add    esp,0x2c
+     1e5:	5e                   	pop    esi
+     1e6:	5f                   	pop    edi
+     1e7:	5b                   	pop    ebx
+     1e8:	5d                   	pop    ebp
+     1e9:	c3                   	ret
+     1ea:	0f b7 c0             	movzx  eax,ax
+     1ed:	83 f8 16             	cmp    eax,0x16
+     1f0:	74 05                	je     1f7 <os.sigaction+0xc7>
+     1f2:	83 f8 26             	cmp    eax,0x26
+     1f5:	75 0d                	jne    204 <os.sigaction+0xd4>
+     1f7:	89 f9                	mov    ecx,edi
+     1f9:	e8 9c 0c 00 00       	call   e9a <debug.StackIterator.next_internal+0x14a>
+     1fe:	66 b8 10 00          	mov    ax,0x10
+     202:	eb de                	jmp    1e2 <os.sigaction+0xb2>
+     204:	b9 e1 00 00 00       	mov    ecx,0xe1
+     209:	ba 18 00 00 00       	mov    edx,0x18
+     20e:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     215:	00 
+     216:	e8 fc ff ff ff       	call   217 <os.sigaction+0xe7>
+     21b:	b9 7a 00 00 00       	mov    ecx,0x7a
+     220:	ba 17 00 00 00       	mov    edx,0x17
+     225:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     22c:	00 
+     22d:	e8 fc ff ff ff       	call   22e <os.sigaction+0xfe>
+     232:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     239:	00 00 00 
+     23c:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+
+00000240 <os.exit>:
+     240:	83 ec 0c             	sub    esp,0xc
+     243:	e8 d8 0a 00 00       	call   d20 <os.linux.exit_group>
+     248:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [eax+eax*1+0x0]
+     24f:	00 
+
+00000250 <os.mmap>:
+     250:	55                   	push   ebp
+     251:	53                   	push   ebx
+     252:	57                   	push   edi
+     253:	56                   	push   esi
+     254:	83 ec 0c             	sub    esp,0xc
+     257:	89 54 24 08          	mov    DWORD PTR [esp+0x8],edx
+     25b:	8b 54 24 28          	mov    edx,DWORD PTR [esp+0x28]
+     25f:	89 cd                	mov    ebp,ecx
+     261:	8b 4c 24 24          	mov    ecx,DWORD PTR [esp+0x24]
+     265:	8b 5c 24 20          	mov    ebx,DWORD PTR [esp+0x20]
+     269:	8b 74 24 2c          	mov    esi,DWORD PTR [esp+0x2c]
+     26d:	8b 7c 24 30          	mov    edi,DWORD PTR [esp+0x30]
+     271:	b8 c0 00 00 00       	mov    eax,0xc0
+     276:	ff 35 04 00 00 00    	push   DWORD PTR ds:0x4
+     27c:	55                   	push   ebp
+     27d:	8b 6c 24 04          	mov    ebp,DWORD PTR [esp+0x4]
+     281:	cd 80                	int    0x80
+     283:	5d                   	pop    ebp
+     284:	83 c4 04             	add    esp,0x4
+     287:	89 c6                	mov    esi,eax
+     289:	f7 de                	neg    esi
+     28b:	31 d2                	xor    edx,edx
+     28d:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+     292:	0f 43 d6             	cmovae edx,esi
+     295:	66 83 fa 4b          	cmp    dx,0x4b
+     299:	77 67                	ja     302 <os.mmap+0xb2>
+     29b:	0f b7 d2             	movzx  edx,dx
+     29e:	ff 24 95 00 00 00 00 	jmp    DWORD PTR [edx*4+0x0]
+     2a5:	85 c0                	test   eax,eax
+     2a7:	0f 84 e2 00 00 00    	je     38f <os.mmap+0x13f>
+     2ad:	a9 ff 0f 00 00       	test   eax,0xfff
+     2b2:	0f 85 ee 00 00 00    	jne    3a6 <os.mmap+0x156>
+     2b8:	89 45 00             	mov    DWORD PTR [ebp+0x0],eax
+     2bb:	89 4d 04             	mov    DWORD PTR [ebp+0x4],ecx
+     2be:	66 c7 45 08 00 00    	mov    WORD PTR [ebp+0x8],0x0
+     2c4:	e9 a7 00 00 00       	jmp    370 <os.mmap+0x120>
+     2c9:	8b 4c 24 08          	mov    ecx,DWORD PTR [esp+0x8]
+     2cd:	e8 9c 0c 00 00       	call   f6e <heap.PageAllocator.alloc+0xae>
+     2d2:	c7 45 08 07 00 00 00 	mov    DWORD PTR [ebp+0x8],0x7
+     2d9:	e9 84 00 00 00       	jmp    362 <os.mmap+0x112>
+     2de:	8b 4c 24 08          	mov    ecx,DWORD PTR [esp+0x8]
+     2e2:	e8 9c 0c 00 00       	call   f83 <heap.PageAllocator.alloc+0xc3>
+     2e7:	c7 45 08 20 00 00 00 	mov    DWORD PTR [ebp+0x8],0x20
+     2ee:	eb 72                	jmp    362 <os.mmap+0x112>
+     2f0:	8b 4c 24 08          	mov    ecx,DWORD PTR [esp+0x8]
+     2f4:	e8 9c 0c 00 00       	call   f95 <heap.PageAllocator.alloc+0xd5>
+     2f9:	c7 45 08 29 00 00 00 	mov    DWORD PTR [ebp+0x8],0x29
+     300:	eb 60                	jmp    362 <os.mmap+0x112>
+     302:	8b 74 24 08          	mov    esi,DWORD PTR [esp+0x8]
+     306:	89 f1                	mov    ecx,esi
+     308:	e8 9c 0c 00 00       	call   fa9 <heap.PageAllocator.resize+0x9>
+     30d:	89 f1                	mov    ecx,esi
+     30f:	e8 9c 0c 00 00       	call   fb0 <heap.PageAllocator.resize+0x10>
+     314:	66 c7 45 08 0f 00    	mov    WORD PTR [ebp+0x8],0xf
+     31a:	eb 54                	jmp    370 <os.mmap+0x120>
+     31c:	8b 4c 24 08          	mov    ecx,DWORD PTR [esp+0x8]
+     320:	e8 9c 0c 00 00       	call   fc1 <heap.PageAllocator.resize+0x21>
+     325:	c7 45 08 2e 00 00 00 	mov    DWORD PTR [ebp+0x8],0x2e
+     32c:	eb 34                	jmp    362 <os.mmap+0x112>
+     32e:	8b 4c 24 08          	mov    ecx,DWORD PTR [esp+0x8]
+     332:	e8 9c 0c 00 00       	call   fd3 <heap.PageAllocator.resize+0x33>
+     337:	c7 45 08 14 00 00 00 	mov    DWORD PTR [ebp+0x8],0x14
+     33e:	eb 22                	jmp    362 <os.mmap+0x112>
+     340:	8b 4c 24 08          	mov    ecx,DWORD PTR [esp+0x8]
+     344:	e8 9c 0c 00 00       	call   fe5 <heap.PageAllocator.resize+0x45>
+     349:	c7 45 08 2d 00 00 00 	mov    DWORD PTR [ebp+0x8],0x2d
+     350:	eb 10                	jmp    362 <os.mmap+0x112>
+     352:	8b 4c 24 08          	mov    ecx,DWORD PTR [esp+0x8]
+     356:	e8 9c 0c 00 00       	call   ff7 <heap.PageAllocator.resize+0x57>
+     35b:	c7 45 08 1f 00 00 00 	mov    DWORD PTR [ebp+0x8],0x1f
+     362:	c7 45 04 00 00 00 00 	mov    DWORD PTR [ebp+0x4],0x0
+     369:	c7 45 00 00 00 00 00 	mov    DWORD PTR [ebp+0x0],0x0
+     370:	83 c4 0c             	add    esp,0xc
+     373:	5e                   	pop    esi
+     374:	5f                   	pop    edi
+     375:	5b                   	pop    ebx
+     376:	5d                   	pop    ebp
+     377:	c3                   	ret
+     378:	b9 e1 00 00 00       	mov    ecx,0xe1
+     37d:	ba 18 00 00 00       	mov    edx,0x18
+     382:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     389:	00 
+     38a:	e8 fc ff ff ff       	call   38b <os.mmap+0x13b>
+     38f:	b9 aa 00 00 00       	mov    ecx,0xaa
+     394:	ba 1e 00 00 00       	mov    edx,0x1e
+     399:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     3a0:	00 
+     3a1:	e8 fc ff ff ff       	call   3a2 <os.mmap+0x152>
+     3a6:	b9 36 00 00 00       	mov    ecx,0x36
+     3ab:	ba 13 00 00 00       	mov    edx,0x13
+     3b0:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     3b7:	00 
+     3b8:	e8 fc ff ff ff       	call   3b9 <os.mmap+0x169>
+     3bd:	0f 1f 00             	nop    DWORD PTR [eax]
+
+000003c0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>:
+     3c0:	55                   	push   ebp
+     3c1:	53                   	push   ebx
+     3c2:	57                   	push   edi
+     3c3:	56                   	push   esi
+     3c4:	81 ec 2c 01 00 00    	sub    esp,0x12c
+     3ca:	66 0f 6e 84 24 40 01 	movd   xmm0,DWORD PTR [esp+0x140]
+     3d1:	00 00 
+     3d3:	8b 84 24 44 01 00 00 	mov    eax,DWORD PTR [esp+0x144]
+     3da:	89 54 24 10          	mov    DWORD PTR [esp+0x10],edx
+     3de:	89 4c 24 0c          	mov    DWORD PTR [esp+0xc],ecx
+     3e2:	66 0f 60 c0          	punpcklbw xmm0,xmm0
+     3e6:	85 c0                	test   eax,eax
+     3e8:	f2 0f 70 c0 00       	pshuflw xmm0,xmm0,0x0
+     3ed:	66 0f 70 c0 00       	pshufd xmm0,xmm0,0x0
+     3f2:	66 0f 7f 84 24 10 01 	movdqa XMMWORD PTR [esp+0x110],xmm0
+     3f9:	00 00 
+     3fb:	66 0f 7f 84 24 00 01 	movdqa XMMWORD PTR [esp+0x100],xmm0
+     402:	00 00 
+     404:	66 0f 7f 84 24 f0 00 	movdqa XMMWORD PTR [esp+0xf0],xmm0
+     40b:	00 00 
+     40d:	66 0f 7f 84 24 e0 00 	movdqa XMMWORD PTR [esp+0xe0],xmm0
+     414:	00 00 
+     416:	66 0f 7f 84 24 d0 00 	movdqa XMMWORD PTR [esp+0xd0],xmm0
+     41d:	00 00 
+     41f:	66 0f 7f 84 24 c0 00 	movdqa XMMWORD PTR [esp+0xc0],xmm0
+     426:	00 00 
+     428:	66 0f 7f 84 24 b0 00 	movdqa XMMWORD PTR [esp+0xb0],xmm0
+     42f:	00 00 
+     431:	66 0f 7f 84 24 a0 00 	movdqa XMMWORD PTR [esp+0xa0],xmm0
+     438:	00 00 
+     43a:	66 0f 7f 84 24 90 00 	movdqa XMMWORD PTR [esp+0x90],xmm0
+     441:	00 00 
+     443:	66 0f 7f 84 24 80 00 	movdqa XMMWORD PTR [esp+0x80],xmm0
+     44a:	00 00 
+     44c:	66 0f 7f 44 24 70    	movdqa XMMWORD PTR [esp+0x70],xmm0
+     452:	66 0f 7f 44 24 60    	movdqa XMMWORD PTR [esp+0x60],xmm0
+     458:	66 0f 7f 44 24 50    	movdqa XMMWORD PTR [esp+0x50],xmm0
+     45e:	66 0f 7f 44 24 40    	movdqa XMMWORD PTR [esp+0x40],xmm0
+     464:	66 0f 7f 44 24 30    	movdqa XMMWORD PTR [esp+0x30],xmm0
+     46a:	66 0f 7f 44 24 20    	movdqa XMMWORD PTR [esp+0x20],xmm0
+     470:	74 6e                	je     4e0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x120>
+     472:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     479:	00 00 00 
+     47c:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+     480:	8b 4c 24 10          	mov    ecx,DWORD PTR [esp+0x10]
+     484:	3d 00 01 00 00       	cmp    eax,0x100
+     489:	bf 00 01 00 00       	mov    edi,0x100
+     48e:	89 44 24 14          	mov    DWORD PTR [esp+0x14],eax
+     492:	0f 42 f8             	cmovb  edi,eax
+     495:	31 f6                	xor    esi,esi
+     497:	8b 19                	mov    ebx,DWORD PTR [ecx]
+     499:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [eax+0x0]
+     4a0:	89 f8                	mov    eax,edi
+     4a2:	29 f0                	sub    eax,esi
+     4a4:	72 5d                	jb     503 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x143>
+     4a6:	8b 54 24 0c          	mov    edx,DWORD PTR [esp+0xc]
+     4aa:	8d 4c 34 20          	lea    ecx,[esp+esi*1+0x20]
+     4ae:	89 44 24 08          	mov    DWORD PTR [esp+0x8],eax
+     4b2:	89 1c 24             	mov    DWORD PTR [esp],ebx
+     4b5:	89 4c 24 04          	mov    DWORD PTR [esp+0x4],ecx
+     4b9:	8d 4c 24 18          	lea    ecx,[esp+0x18]
+     4bd:	e8 7e 01 00 00       	call   640 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     4c2:	0f b7 6c 24 1c       	movzx  ebp,WORD PTR [esp+0x1c]
+     4c7:	66 85 ed             	test   bp,bp
+     4ca:	75 18                	jne    4e4 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x124>
+     4cc:	03 74 24 18          	add    esi,DWORD PTR [esp+0x18]
+     4d0:	72 48                	jb     51a <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x15a>
+     4d2:	39 f7                	cmp    edi,esi
+     4d4:	75 ca                	jne    4a0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0xe0>
+     4d6:	8b 44 24 14          	mov    eax,DWORD PTR [esp+0x14]
+     4da:	29 f8                	sub    eax,edi
+     4dc:	72 3c                	jb     51a <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x15a>
+     4de:	75 a0                	jne    480 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0xc0>
+     4e0:	31 ed                	xor    ebp,ebp
+     4e2:	eb 12                	jmp    4f6 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x136>
+     4e4:	8b 74 24 0c          	mov    esi,DWORD PTR [esp+0xc]
+     4e8:	89 f1                	mov    ecx,esi
+     4ea:	e8 9c 0c 00 00       	call   118b <heap.arena_allocator.ArenaAllocator.alloc+0x8b>
+     4ef:	89 f1                	mov    ecx,esi
+     4f1:	e8 9c 0c 00 00       	call   1192 <heap.arena_allocator.ArenaAllocator.alloc+0x92>
+     4f6:	89 e8                	mov    eax,ebp
+     4f8:	81 c4 2c 01 00 00    	add    esp,0x12c
+     4fe:	5e                   	pop    esi
+     4ff:	5f                   	pop    edi
+     500:	5b                   	pop    ebx
+     501:	5d                   	pop    ebp
+     502:	c3                   	ret
+     503:	b9 00 00 00 00       	mov    ecx,0x0
+     508:	ba 24 00 00 00       	mov    edx,0x24
+     50d:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     514:	00 
+     515:	e8 fc ff ff ff       	call   516 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x156>
+     51a:	b9 25 00 00 00       	mov    ecx,0x25
+     51f:	ba 10 00 00 00       	mov    edx,0x10
+     524:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     52b:	00 
+     52c:	e8 fc ff ff ff       	call   52d <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes+0x16d>
+     531:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     538:	00 00 00 
+     53b:	0f 1f 44 00 00       	nop    DWORD PTR [eax+eax*1+0x0]
+
+00000540 <debug.StackIterator.isValidMemory>:
+     540:	53                   	push   ebx
+     541:	56                   	push   esi
+     542:	81 ec 94 00 00 00    	sub    esp,0x94
+     548:	8d 44 24 14          	lea    eax,[esp+0x14]
+     54c:	31 f6                	xor    esi,esi
+     54e:	81 e1 00 f0 ff ff    	and    ecx,0xfffff000
+     554:	89 44 24 0c          	mov    DWORD PTR [esp+0xc],eax
+     558:	c7 44 24 10 20 00 00 	mov    DWORD PTR [esp+0x10],0x20
+     55f:	00 
+     560:	c7 44 24 08 00 00 00 	mov    DWORD PTR [esp+0x8],0x0
+     567:	00 
+     568:	74 40                	je     5aa <debug.StackIterator.isValidMemory+0x6a>
+     56a:	89 cb                	mov    ebx,ecx
+     56c:	b8 90 00 00 00       	mov    eax,0x90
+     571:	b9 00 10 00 00       	mov    ecx,0x1000
+     576:	ba 01 00 00 00       	mov    edx,0x1
+     57b:	cd 80                	int    0x80
+     57d:	89 c1                	mov    ecx,eax
+     57f:	f7 d9                	neg    ecx
+     581:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+     586:	b0 01                	mov    al,0x1
+     588:	0f 43 f1             	cmovae esi,ecx
+     58b:	66 85 f6             	test   si,si
+     58e:	75 09                	jne    599 <debug.StackIterator.isValidMemory+0x59>
+     590:	81 c4 94 00 00 00    	add    esp,0x94
+     596:	5e                   	pop    esi
+     597:	5b                   	pop    ebx
+     598:	c3                   	ret
+     599:	0f b7 c6             	movzx  eax,si
+     59c:	83 f8 0c             	cmp    eax,0xc
+     59f:	75 14                	jne    5b5 <debug.StackIterator.isValidMemory+0x75>
+     5a1:	8d 4c 24 08          	lea    ecx,[esp+0x8]
+     5a5:	e8 9c 0c 00 00       	call   1246 <heap.arena_allocator.ArenaAllocator.alloc+0x146>
+     5aa:	31 c0                	xor    eax,eax
+     5ac:	81 c4 94 00 00 00    	add    esp,0x94
+     5b2:	5e                   	pop    esi
+     5b3:	5b                   	pop    ebx
+     5b4:	c3                   	ret
+     5b5:	b9 e1 00 00 00       	mov    ecx,0xe1
+     5ba:	ba 18 00 00 00       	mov    edx,0x18
+     5bf:	83 f8 16             	cmp    eax,0x16
+     5c2:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     5c9:	00 
+     5ca:	e8 fc ff ff ff       	call   5cb <debug.StackIterator.isValidMemory+0x8b>
+     5cf:	90                   	nop
+
+000005d0 <os.linux.x86.getContextInternal>:
+     5d0:	c7 02 00 00 00 00    	mov    DWORD PTR [edx],0x0
+     5d6:	c7 42 04 00 00 00 00 	mov    DWORD PTR [edx+0x4],0x0
+     5dd:	89 7a 24             	mov    DWORD PTR [edx+0x24],edi
+     5e0:	89 72 28             	mov    DWORD PTR [edx+0x28],esi
+     5e3:	89 6a 2c             	mov    DWORD PTR [edx+0x2c],ebp
+     5e6:	89 5a 34             	mov    DWORD PTR [edx+0x34],ebx
+     5e9:	89 52 38             	mov    DWORD PTR [edx+0x38],edx
+     5ec:	89 4a 3c             	mov    DWORD PTR [edx+0x3c],ecx
+     5ef:	89 42 40             	mov    DWORD PTR [edx+0x40],eax
+     5f2:	8b 0c 24             	mov    ecx,DWORD PTR [esp]
+     5f5:	89 4a 4c             	mov    DWORD PTR [edx+0x4c],ecx
+     5f8:	8d 4c 24 04          	lea    ecx,[esp+0x4]
+     5fc:	89 4a 30             	mov    DWORD PTR [edx+0x30],ecx
+     5ff:	31 c9                	xor    ecx,ecx
+     601:	66 8c e1             	mov    cx,fs
+     604:	89 4a 18             	mov    DWORD PTR [edx+0x18],ecx
+     607:	8d 8a ec 00 00 00    	lea    ecx,[edx+0xec]
+     60d:	89 4a 60             	mov    DWORD PTR [edx+0x60],ecx
+     610:	d9 31                	fnstenv [ecx]
+     612:	d9 21                	fldenv [ecx]
+     614:	53                   	push   ebx
+     615:	56                   	push   esi
+     616:	31 db                	xor    ebx,ebx
+     618:	b8 ba 00 00 00       	mov    eax,0xba
+     61d:	8d 4a 08             	lea    ecx,[edx+0x8]
+     620:	cd 80                	int    0x80
+     622:	85 c0                	test   eax,eax
+     624:	75 11                	jne    637 <os.linux.x86.getContextInternal+0x67>
+     626:	b8 af 00 00 00       	mov    eax,0xaf
+     62b:	31 c9                	xor    ecx,ecx
+     62d:	8d 52 6c             	lea    edx,[edx+0x6c]
+     630:	be 08 00 00 00       	mov    esi,0x8
+     635:	cd 80                	int    0x80
+     637:	5e                   	pop    esi
+     638:	5b                   	pop    ebx
+     639:	c3                   	ret
+     63a:	0f 0b                	ud2
+     63c:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+
+00000640 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>:
+     640:	55                   	push   ebp
+     641:	53                   	push   ebx
+     642:	57                   	push   edi
+     643:	56                   	push   esi
+     644:	83 ec 0c             	sub    esp,0xc
+     647:	8b 44 24 28          	mov    eax,DWORD PTR [esp+0x28]
+     64b:	89 ce                	mov    esi,ecx
+     64d:	85 c0                	test   eax,eax
+     64f:	74 4d                	je     69e <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x5e>
+     651:	8b 4c 24 24          	mov    ecx,DWORD PTR [esp+0x24]
+     655:	8b 5c 24 20          	mov    ebx,DWORD PTR [esp+0x20]
+     659:	89 54 24 08          	mov    DWORD PTR [esp+0x8],edx
+     65d:	3d 00 f0 ff 7f       	cmp    eax,0x7ffff000
+     662:	ba 00 f0 ff 7f       	mov    edx,0x7ffff000
+     667:	0f 42 d0             	cmovb  edx,eax
+     66a:	31 ff                	xor    edi,edi
+     66c:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+     670:	b8 04 00 00 00       	mov    eax,0x4
+     675:	cd 80                	int    0x80
+     677:	89 c5                	mov    ebp,eax
+     679:	f7 dd                	neg    ebp
+     67b:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+     680:	0f 42 ef             	cmovb  ebp,edi
+     683:	66 83 fd 04          	cmp    bp,0x4
+     687:	74 e7                	je     670 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x30>
+     689:	0f b7 cd             	movzx  ecx,bp
+     68c:	83 f9 7a             	cmp    ecx,0x7a
+     68f:	77 78                	ja     709 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0xc9>
+     691:	ff 24 8d 30 01 00 00 	jmp    DWORD PTR [ecx*4+0x130]
+     698:	66 bd 07 00          	mov    bp,0x7
+     69c:	eb 40                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     69e:	31 c0                	xor    eax,eax
+     6a0:	31 ed                	xor    ebp,ebp
+     6a2:	eb 55                	jmp    6f9 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0xb9>
+     6a4:	66 bd 03 00          	mov    bp,0x3
+     6a8:	eb 34                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6aa:	66 bd 0b 00          	mov    bp,0xb
+     6ae:	eb 2e                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6b0:	66 bd 0d 00          	mov    bp,0xd
+     6b4:	eb 28                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6b6:	66 bd 05 00          	mov    bp,0x5
+     6ba:	eb 22                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6bc:	66 bd 06 00          	mov    bp,0x6
+     6c0:	eb 1c                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6c2:	66 bd 02 00          	mov    bp,0x2
+     6c6:	eb 16                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6c8:	66 bd 04 00          	mov    bp,0x4
+     6cc:	eb 10                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6ce:	66 bd 08 00          	mov    bp,0x8
+     6d2:	eb 0a                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6d4:	66 bd 0e 00          	mov    bp,0xe
+     6d8:	eb 04                	jmp    6de <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0x9e>
+     6da:	66 bd 01 00          	mov    bp,0x1
+     6de:	8b 7c 24 08          	mov    edi,DWORD PTR [esp+0x8]
+     6e2:	89 f9                	mov    ecx,edi
+     6e4:	e8 9c 0c 00 00       	call   1385 <heap.arena_allocator.ArenaAllocator.alloc+0x285>
+     6e9:	89 f9                	mov    ecx,edi
+     6eb:	e8 9c 0c 00 00       	call   138c <heap.arena_allocator.ArenaAllocator.alloc+0x28c>
+     6f0:	89 f9                	mov    ecx,edi
+     6f2:	e8 9c 0c 00 00       	call   1393 <heap.arena_allocator.ArenaAllocator.alloc+0x293>
+     6f7:	31 c0                	xor    eax,eax
+     6f9:	0f b7 cd             	movzx  ecx,bp
+     6fc:	89 06                	mov    DWORD PTR [esi],eax
+     6fe:	89 4e 04             	mov    DWORD PTR [esi+0x4],ecx
+     701:	83 c4 0c             	add    esp,0xc
+     704:	5e                   	pop    esi
+     705:	5f                   	pop    edi
+     706:	5b                   	pop    ebx
+     707:	5d                   	pop    ebp
+     708:	c3                   	ret
+     709:	8b 7c 24 08          	mov    edi,DWORD PTR [esp+0x8]
+     70d:	89 f9                	mov    ecx,edi
+     70f:	e8 9c 0c 00 00       	call   13b0 <heap.arena_allocator.ArenaAllocator.createNode>
+     714:	66 bd 0f 00          	mov    bp,0xf
+     718:	eb c8                	jmp    6e2 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0xa2>
+     71a:	b9 e1 00 00 00       	mov    ecx,0xe1
+     71f:	ba 18 00 00 00       	mov    edx,0x18
+     724:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     72b:	00 
+     72c:	e8 fc ff ff ff       	call   72d <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write+0xed>
+     731:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     738:	00 00 00 
+     73b:	0f 1f 44 00 00       	nop    DWORD PTR [eax+eax*1+0x0]
+
+00000740 <fmt.formatBuf__anon_7330>:
+     740:	55                   	push   ebp
+     741:	53                   	push   ebx
+     742:	57                   	push   edi
+     743:	56                   	push   esi
+     744:	83 ec 4c             	sub    esp,0x4c
+     747:	89 d7                	mov    edi,edx
+     749:	8b 54 24 64          	mov    edx,DWORD PTR [esp+0x64]
+     74d:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     751:	8b 74 24 60          	mov    esi,DWORD PTR [esp+0x60]
+     755:	89 4c 24 10          	mov    DWORD PTR [esp+0x10],ecx
+     759:	80 7a 0c 00          	cmp    BYTE PTR [edx+0xc],0x0
+     75d:	0f 84 89 02 00 00    	je     9ec <fmt.formatBuf__anon_7330+0x2ac>
+     763:	8b 42 08             	mov    eax,DWORD PTR [edx+0x8]
+     766:	85 f6                	test   esi,esi
+     768:	0f 84 de 02 00 00    	je     a4c <fmt.formatBuf__anon_7330+0x30c>
+     76e:	89 44 24 24          	mov    DWORD PTR [esp+0x24],eax
+     772:	8b 01                	mov    eax,DWORD PTR [ecx]
+     774:	8a 2d 02 00 00 00    	mov    ch,BYTE PTR ds:0x2
+     77a:	31 ed                	xor    ebp,ebp
+     77c:	89 44 24 14          	mov    DWORD PTR [esp+0x14],eax
+     780:	31 c0                	xor    eax,eax
+     782:	89 eb                	mov    ebx,ebp
+     784:	83 c3 04             	add    ebx,0x4
+     787:	73 27                	jae    7b0 <fmt.formatBuf__anon_7330+0x70>
+     789:	e9 1f 05 00 00       	jmp    cad <fmt.formatBuf__anon_7330+0x56d>
+     78e:	66 90                	xchg   ax,ax
+     790:	39 f5                	cmp    ebp,esi
+     792:	0f 83 dc 01 00 00    	jae    974 <fmt.formatBuf__anon_7330+0x234>
+     798:	89 eb                	mov    ebx,ebp
+     79a:	83 c3 04             	add    ebx,0x4
+     79d:	0f 82 0a 05 00 00    	jb     cad <fmt.formatBuf__anon_7330+0x56d>
+     7a3:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     7aa:	00 00 00 
+     7ad:	0f 1f 00             	nop    DWORD PTR [eax]
+     7b0:	39 f3                	cmp    ebx,esi
+     7b2:	77 2c                	ja     7e0 <fmt.formatBuf__anon_7330+0xa0>
+     7b4:	8d 55 04             	lea    edx,[ebp+0x4]
+     7b7:	39 f2                	cmp    edx,esi
+     7b9:	0f 87 05 05 00 00    	ja     cc4 <fmt.formatBuf__anon_7330+0x584>
+     7bf:	f7 04 2f 80 80 80 80 	test   DWORD PTR [edi+ebp*1],0x80808080
+     7c6:	75 18                	jne    7e0 <fmt.formatBuf__anon_7330+0xa0>
+     7c8:	83 c0 04             	add    eax,0x4
+     7cb:	0f 82 dc 04 00 00    	jb     cad <fmt.formatBuf__anon_7330+0x56d>
+     7d1:	89 dd                	mov    ebp,ebx
+     7d3:	83 c3 04             	add    ebx,0x4
+     7d6:	73 d8                	jae    7b0 <fmt.formatBuf__anon_7330+0x70>
+     7d8:	e9 d0 04 00 00       	jmp    cad <fmt.formatBuf__anon_7330+0x56d>
+     7dd:	0f 1f 00             	nop    DWORD PTR [eax]
+     7e0:	39 f5                	cmp    ebp,esi
+     7e2:	73 ac                	jae    790 <fmt.formatBuf__anon_7330+0x50>
+     7e4:	8a 0c 2f             	mov    cl,BYTE PTR [edi+ebp*1]
+     7e7:	88 ea                	mov    dl,ch
+     7e9:	84 c9                	test   cl,cl
+     7eb:	79 43                	jns    830 <fmt.formatBuf__anon_7330+0xf0>
+     7ed:	89 ca                	mov    edx,ecx
+     7ef:	80 e2 e0             	and    dl,0xe0
+     7f2:	80 fa c0             	cmp    dl,0xc0
+     7f5:	0f b6 15 02 00 00 00 	movzx  edx,BYTE PTR ds:0x2
+     7fc:	74 32                	je     830 <fmt.formatBuf__anon_7330+0xf0>
+     7fe:	89 ca                	mov    edx,ecx
+     800:	80 e2 f0             	and    dl,0xf0
+     803:	80 fa e0             	cmp    dl,0xe0
+     806:	0f b6 15 02 00 00 00 	movzx  edx,BYTE PTR ds:0x2
+     80d:	74 21                	je     830 <fmt.formatBuf__anon_7330+0xf0>
+     80f:	89 ca                	mov    edx,ecx
+     811:	80 e2 f8             	and    dl,0xf8
+     814:	80 fa f0             	cmp    dl,0xf0
+     817:	0f b6 15 02 00 00 00 	movzx  edx,BYTE PTR ds:0x2
+     81e:	0f 85 34 01 00 00    	jne    958 <fmt.formatBuf__anon_7330+0x218>
+     824:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     82b:	00 00 00 
+     82e:	66 90                	xchg   ax,ax
+     830:	80 e2 07             	and    dl,0x7
+     833:	89 eb                	mov    ebx,ebp
+     835:	0f b6 d2             	movzx  edx,dl
+     838:	01 d3                	add    ebx,edx
+     83a:	0f 82 6d 04 00 00    	jb     cad <fmt.formatBuf__anon_7330+0x56d>
+     840:	39 f3                	cmp    ebx,esi
+     842:	0f 87 19 01 00 00    	ja     961 <fmt.formatBuf__anon_7330+0x221>
+     848:	80 fa 01             	cmp    dl,0x1
+     84b:	75 13                	jne    860 <fmt.formatBuf__anon_7330+0x120>
+     84d:	40                   	inc    eax
+     84e:	0f 84 59 04 00 00    	je     cad <fmt.formatBuf__anon_7330+0x56d>
+     854:	89 dd                	mov    ebp,ebx
+     856:	e9 35 ff ff ff       	jmp    790 <fmt.formatBuf__anon_7330+0x50>
+     85b:	0f 1f 44 00 00       	nop    DWORD PTR [eax+eax*1+0x0]
+     860:	4a                   	dec    edx
+     861:	83 fa 03             	cmp    edx,0x3
+     864:	0f 87 88 04 00 00    	ja     cf2 <fmt.formatBuf__anon_7330+0x5b2>
+     86a:	ff 24 95 1c 03 00 00 	jmp    DWORD PTR [edx*4+0x31c]
+     871:	89 ca                	mov    edx,ecx
+     873:	80 e2 e0             	and    dl,0xe0
+     876:	80 fa c0             	cmp    dl,0xc0
+     879:	0f 85 73 04 00 00    	jne    cf2 <fmt.formatBuf__anon_7330+0x5b2>
+     87f:	0f b6 54 2f 01       	movzx  edx,BYTE PTR [edi+ebp*1+0x1]
+     884:	80 e2 c0             	and    dl,0xc0
+     887:	80 fa 80             	cmp    dl,0x80
+     88a:	0f 85 bf 00 00 00    	jne    94f <fmt.formatBuf__anon_7330+0x20f>
+     890:	80 e1 1e             	and    cl,0x1e
+     893:	75 b8                	jne    84d <fmt.formatBuf__anon_7330+0x10d>
+     895:	e9 b5 00 00 00       	jmp    94f <fmt.formatBuf__anon_7330+0x20f>
+     89a:	89 ca                	mov    edx,ecx
+     89c:	80 e2 f0             	and    dl,0xf0
+     89f:	80 fa e0             	cmp    dl,0xe0
+     8a2:	0f 85 4a 04 00 00    	jne    cf2 <fmt.formatBuf__anon_7330+0x5b2>
+     8a8:	0f b6 54 2f 01       	movzx  edx,BYTE PTR [edi+ebp*1+0x1]
+     8ad:	88 d6                	mov    dh,dl
+     8af:	80 e6 c0             	and    dh,0xc0
+     8b2:	80 fe 80             	cmp    dh,0x80
+     8b5:	0f 85 94 00 00 00    	jne    94f <fmt.formatBuf__anon_7330+0x20f>
+     8bb:	8a 74 2f 02          	mov    dh,BYTE PTR [edi+ebp*1+0x2]
+     8bf:	80 e6 c0             	and    dh,0xc0
+     8c2:	80 fe 80             	cmp    dh,0x80
+     8c5:	0f 85 84 00 00 00    	jne    94f <fmt.formatBuf__anon_7330+0x20f>
+     8cb:	80 e2 3f             	and    dl,0x3f
+     8ce:	80 e1 0f             	and    cl,0xf
+     8d1:	0f b6 e9             	movzx  ebp,cl
+     8d4:	0f b6 d2             	movzx  edx,dl
+     8d7:	c1 e5 0c             	shl    ebp,0xc
+     8da:	c1 e2 06             	shl    edx,0x6
+     8dd:	09 ea                	or     edx,ebp
+     8df:	81 fa 00 08 00 00    	cmp    edx,0x800
+     8e5:	72 68                	jb     94f <fmt.formatBuf__anon_7330+0x20f>
+     8e7:	81 e2 00 f8 00 00    	and    edx,0xf800
+     8ed:	81 fa 00 d8 00 00    	cmp    edx,0xd800
+     8f3:	0f 85 54 ff ff ff    	jne    84d <fmt.formatBuf__anon_7330+0x10d>
+     8f9:	eb 54                	jmp    94f <fmt.formatBuf__anon_7330+0x20f>
+     8fb:	89 ca                	mov    edx,ecx
+     8fd:	80 e2 f8             	and    dl,0xf8
+     900:	80 fa f0             	cmp    dl,0xf0
+     903:	0f 85 e9 03 00 00    	jne    cf2 <fmt.formatBuf__anon_7330+0x5b2>
+     909:	0f b6 54 2f 01       	movzx  edx,BYTE PTR [edi+ebp*1+0x1]
+     90e:	88 d6                	mov    dh,dl
+     910:	80 e6 c0             	and    dh,0xc0
+     913:	80 fe 80             	cmp    dh,0x80
+     916:	75 37                	jne    94f <fmt.formatBuf__anon_7330+0x20f>
+     918:	8a 74 2f 02          	mov    dh,BYTE PTR [edi+ebp*1+0x2]
+     91c:	80 e6 c0             	and    dh,0xc0
+     91f:	80 fe 80             	cmp    dh,0x80
+     922:	75 2b                	jne    94f <fmt.formatBuf__anon_7330+0x20f>
+     924:	8a 74 2f 03          	mov    dh,BYTE PTR [edi+ebp*1+0x3]
+     928:	80 e6 c0             	and    dh,0xc0
+     92b:	80 fe 80             	cmp    dh,0x80
+     92e:	75 1f                	jne    94f <fmt.formatBuf__anon_7330+0x20f>
+     930:	80 e2 30             	and    dl,0x30
+     933:	0f b6 e9             	movzx  ebp,cl
+     936:	0f b6 d2             	movzx  edx,dl
+     939:	c1 e5 1d             	shl    ebp,0x1d
+     93c:	c1 e2 17             	shl    edx,0x17
+     93f:	8d 94 15 00 00 00 78 	lea    edx,[ebp+edx*1+0x78000000]
+     946:	c1 fa 0b             	sar    edx,0xb
+     949:	0f 88 fe fe ff ff    	js     84d <fmt.formatBuf__anon_7330+0x10d>
+     94f:	8b 4c 24 10          	mov    ecx,DWORD PTR [esp+0x10]
+     953:	e8 9c 0c 00 00       	call   15f4 <heap.arena_allocator.ArenaAllocator.free+0x104>
+     958:	8b 4c 24 10          	mov    ecx,DWORD PTR [esp+0x10]
+     95c:	e8 9c 0c 00 00       	call   15fd <heap.arena_allocator.ArenaAllocator.free+0x10d>
+     961:	8b 5c 24 10          	mov    ebx,DWORD PTR [esp+0x10]
+     965:	89 d9                	mov    ecx,ebx
+     967:	e8 9c 0c 00 00       	call   1608 <heap.arena_allocator.ArenaAllocator.free+0x118>
+     96c:	8b 44 24 14          	mov    eax,DWORD PTR [esp+0x14]
+     970:	89 03                	mov    DWORD PTR [ebx],eax
+     972:	89 f0                	mov    eax,esi
+     974:	8b 4c 24 24          	mov    ecx,DWORD PTR [esp+0x24]
+     978:	31 ed                	xor    ebp,ebp
+     97a:	29 c1                	sub    ecx,eax
+     97c:	89 c8                	mov    eax,ecx
+     97e:	0f 42 c5             	cmovb  eax,ebp
+     981:	0f 87 cd 00 00 00    	ja     a54 <fmt.formatBuf__anon_7330+0x314>
+     987:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     98b:	8b 00                	mov    eax,DWORD PTR [eax]
+     98d:	89 44 24 14          	mov    DWORD PTR [esp+0x14],eax
+     991:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     998:	00 00 00 
+     99b:	0f 1f 44 00 00       	nop    DWORD PTR [eax+eax*1+0x0]
+     9a0:	39 f5                	cmp    ebp,esi
+     9a2:	0f 87 33 03 00 00    	ja     cdb <fmt.formatBuf__anon_7330+0x59b>
+     9a8:	89 f1                	mov    ecx,esi
+     9aa:	8b 54 24 10          	mov    edx,DWORD PTR [esp+0x10]
+     9ae:	8d 04 2f             	lea    eax,[edi+ebp*1]
+     9b1:	29 e9                	sub    ecx,ebp
+     9b3:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+     9b7:	89 4c 24 08          	mov    DWORD PTR [esp+0x8],ecx
+     9bb:	8b 4c 24 14          	mov    ecx,DWORD PTR [esp+0x14]
+     9bf:	89 0c 24             	mov    DWORD PTR [esp],ecx
+     9c2:	8d 4c 24 18          	lea    ecx,[esp+0x18]
+     9c6:	e8 75 fc ff ff       	call   640 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     9cb:	0f b7 5c 24 1c       	movzx  ebx,WORD PTR [esp+0x1c]
+     9d0:	66 85 db             	test   bx,bx
+     9d3:	0f 85 b5 02 00 00    	jne    c8e <fmt.formatBuf__anon_7330+0x54e>
+     9d9:	03 6c 24 18          	add    ebp,DWORD PTR [esp+0x18]
+     9dd:	0f 82 ca 02 00 00    	jb     cad <fmt.formatBuf__anon_7330+0x56d>
+     9e3:	39 f5                	cmp    ebp,esi
+     9e5:	75 b9                	jne    9a0 <fmt.formatBuf__anon_7330+0x260>
+     9e7:	e9 96 02 00 00       	jmp    c82 <fmt.formatBuf__anon_7330+0x542>
+     9ec:	85 f6                	test   esi,esi
+     9ee:	0f 84 8e 02 00 00    	je     c82 <fmt.formatBuf__anon_7330+0x542>
+     9f4:	8b 00                	mov    eax,DWORD PTR [eax]
+     9f6:	31 ed                	xor    ebp,ebp
+     9f8:	89 44 24 14          	mov    DWORD PTR [esp+0x14],eax
+     9fc:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+     a00:	39 f5                	cmp    ebp,esi
+     a02:	0f 87 d3 02 00 00    	ja     cdb <fmt.formatBuf__anon_7330+0x59b>
+     a08:	89 f1                	mov    ecx,esi
+     a0a:	8b 54 24 10          	mov    edx,DWORD PTR [esp+0x10]
+     a0e:	8d 04 2f             	lea    eax,[edi+ebp*1]
+     a11:	29 e9                	sub    ecx,ebp
+     a13:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+     a17:	89 4c 24 08          	mov    DWORD PTR [esp+0x8],ecx
+     a1b:	8b 4c 24 14          	mov    ecx,DWORD PTR [esp+0x14]
+     a1f:	89 0c 24             	mov    DWORD PTR [esp],ecx
+     a22:	8d 4c 24 18          	lea    ecx,[esp+0x18]
+     a26:	e8 15 fc ff ff       	call   640 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     a2b:	0f b7 5c 24 1c       	movzx  ebx,WORD PTR [esp+0x1c]
+     a30:	66 85 db             	test   bx,bx
+     a33:	0f 85 55 02 00 00    	jne    c8e <fmt.formatBuf__anon_7330+0x54e>
+     a39:	03 6c 24 18          	add    ebp,DWORD PTR [esp+0x18]
+     a3d:	0f 82 6a 02 00 00    	jb     cad <fmt.formatBuf__anon_7330+0x56d>
+     a43:	39 f5                	cmp    ebp,esi
+     a45:	75 b9                	jne    a00 <fmt.formatBuf__anon_7330+0x2c0>
+     a47:	e9 36 02 00 00       	jmp    c82 <fmt.formatBuf__anon_7330+0x542>
+     a4c:	85 c0                	test   eax,eax
+     a4e:	0f 84 2e 02 00 00    	je     c82 <fmt.formatBuf__anon_7330+0x542>
+     a54:	8b 4c 24 64          	mov    ecx,DWORD PTR [esp+0x64]
+     a58:	89 44 24 24          	mov    DWORD PTR [esp+0x24],eax
+     a5c:	0f b6 41 10          	movzx  eax,BYTE PTR [ecx+0x10]
+     a60:	85 c0                	test   eax,eax
+     a62:	0f 84 b4 00 00 00    	je     b1c <fmt.formatBuf__anon_7330+0x3dc>
+     a68:	8b 6c 24 10          	mov    ebp,DWORD PTR [esp+0x10]
+     a6c:	83 f8 01             	cmp    eax,0x1
+     a6f:	0f 84 3e 01 00 00    	je     bb3 <fmt.formatBuf__anon_7330+0x473>
+     a75:	83 f8 02             	cmp    eax,0x2
+     a78:	0f 85 8b 02 00 00    	jne    d09 <fmt.formatBuf__anon_7330+0x5c9>
+     a7e:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     a82:	8b 4c 24 24          	mov    ecx,DWORD PTR [esp+0x24]
+     a86:	8d 54 24 40          	lea    edx,[esp+0x40]
+     a8a:	8b 00                	mov    eax,DWORD PTR [eax]
+     a8c:	89 44 24 40          	mov    DWORD PTR [esp+0x40],eax
+     a90:	8b 44 24 64          	mov    eax,DWORD PTR [esp+0x64]
+     a94:	0f b6 40 11          	movzx  eax,BYTE PTR [eax+0x11]
+     a98:	89 4c 24 04          	mov    DWORD PTR [esp+0x4],ecx
+     a9c:	89 e9                	mov    ecx,ebp
+     a9e:	89 04 24             	mov    DWORD PTR [esp],eax
+     aa1:	e8 1a f9 ff ff       	call   3c0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>
+     aa6:	66 85 c0             	test   ax,ax
+     aa9:	0f 85 f3 01 00 00    	jne    ca2 <fmt.formatBuf__anon_7330+0x562>
+     aaf:	85 f6                	test   esi,esi
+     ab1:	0f 84 cb 01 00 00    	je     c82 <fmt.formatBuf__anon_7330+0x542>
+     ab7:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     abb:	31 ed                	xor    ebp,ebp
+     abd:	8b 00                	mov    eax,DWORD PTR [eax]
+     abf:	89 44 24 14          	mov    DWORD PTR [esp+0x14],eax
+     ac3:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     aca:	00 00 00 
+     acd:	0f 1f 00             	nop    DWORD PTR [eax]
+     ad0:	39 f5                	cmp    ebp,esi
+     ad2:	0f 87 03 02 00 00    	ja     cdb <fmt.formatBuf__anon_7330+0x59b>
+     ad8:	89 f1                	mov    ecx,esi
+     ada:	8b 54 24 10          	mov    edx,DWORD PTR [esp+0x10]
+     ade:	8d 04 2f             	lea    eax,[edi+ebp*1]
+     ae1:	29 e9                	sub    ecx,ebp
+     ae3:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+     ae7:	89 4c 24 08          	mov    DWORD PTR [esp+0x8],ecx
+     aeb:	8b 4c 24 14          	mov    ecx,DWORD PTR [esp+0x14]
+     aef:	89 0c 24             	mov    DWORD PTR [esp],ecx
+     af2:	8d 4c 24 18          	lea    ecx,[esp+0x18]
+     af6:	e8 45 fb ff ff       	call   640 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     afb:	0f b7 5c 24 1c       	movzx  ebx,WORD PTR [esp+0x1c]
+     b00:	66 85 db             	test   bx,bx
+     b03:	0f 85 85 01 00 00    	jne    c8e <fmt.formatBuf__anon_7330+0x54e>
+     b09:	03 6c 24 18          	add    ebp,DWORD PTR [esp+0x18]
+     b0d:	0f 82 9a 01 00 00    	jb     cad <fmt.formatBuf__anon_7330+0x56d>
+     b13:	39 f5                	cmp    ebp,esi
+     b15:	75 b9                	jne    ad0 <fmt.formatBuf__anon_7330+0x390>
+     b17:	e9 66 01 00 00       	jmp    c82 <fmt.formatBuf__anon_7330+0x542>
+     b1c:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     b20:	85 f6                	test   esi,esi
+     b22:	8b 10                	mov    edx,DWORD PTR [eax]
+     b24:	74 5b                	je     b81 <fmt.formatBuf__anon_7330+0x441>
+     b26:	31 ed                	xor    ebp,ebp
+     b28:	89 54 24 14          	mov    DWORD PTR [esp+0x14],edx
+     b2c:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+     b30:	39 f5                	cmp    ebp,esi
+     b32:	0f 87 a3 01 00 00    	ja     cdb <fmt.formatBuf__anon_7330+0x59b>
+     b38:	89 14 24             	mov    DWORD PTR [esp],edx
+     b3b:	8b 54 24 10          	mov    edx,DWORD PTR [esp+0x10]
+     b3f:	89 f1                	mov    ecx,esi
+     b41:	8d 04 2f             	lea    eax,[edi+ebp*1]
+     b44:	29 e9                	sub    ecx,ebp
+     b46:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+     b4a:	89 4c 24 08          	mov    DWORD PTR [esp+0x8],ecx
+     b4e:	8d 4c 24 18          	lea    ecx,[esp+0x18]
+     b52:	e8 e9 fa ff ff       	call   640 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     b57:	0f b7 5c 24 1c       	movzx  ebx,WORD PTR [esp+0x1c]
+     b5c:	66 85 db             	test   bx,bx
+     b5f:	0f 85 29 01 00 00    	jne    c8e <fmt.formatBuf__anon_7330+0x54e>
+     b65:	03 6c 24 18          	add    ebp,DWORD PTR [esp+0x18]
+     b69:	0f 82 3e 01 00 00    	jb     cad <fmt.formatBuf__anon_7330+0x56d>
+     b6f:	8b 54 24 14          	mov    edx,DWORD PTR [esp+0x14]
+     b73:	39 f5                	cmp    ebp,esi
+     b75:	75 b9                	jne    b30 <fmt.formatBuf__anon_7330+0x3f0>
+     b77:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     b7b:	8b 4c 24 64          	mov    ecx,DWORD PTR [esp+0x64]
+     b7f:	8b 10                	mov    edx,DWORD PTR [eax]
+     b81:	89 54 24 28          	mov    DWORD PTR [esp+0x28],edx
+     b85:	8b 74 24 10          	mov    esi,DWORD PTR [esp+0x10]
+     b89:	8d 54 24 28          	lea    edx,[esp+0x28]
+     b8d:	0f b6 41 11          	movzx  eax,BYTE PTR [ecx+0x11]
+     b91:	8b 4c 24 24          	mov    ecx,DWORD PTR [esp+0x24]
+     b95:	89 4c 24 04          	mov    DWORD PTR [esp+0x4],ecx
+     b99:	89 f1                	mov    ecx,esi
+     b9b:	89 04 24             	mov    DWORD PTR [esp],eax
+     b9e:	e8 1d f8 ff ff       	call   3c0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>
+     ba3:	66 85 c0             	test   ax,ax
+     ba6:	0f 84 d6 00 00 00    	je     c82 <fmt.formatBuf__anon_7330+0x542>
+     bac:	89 c3                	mov    ebx,eax
+     bae:	e9 e6 00 00 00       	jmp    c99 <fmt.formatBuf__anon_7330+0x559>
+     bb3:	8b 44 24 24          	mov    eax,DWORD PTR [esp+0x24]
+     bb7:	89 c1                	mov    ecx,eax
+     bb9:	41                   	inc    ecx
+     bba:	89 4c 24 48          	mov    DWORD PTR [esp+0x48],ecx
+     bbe:	0f 84 e9 00 00 00    	je     cad <fmt.formatBuf__anon_7330+0x56d>
+     bc4:	d1 e8                	shr    eax,1
+     bc6:	8d 54 24 30          	lea    edx,[esp+0x30]
+     bca:	89 c1                	mov    ecx,eax
+     bcc:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     bd0:	8b 00                	mov    eax,DWORD PTR [eax]
+     bd2:	89 44 24 30          	mov    DWORD PTR [esp+0x30],eax
+     bd6:	8b 44 24 64          	mov    eax,DWORD PTR [esp+0x64]
+     bda:	0f b6 40 11          	movzx  eax,BYTE PTR [eax+0x11]
+     bde:	89 4c 24 04          	mov    DWORD PTR [esp+0x4],ecx
+     be2:	89 e9                	mov    ecx,ebp
+     be4:	89 04 24             	mov    DWORD PTR [esp],eax
+     be7:	e8 d4 f7 ff ff       	call   3c0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>
+     bec:	66 85 c0             	test   ax,ax
+     bef:	0f 85 ad 00 00 00    	jne    ca2 <fmt.formatBuf__anon_7330+0x562>
+     bf5:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     bf9:	85 f6                	test   esi,esi
+     bfb:	8b 10                	mov    edx,DWORD PTR [eax]
+     bfd:	74 5a                	je     c59 <fmt.formatBuf__anon_7330+0x519>
+     bff:	31 ed                	xor    ebp,ebp
+     c01:	89 54 24 14          	mov    DWORD PTR [esp+0x14],edx
+     c05:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     c0c:	00 00 00 
+     c0f:	90                   	nop
+     c10:	39 f5                	cmp    ebp,esi
+     c12:	0f 87 c3 00 00 00    	ja     cdb <fmt.formatBuf__anon_7330+0x59b>
+     c18:	89 14 24             	mov    DWORD PTR [esp],edx
+     c1b:	8b 54 24 10          	mov    edx,DWORD PTR [esp+0x10]
+     c1f:	89 f1                	mov    ecx,esi
+     c21:	8d 04 2f             	lea    eax,[edi+ebp*1]
+     c24:	29 e9                	sub    ecx,ebp
+     c26:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+     c2a:	89 4c 24 08          	mov    DWORD PTR [esp+0x8],ecx
+     c2e:	8d 4c 24 18          	lea    ecx,[esp+0x18]
+     c32:	e8 09 fa ff ff       	call   640 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).write>
+     c37:	0f b7 5c 24 1c       	movzx  ebx,WORD PTR [esp+0x1c]
+     c3c:	66 85 db             	test   bx,bx
+     c3f:	75 4d                	jne    c8e <fmt.formatBuf__anon_7330+0x54e>
+     c41:	03 6c 24 18          	add    ebp,DWORD PTR [esp+0x18]
+     c45:	72 66                	jb     cad <fmt.formatBuf__anon_7330+0x56d>
+     c47:	8b 54 24 14          	mov    edx,DWORD PTR [esp+0x14]
+     c4b:	39 f5                	cmp    ebp,esi
+     c4d:	75 c1                	jne    c10 <fmt.formatBuf__anon_7330+0x4d0>
+     c4f:	8b 44 24 68          	mov    eax,DWORD PTR [esp+0x68]
+     c53:	8b 6c 24 10          	mov    ebp,DWORD PTR [esp+0x10]
+     c57:	8b 10                	mov    edx,DWORD PTR [eax]
+     c59:	8b 44 24 64          	mov    eax,DWORD PTR [esp+0x64]
+     c5d:	8b 4c 24 48          	mov    ecx,DWORD PTR [esp+0x48]
+     c61:	89 54 24 38          	mov    DWORD PTR [esp+0x38],edx
+     c65:	8d 54 24 38          	lea    edx,[esp+0x38]
+     c69:	0f b6 40 11          	movzx  eax,BYTE PTR [eax+0x11]
+     c6d:	d1 e9                	shr    ecx,1
+     c6f:	89 4c 24 04          	mov    DWORD PTR [esp+0x4],ecx
+     c73:	89 e9                	mov    ecx,ebp
+     c75:	89 04 24             	mov    DWORD PTR [esp],eax
+     c78:	e8 43 f7 ff ff       	call   3c0 <io.writer.Writer(fs.file.File,error{DiskQuota,FileTooBig,InputOutput,NoSpaceLeft,DeviceBusy,InvalidArgument,AccessDenied,BrokenPipe,SystemResources,OperationAborted,NotOpenForWriting,LockViolation,WouldBlock,ConnectionResetByPeer,Unexpected},(function 'write')).writeByteNTimes>
+     c7d:	66 85 c0             	test   ax,ax
+     c80:	75 20                	jne    ca2 <fmt.formatBuf__anon_7330+0x562>
+     c82:	31 db                	xor    ebx,ebx
+     c84:	89 d8                	mov    eax,ebx
+     c86:	83 c4 4c             	add    esp,0x4c
+     c89:	5e                   	pop    esi
+     c8a:	5f                   	pop    edi
+     c8b:	5b                   	pop    ebx
+     c8c:	5d                   	pop    ebp
+     c8d:	c3                   	ret
+     c8e:	8b 74 24 10          	mov    esi,DWORD PTR [esp+0x10]
+     c92:	89 f1                	mov    ecx,esi
+     c94:	e8 9c 0c 00 00       	call   1935 <heap.arena_allocator.ArenaAllocator.free+0x445>
+     c99:	89 f1                	mov    ecx,esi
+     c9b:	e8 9c 0c 00 00       	call   193c <heap.arena_allocator.ArenaAllocator.free+0x44c>
+     ca0:	eb e2                	jmp    c84 <fmt.formatBuf__anon_7330+0x544>
+     ca2:	89 e9                	mov    ecx,ebp
+     ca4:	89 c3                	mov    ebx,eax
+     ca6:	e8 9c 0c 00 00       	call   1947 <heap.arena_allocator.ArenaAllocator.free+0x457>
+     cab:	eb d7                	jmp    c84 <fmt.formatBuf__anon_7330+0x544>
+     cad:	b9 25 00 00 00       	mov    ecx,0x25
+     cb2:	ba 10 00 00 00       	mov    edx,0x10
+     cb7:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     cbe:	00 
+     cbf:	e8 fc ff ff ff       	call   cc0 <fmt.formatBuf__anon_7330+0x580>
+     cc4:	b9 66 00 00 00       	mov    ecx,0x66
+     cc9:	ba 13 00 00 00       	mov    edx,0x13
+     cce:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     cd5:	00 
+     cd6:	e8 fc ff ff ff       	call   cd7 <fmt.formatBuf__anon_7330+0x597>
+     cdb:	b9 00 00 00 00       	mov    ecx,0x0
+     ce0:	ba 24 00 00 00       	mov    edx,0x24
+     ce5:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     cec:	00 
+     ced:	e8 fc ff ff ff       	call   cee <fmt.formatBuf__anon_7330+0x5ae>
+     cf2:	b9 e1 00 00 00       	mov    ecx,0xe1
+     cf7:	ba 18 00 00 00       	mov    edx,0x18
+     cfc:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     d03:	00 
+     d04:	e8 fc ff ff ff       	call   d05 <fmt.formatBuf__anon_7330+0x5c5>
+     d09:	b9 c9 00 00 00       	mov    ecx,0xc9
+     d0e:	ba 17 00 00 00       	mov    edx,0x17
+     d13:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     d1a:	00 
+     d1b:	e8 fc ff ff ff       	call   d1c <fmt.formatBuf__anon_7330+0x5dc>
+
+00000d20 <os.linux.exit_group>:
+     d20:	53                   	push   ebx
+     d21:	83 ec 08             	sub    esp,0x8
+     d24:	b8 fc 00 00 00       	mov    eax,0xfc
+     d29:	bb 7f 00 00 00       	mov    ebx,0x7f
+     d2e:	cd 80                	int    0x80
+     d30:	b9 e1 00 00 00       	mov    ecx,0xe1
+     d35:	ba 18 00 00 00       	mov    edx,0x18
+     d3a:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     d41:	00 
+     d42:	e8 fc ff ff ff       	call   d43 <os.linux.exit_group+0x23>
+     d47:	66 0f 1f 84 00 00 00 	nop    WORD PTR [eax+eax*1+0x0]
+     d4e:	00 00 
+
+00000d50 <debug.StackIterator.next_internal>:
+     d50:	55                   	push   ebp
+     d51:	53                   	push   ebx
+     d52:	57                   	push   edi
+     d53:	56                   	push   esi
+     d54:	81 ec 2c 01 00 00    	sub    esp,0x12c
+     d5a:	8d 44 24 2c          	lea    eax,[esp+0x2c]
+     d5e:	89 d7                	mov    edi,edx
+     d60:	89 ce                	mov    esi,ecx
+     d62:	89 44 24 14          	mov    DWORD PTR [esp+0x14],eax
+     d66:	c7 44 24 18 20 00 00 	mov    DWORD PTR [esp+0x18],0x20
+     d6d:	00 
+     d6e:	c7 44 24 10 00 00 00 	mov    DWORD PTR [esp+0x10],0x0
+     d75:	00 
+     d76:	80 ba a4 00 00 00 00 	cmp    BYTE PTR [edx+0xa4],0x0
+     d7d:	74 0d                	je     d8c <debug.StackIterator.next_internal+0x3c>
+     d7f:	80 bf a2 00 00 00 00 	cmp    BYTE PTR [edi+0xa2],0x0
+     d86:	0f 84 88 00 00 00    	je     e14 <debug.StackIterator.next_internal+0xc4>
+     d8c:	8b 4f 08             	mov    ecx,DWORD PTR [edi+0x8]
+     d8f:	85 c9                	test   ecx,ecx
+     d91:	0f 84 83 00 00 00    	je     e1a <debug.StackIterator.next_internal+0xca>
+     d97:	f6 c1 03             	test   cl,0x3
+     d9a:	75 7e                	jne    e1a <debug.StackIterator.next_internal+0xca>
+     d9c:	89 cb                	mov    ebx,ecx
+     d9e:	8d 84 24 ac 00 00 00 	lea    eax,[esp+0xac]
+     da5:	81 e3 00 f0 ff ff    	and    ebx,0xfffff000
+     dab:	89 44 24 24          	mov    DWORD PTR [esp+0x24],eax
+     daf:	c7 44 24 28 20 00 00 	mov    DWORD PTR [esp+0x28],0x20
+     db6:	00 
+     db7:	c7 44 24 20 00 00 00 	mov    DWORD PTR [esp+0x20],0x0
+     dbe:	00 
+     dbf:	74 59                	je     e1a <debug.StackIterator.next_internal+0xca>
+     dc1:	89 cd                	mov    ebp,ecx
+     dc3:	b8 90 00 00 00       	mov    eax,0x90
+     dc8:	b9 00 10 00 00       	mov    ecx,0x1000
+     dcd:	ba 01 00 00 00       	mov    edx,0x1
+     dd2:	cd 80                	int    0x80
+     dd4:	89 c2                	mov    edx,eax
+     dd6:	f7 da                	neg    edx
+     dd8:	31 c9                	xor    ecx,ecx
+     dda:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+     ddf:	0f 43 ca             	cmovae ecx,edx
+     de2:	66 85 c9             	test   cx,cx
+     de5:	75 4b                	jne    e32 <debug.StackIterator.next_internal+0xe2>
+     de7:	89 e9                	mov    ecx,ebp
+     de9:	f6 c1 03             	test   cl,0x3
+     dec:	0f 85 8f 00 00 00    	jne    e81 <debug.StackIterator.next_internal+0x131>
+     df2:	8b 01                	mov    eax,DWORD PTR [ecx]
+     df4:	85 c0                	test   eax,eax
+     df6:	74 05                	je     dfd <debug.StackIterator.next_internal+0xad>
+     df8:	3b 47 08             	cmp    eax,DWORD PTR [edi+0x8]
+     dfb:	72 1d                	jb     e1a <debug.StackIterator.next_internal+0xca>
+     dfd:	83 c1 04             	add    ecx,0x4
+     e00:	72 43                	jb     e45 <debug.StackIterator.next_internal+0xf5>
+     e02:	f6 c1 03             	test   cl,0x3
+     e05:	75 7a                	jne    e81 <debug.StackIterator.next_internal+0x131>
+     e07:	8b 09                	mov    ecx,DWORD PTR [ecx]
+     e09:	89 47 08             	mov    DWORD PTR [edi+0x8],eax
+     e0c:	89 0e                	mov    DWORD PTR [esi],ecx
+     e0e:	c6 46 04 01          	mov    BYTE PTR [esi+0x4],0x1
+     e12:	eb 13                	jmp    e27 <debug.StackIterator.next_internal+0xd7>
+     e14:	83 7f 20 00          	cmp    DWORD PTR [edi+0x20],0x0
+     e18:	75 36                	jne    e50 <debug.StackIterator.next_internal+0x100>
+     e1a:	c7 46 04 00 00 00 00 	mov    DWORD PTR [esi+0x4],0x0
+     e21:	c7 06 00 00 00 00    	mov    DWORD PTR [esi],0x0
+     e27:	81 c4 2c 01 00 00    	add    esp,0x12c
+     e2d:	5e                   	pop    esi
+     e2e:	5f                   	pop    edi
+     e2f:	5b                   	pop    ebx
+     e30:	5d                   	pop    ebp
+     e31:	c3                   	ret
+     e32:	0f b7 c1             	movzx  eax,cx
+     e35:	83 f8 0c             	cmp    eax,0xc
+     e38:	75 2d                	jne    e67 <debug.StackIterator.next_internal+0x117>
+     e3a:	8d 4c 24 20          	lea    ecx,[esp+0x20]
+     e3e:	e8 9c 0c 00 00       	call   1adf <heap.arena_allocator.ArenaAllocator.free+0x5ef>
+     e43:	eb d5                	jmp    e1a <debug.StackIterator.next_internal+0xca>
+     e45:	8d 4c 24 10          	lea    ecx,[esp+0x10]
+     e49:	e8 9c 0c 00 00       	call   1aea <heap.arena_allocator.ArenaAllocator.free+0x5fa>
+     e4e:	eb ca                	jmp    e1a <debug.StackIterator.next_internal+0xca>
+     e50:	b9 25 00 00 00       	mov    ecx,0x25
+     e55:	ba 10 00 00 00       	mov    edx,0x10
+     e5a:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     e61:	00 
+     e62:	e8 fc ff ff ff       	call   e63 <debug.StackIterator.next_internal+0x113>
+     e67:	b9 e1 00 00 00       	mov    ecx,0xe1
+     e6c:	ba 18 00 00 00       	mov    edx,0x18
+     e71:	83 f8 16             	cmp    eax,0x16
+     e74:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     e7b:	00 
+     e7c:	e8 fc ff ff ff       	call   e7d <debug.StackIterator.next_internal+0x12d>
+     e81:	b9 36 00 00 00       	mov    ecx,0x36
+     e86:	ba 13 00 00 00       	mov    edx,0x13
+     e8b:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     e92:	00 
+     e93:	e8 fc ff ff ff       	call   e94 <debug.StackIterator.next_internal+0x144>
+     e98:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [eax+eax*1+0x0]
+     e9f:	00 
+
+00000ea0 <os.linux.x86.restore_rt>:
+     ea0:	b8 ad 00 00 00       	mov    eax,0xad
+     ea5:	cd 80                	int    0x80
+     ea7:	0f 0b                	ud2
+     ea9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [eax+0x0]
+
+00000eb0 <os.linux.x86.restore>:
+     eb0:	b8 77 00 00 00       	mov    eax,0x77
+     eb5:	cd 80                	int    0x80
+     eb7:	0f 0b                	ud2
+     eb9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [eax+0x0]
+
+00000ec0 <heap.PageAllocator.alloc>:
+     ec0:	53                   	push   ebx
+     ec1:	57                   	push   edi
+     ec2:	56                   	push   esi
+     ec3:	81 ec c0 00 00 00    	sub    esp,0xc0
+     ec9:	8d 44 24 40          	lea    eax,[esp+0x40]
+     ecd:	85 d2                	test   edx,edx
+     ecf:	89 44 24 24          	mov    DWORD PTR [esp+0x24],eax
+     ed3:	c7 44 24 28 20 00 00 	mov    DWORD PTR [esp+0x28],0x20
+     eda:	00 
+     edb:	c7 44 24 20 00 00 00 	mov    DWORD PTR [esp+0x20],0x0
+     ee2:	00 
+     ee3:	74 7e                	je     f63 <heap.PageAllocator.alloc+0xa3>
+     ee5:	31 ff                	xor    edi,edi
+     ee7:	89 d6                	mov    esi,edx
+     ee9:	81 fa 01 f0 ff ff    	cmp    edx,0xfffff001
+     eef:	73 66                	jae    f57 <heap.PageAllocator.alloc+0x97>
+     ef1:	8b 1d 48 00 00 00    	mov    ebx,DWORD PTR ds:0x48
+     ef7:	81 c6 ff 0f 00 00    	add    esi,0xfff
+     efd:	8d 4c 24 30          	lea    ecx,[esp+0x30]
+     f01:	8d 54 24 20          	lea    edx,[esp+0x20]
+     f05:	c7 44 24 10 ff ff ff 	mov    DWORD PTR [esp+0x10],0xffffffff
+     f0c:	ff 
+     f0d:	c7 44 24 0c 22 00 00 	mov    DWORD PTR [esp+0xc],0x22
+     f14:	00 
+     f15:	c7 44 24 08 03 00 00 	mov    DWORD PTR [esp+0x8],0x3
+     f1c:	00 
+     f1d:	81 e6 00 f0 ff ff    	and    esi,0xfffff000
+     f23:	89 74 24 04          	mov    DWORD PTR [esp+0x4],esi
+     f27:	89 1c 24             	mov    DWORD PTR [esp],ebx
+     f2a:	e8 21 f3 ff ff       	call   250 <os.mmap>
+     f2f:	66 83 7c 24 38 00    	cmp    WORD PTR [esp+0x38],0x0
+     f35:	75 20                	jne    f57 <heap.PageAllocator.alloc+0x97>
+     f37:	8b 7c 24 30          	mov    edi,DWORD PTR [esp+0x30]
+     f3b:	f7 c7 ff 0f 00 00    	test   edi,0xfff
+     f41:	75 20                	jne    f63 <heap.PageAllocator.alloc+0xa3>
+     f43:	01 fe                	add    esi,edi
+     f45:	f7 c6 ff 0f 00 00    	test   esi,0xfff
+     f4b:	75 2d                	jne    f7a <heap.PageAllocator.alloc+0xba>
+     f4d:	89 d8                	mov    eax,ebx
+     f4f:	f0 0f b1 35 48 00 00 	lock cmpxchg DWORD PTR ds:0x48,esi
+     f56:	00 
+     f57:	89 f8                	mov    eax,edi
+     f59:	81 c4 c0 00 00 00    	add    esp,0xc0
+     f5f:	5e                   	pop    esi
+     f60:	5f                   	pop    edi
+     f61:	5b                   	pop    ebx
+     f62:	c3                   	ret
+     f63:	b9 e1 00 00 00       	mov    ecx,0xe1
+     f68:	ba 18 00 00 00       	mov    edx,0x18
+     f6d:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     f74:	00 
+     f75:	e8 fc ff ff ff       	call   f76 <heap.PageAllocator.alloc+0xb6>
+     f7a:	b9 36 00 00 00       	mov    ecx,0x36
+     f7f:	ba 13 00 00 00       	mov    edx,0x13
+     f84:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+     f8b:	00 
+     f8c:	e8 fc ff ff ff       	call   f8d <heap.PageAllocator.alloc+0xcd>
+     f91:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+     f98:	00 00 00 
+     f9b:	0f 1f 44 00 00       	nop    DWORD PTR [eax+eax*1+0x0]
+
+00000fa0 <heap.PageAllocator.resize>:
+     fa0:	53                   	push   ebx
+     fa1:	56                   	push   esi
+     fa2:	83 ec 14             	sub    esp,0x14
+     fa5:	b8 ff 0f 00 00       	mov    eax,0xfff
+     faa:	03 44 24 28          	add    eax,DWORD PTR [esp+0x28]
+     fae:	72 73                	jb     1023 <heap.PageAllocator.resize+0x83>
+     fb0:	8b 4c 24 20          	mov    ecx,DWORD PTR [esp+0x20]
+     fb4:	81 c1 ff 0f 00 00    	add    ecx,0xfff
+     fba:	72 67                	jb     1023 <heap.PageAllocator.resize+0x83>
+     fbc:	25 00 f0 ff ff       	and    eax,0xfffff000
+     fc1:	81 e1 00 f0 ff ff    	and    ecx,0xfffff000
+     fc7:	89 d3                	mov    ebx,edx
+     fc9:	b2 01                	mov    dl,0x1
+     fcb:	39 c1                	cmp    ecx,eax
+     fcd:	74 4c                	je     101b <heap.PageAllocator.resize+0x7b>
+     fcf:	29 c1                	sub    ecx,eax
+     fd1:	76 46                	jbe    1019 <heap.PageAllocator.resize+0x79>
+     fd3:	01 c3                	add    ebx,eax
+     fd5:	f7 c3 ff 0f 00 00    	test   ebx,0xfff
+     fdb:	75 5d                	jne    103a <heap.PageAllocator.resize+0x9a>
+     fdd:	b8 5b 00 00 00       	mov    eax,0x5b
+     fe2:	cd 80                	int    0x80
+     fe4:	89 c6                	mov    esi,eax
+     fe6:	31 c9                	xor    ecx,ecx
+     fe8:	f7 de                	neg    esi
+     fea:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+     fef:	0f 43 ce             	cmovae ecx,esi
+     ff2:	66 85 c9             	test   cx,cx
+     ff5:	74 24                	je     101b <heap.PageAllocator.resize+0x7b>
+     ff7:	0f b7 c1             	movzx  eax,cx
+     ffa:	83 f8 0c             	cmp    eax,0xc
+     ffd:	74 03                	je     1002 <heap.PageAllocator.resize+0x62>
+     fff:	83 f8 16             	cmp    eax,0x16
+    1002:	b9 e1 00 00 00       	mov    ecx,0xe1
+    1007:	ba 18 00 00 00       	mov    edx,0x18
+    100c:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    1013:	00 
+    1014:	e8 fc ff ff ff       	call   1015 <heap.PageAllocator.resize+0x75>
+    1019:	31 d2                	xor    edx,edx
+    101b:	89 d0                	mov    eax,edx
+    101d:	83 c4 14             	add    esp,0x14
+    1020:	5e                   	pop    esi
+    1021:	5b                   	pop    ebx
+    1022:	c3                   	ret
+    1023:	b9 25 00 00 00       	mov    ecx,0x25
+    1028:	ba 10 00 00 00       	mov    edx,0x10
+    102d:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    1034:	00 
+    1035:	e8 fc ff ff ff       	call   1036 <heap.PageAllocator.resize+0x96>
+    103a:	b9 36 00 00 00       	mov    ecx,0x36
+    103f:	ba 13 00 00 00       	mov    edx,0x13
+    1044:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    104b:	00 
+    104c:	e8 fc ff ff ff       	call   104d <heap.PageAllocator.resize+0xad>
+    1051:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+    1058:	00 00 00 
+    105b:	0f 1f 44 00 00       	nop    DWORD PTR [eax+eax*1+0x0]
+
+00001060 <heap.PageAllocator.free>:
+    1060:	53                   	push   ebx
+    1061:	83 ec 08             	sub    esp,0x8
+    1064:	b9 ff 0f 00 00       	mov    ecx,0xfff
+    1069:	03 4c 24 10          	add    ecx,DWORD PTR [esp+0x10]
+    106d:	72 55                	jb     10c4 <heap.PageAllocator.free+0x64>
+    106f:	81 e1 00 f0 ff ff    	and    ecx,0xfffff000
+    1075:	f7 c2 ff 0f 00 00    	test   edx,0xfff
+    107b:	74 04                	je     1081 <heap.PageAllocator.free+0x21>
+    107d:	85 c9                	test   ecx,ecx
+    107f:	75 5a                	jne    10db <heap.PageAllocator.free+0x7b>
+    1081:	b8 5b 00 00 00       	mov    eax,0x5b
+    1086:	89 d3                	mov    ebx,edx
+    1088:	cd 80                	int    0x80
+    108a:	89 c2                	mov    edx,eax
+    108c:	31 c9                	xor    ecx,ecx
+    108e:	f7 da                	neg    edx
+    1090:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+    1095:	0f 43 ca             	cmovae ecx,edx
+    1098:	66 85 c9             	test   cx,cx
+    109b:	75 05                	jne    10a2 <heap.PageAllocator.free+0x42>
+    109d:	83 c4 08             	add    esp,0x8
+    10a0:	5b                   	pop    ebx
+    10a1:	c3                   	ret
+    10a2:	0f b7 c1             	movzx  eax,cx
+    10a5:	83 f8 0c             	cmp    eax,0xc
+    10a8:	74 03                	je     10ad <heap.PageAllocator.free+0x4d>
+    10aa:	83 f8 16             	cmp    eax,0x16
+    10ad:	b9 e1 00 00 00       	mov    ecx,0xe1
+    10b2:	ba 18 00 00 00       	mov    edx,0x18
+    10b7:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    10be:	00 
+    10bf:	e8 fc ff ff ff       	call   10c0 <heap.PageAllocator.free+0x60>
+    10c4:	b9 25 00 00 00       	mov    ecx,0x25
+    10c9:	ba 10 00 00 00       	mov    edx,0x10
+    10ce:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    10d5:	00 
+    10d6:	e8 fc ff ff ff       	call   10d7 <heap.PageAllocator.free+0x77>
+    10db:	b9 36 00 00 00       	mov    ecx,0x36
+    10e0:	ba 13 00 00 00       	mov    edx,0x13
+    10e5:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    10ec:	00 
+    10ed:	e8 fc ff ff ff       	call   10ee <heap.PageAllocator.free+0x8e>
+    10f2:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+    10f9:	00 00 00 
+    10fc:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+
+00001100 <heap.arena_allocator.ArenaAllocator.alloc>:
+    1100:	55                   	push   ebp
+    1101:	53                   	push   ebx
+    1102:	57                   	push   edi
+    1103:	56                   	push   esi
+    1104:	83 ec 3c             	sub    esp,0x3c
+    1107:	89 c8                	mov    eax,ecx
+    1109:	89 54 24 20          	mov    DWORD PTR [esp+0x20],edx
+    110d:	a8 03                	test   al,0x3
+    110f:	0f 85 5f 02 00 00    	jne    1374 <heap.arena_allocator.ArenaAllocator.alloc+0x274>
+    1115:	0f b6 4c 24 50       	movzx  ecx,BYTE PTR [esp+0x50]
+    111a:	80 f9 20             	cmp    cl,0x20
+    111d:	0f 83 68 02 00 00    	jae    138b <heap.arena_allocator.ArenaAllocator.alloc+0x28b>
+    1123:	89 44 24 1c          	mov    DWORD PTR [esp+0x1c],eax
+    1127:	8b 40 08             	mov    eax,DWORD PTR [eax+0x8]
+    112a:	ba 01 00 00 00       	mov    edx,0x1
+    112f:	d3 e2                	shl    edx,cl
+    1131:	89 54 24 28          	mov    DWORD PTR [esp+0x28],edx
+    1135:	85 c0                	test   eax,eax
+    1137:	75 26                	jne    115f <heap.arena_allocator.ArenaAllocator.alloc+0x5f>
+    1139:	8b 44 24 20          	mov    eax,DWORD PTR [esp+0x20]
+    113d:	03 44 24 28          	add    eax,DWORD PTR [esp+0x28]
+    1141:	0f 82 3f 01 00 00    	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    1147:	8b 4c 24 1c          	mov    ecx,DWORD PTR [esp+0x1c]
+    114b:	31 d2                	xor    edx,edx
+    114d:	89 04 24             	mov    DWORD PTR [esp],eax
+    1150:	31 db                	xor    ebx,ebx
+    1152:	e8 59 02 00 00       	call   13b0 <heap.arena_allocator.ArenaAllocator.createNode>
+    1157:	85 c0                	test   eax,eax
+    1159:	0f 84 f4 01 00 00    	je     1353 <heap.arena_allocator.ArenaAllocator.alloc+0x253>
+    115f:	8b 48 04             	mov    ecx,DWORD PTR [eax+0x4]
+    1162:	8b 7c 24 1c          	mov    edi,DWORD PTR [esp+0x1c]
+    1166:	83 f9 08             	cmp    ecx,0x8
+    1169:	0f 82 ee 01 00 00    	jb     135d <heap.arena_allocator.ArenaAllocator.alloc+0x25d>
+    116f:	8b 54 24 28          	mov    edx,DWORD PTR [esp+0x28]
+    1173:	89 cd                	mov    ebp,ecx
+    1175:	8d 48 04             	lea    ecx,[eax+0x4]
+    1178:	8d 70 08             	lea    esi,[eax+0x8]
+    117b:	89 4c 24 38          	mov    DWORD PTR [esp+0x38],ecx
+    117f:	89 d3                	mov    ebx,edx
+    1181:	8d 4a ff             	lea    ecx,[edx-0x1]
+    1184:	f7 db                	neg    ebx
+    1186:	03 54 24 20          	add    edx,DWORD PTR [esp+0x20]
+    118a:	89 4c 24 34          	mov    DWORD PTR [esp+0x34],ecx
+    118e:	89 5c 24 30          	mov    DWORD PTR [esp+0x30],ebx
+    1192:	89 54 24 28          	mov    DWORD PTR [esp+0x28],edx
+    1196:	0f 83 26 01 00 00    	jae    12c2 <heap.arena_allocator.ArenaAllocator.alloc+0x1c2>
+    119c:	8b 5f 0c             	mov    ebx,DWORD PTR [edi+0xc]
+    119f:	89 f1                	mov    ecx,esi
+    11a1:	89 44 24 24          	mov    DWORD PTR [esp+0x24],eax
+    11a5:	01 d9                	add    ecx,ebx
+    11a7:	0f 82 d9 00 00 00    	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    11ad:	89 ca                	mov    edx,ecx
+    11af:	03 54 24 34          	add    edx,DWORD PTR [esp+0x34]
+    11b3:	0f 82 cd 00 00 00    	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    11b9:	23 54 24 30          	and    edx,DWORD PTR [esp+0x30]
+    11bd:	29 ca                	sub    edx,ecx
+    11bf:	0f 82 c1 00 00 00    	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    11c5:	01 d3                	add    ebx,edx
+    11c7:	89 74 24 2c          	mov    DWORD PTR [esp+0x2c],esi
+    11cb:	0f 82 b5 00 00 00    	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    11d1:	89 e8                	mov    eax,ebp
+    11d3:	89 dd                	mov    ebp,ebx
+    11d5:	03 6c 24 20          	add    ebp,DWORD PTR [esp+0x20]
+    11d9:	0f 82 a7 00 00 00    	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    11df:	8d 48 f8             	lea    ecx,[eax-0x8]
+    11e2:	39 cd                	cmp    ebp,ecx
+    11e4:	0f 86 5e 01 00 00    	jbe    1348 <heap.arena_allocator.ArenaAllocator.alloc+0x248>
+    11ea:	83 c5 08             	add    ebp,0x8
+    11ed:	0f 82 93 00 00 00    	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    11f3:	8b 7c 24 1c          	mov    edi,DWORD PTR [esp+0x1c]
+    11f7:	8b 74 24 4c          	mov    esi,DWORD PTR [esp+0x4c]
+    11fb:	8b 54 24 24          	mov    edx,DWORD PTR [esp+0x24]
+    11ff:	8b 0f                	mov    ecx,DWORD PTR [edi]
+    1201:	8b 5f 04             	mov    ebx,DWORD PTR [edi+0x4]
+    1204:	89 74 24 0c          	mov    DWORD PTR [esp+0xc],esi
+    1208:	89 6c 24 08          	mov    DWORD PTR [esp+0x8],ebp
+    120c:	89 04 24             	mov    DWORD PTR [esp],eax
+    120f:	c7 44 24 04 02 00 00 	mov    DWORD PTR [esp+0x4],0x2
+    1216:	00 
+    1217:	ff 53 04             	call   DWORD PTR [ebx+0x4]
+    121a:	a8 01                	test   al,0x1
+    121c:	74 68                	je     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    121e:	89 e8                	mov    eax,ebp
+    1220:	8b 4c 24 38          	mov    ecx,DWORD PTR [esp+0x38]
+    1224:	89 01                	mov    DWORD PTR [ecx],eax
+    1226:	8b 4c 24 2c          	mov    ecx,DWORD PTR [esp+0x2c]
+    122a:	8b 5f 0c             	mov    ebx,DWORD PTR [edi+0xc]
+    122d:	01 d9                	add    ecx,ebx
+    122f:	72 55                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    1231:	89 ca                	mov    edx,ecx
+    1233:	03 54 24 34          	add    edx,DWORD PTR [esp+0x34]
+    1237:	72 4d                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    1239:	23 54 24 30          	and    edx,DWORD PTR [esp+0x30]
+    123d:	29 ca                	sub    edx,ecx
+    123f:	72 45                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    1241:	01 d3                	add    ebx,edx
+    1243:	72 41                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    1245:	89 dd                	mov    ebp,ebx
+    1247:	03 6c 24 20          	add    ebp,DWORD PTR [esp+0x20]
+    124b:	72 39                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    124d:	8d 48 f8             	lea    ecx,[eax-0x8]
+    1250:	39 cd                	cmp    ebp,ecx
+    1252:	0f 86 f0 00 00 00    	jbe    1348 <heap.arena_allocator.ArenaAllocator.alloc+0x248>
+    1258:	83 c5 08             	add    ebp,0x8
+    125b:	72 29                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    125d:	8b 7c 24 1c          	mov    edi,DWORD PTR [esp+0x1c]
+    1261:	8b 54 24 24          	mov    edx,DWORD PTR [esp+0x24]
+    1265:	8b 0f                	mov    ecx,DWORD PTR [edi]
+    1267:	8b 5f 04             	mov    ebx,DWORD PTR [edi+0x4]
+    126a:	89 74 24 0c          	mov    DWORD PTR [esp+0xc],esi
+    126e:	89 6c 24 08          	mov    DWORD PTR [esp+0x8],ebp
+    1272:	89 04 24             	mov    DWORD PTR [esp],eax
+    1275:	c7 44 24 04 02 00 00 	mov    DWORD PTR [esp+0x4],0x2
+    127c:	00 
+    127d:	ff 53 04             	call   DWORD PTR [ebx+0x4]
+    1280:	a8 01                	test   al,0x1
+    1282:	89 e8                	mov    eax,ebp
+    1284:	75 9a                	jne    1220 <heap.arena_allocator.ArenaAllocator.alloc+0x120>
+    1286:	b9 25 00 00 00       	mov    ecx,0x25
+    128b:	ba 10 00 00 00       	mov    edx,0x10
+    1290:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    1297:	00 
+    1298:	e8 fc ff ff ff       	call   1299 <heap.arena_allocator.ArenaAllocator.alloc+0x199>
+    129d:	0f 1f 00             	nop    DWORD PTR [eax]
+    12a0:	8b 44 24 38          	mov    eax,DWORD PTR [esp+0x38]
+    12a4:	89 28                	mov    DWORD PTR [eax],ebp
+    12a6:	8b 44 24 24          	mov    eax,DWORD PTR [esp+0x24]
+    12aa:	8b 50 04             	mov    edx,DWORD PTR [eax+0x4]
+    12ad:	8d 48 04             	lea    ecx,[eax+0x4]
+    12b0:	8d 70 08             	lea    esi,[eax+0x8]
+    12b3:	89 4c 24 38          	mov    DWORD PTR [esp+0x38],ecx
+    12b7:	89 d5                	mov    ebp,edx
+    12b9:	83 fa 07             	cmp    edx,0x7
+    12bc:	0f 86 9b 00 00 00    	jbe    135d <heap.arena_allocator.ArenaAllocator.alloc+0x25d>
+    12c2:	8b 5f 0c             	mov    ebx,DWORD PTR [edi+0xc]
+    12c5:	89 f1                	mov    ecx,esi
+    12c7:	89 44 24 24          	mov    DWORD PTR [esp+0x24],eax
+    12cb:	01 d9                	add    ecx,ebx
+    12cd:	72 b7                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    12cf:	89 ca                	mov    edx,ecx
+    12d1:	03 54 24 34          	add    edx,DWORD PTR [esp+0x34]
+    12d5:	72 af                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    12d7:	23 54 24 30          	and    edx,DWORD PTR [esp+0x30]
+    12db:	29 ca                	sub    edx,ecx
+    12dd:	72 a7                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    12df:	01 d3                	add    ebx,edx
+    12e1:	89 74 24 2c          	mov    DWORD PTR [esp+0x2c],esi
+    12e5:	72 9f                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    12e7:	89 e8                	mov    eax,ebp
+    12e9:	89 dd                	mov    ebp,ebx
+    12eb:	03 6c 24 20          	add    ebp,DWORD PTR [esp+0x20]
+    12ef:	72 95                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    12f1:	8d 70 f8             	lea    esi,[eax-0x8]
+    12f4:	39 f5                	cmp    ebp,esi
+    12f6:	76 50                	jbe    1348 <heap.arena_allocator.ArenaAllocator.alloc+0x248>
+    12f8:	83 c5 08             	add    ebp,0x8
+    12fb:	72 89                	jb     1286 <heap.arena_allocator.ArenaAllocator.alloc+0x186>
+    12fd:	8b 7c 24 1c          	mov    edi,DWORD PTR [esp+0x1c]
+    1301:	8b 54 24 4c          	mov    edx,DWORD PTR [esp+0x4c]
+    1305:	8b 0f                	mov    ecx,DWORD PTR [edi]
+    1307:	8b 5f 04             	mov    ebx,DWORD PTR [edi+0x4]
+    130a:	89 54 24 0c          	mov    DWORD PTR [esp+0xc],edx
+    130e:	8b 54 24 24          	mov    edx,DWORD PTR [esp+0x24]
+    1312:	89 6c 24 08          	mov    DWORD PTR [esp+0x8],ebp
+    1316:	89 04 24             	mov    DWORD PTR [esp],eax
+    1319:	c7 44 24 04 02 00 00 	mov    DWORD PTR [esp+0x4],0x2
+    1320:	00 
+    1321:	ff 53 04             	call   DWORD PTR [ebx+0x4]
+    1324:	a8 01                	test   al,0x1
+    1326:	0f 85 74 ff ff ff    	jne    12a0 <heap.arena_allocator.ArenaAllocator.alloc+0x1a0>
+    132c:	8b 44 24 28          	mov    eax,DWORD PTR [esp+0x28]
+    1330:	89 f9                	mov    ecx,edi
+    1332:	89 f2                	mov    edx,esi
+    1334:	89 04 24             	mov    DWORD PTR [esp],eax
+    1337:	e8 74 00 00 00       	call   13b0 <heap.arena_allocator.ArenaAllocator.createNode>
+    133c:	85 c0                	test   eax,eax
+    133e:	0f 85 66 ff ff ff    	jne    12aa <heap.arena_allocator.ArenaAllocator.alloc+0x1aa>
+    1344:	31 db                	xor    ebx,ebx
+    1346:	eb 0b                	jmp    1353 <heap.arena_allocator.ArenaAllocator.alloc+0x253>
+    1348:	8b 44 24 1c          	mov    eax,DWORD PTR [esp+0x1c]
+    134c:	03 5c 24 2c          	add    ebx,DWORD PTR [esp+0x2c]
+    1350:	89 68 0c             	mov    DWORD PTR [eax+0xc],ebp
+    1353:	89 d8                	mov    eax,ebx
+    1355:	83 c4 3c             	add    esp,0x3c
+    1358:	5e                   	pop    esi
+    1359:	5f                   	pop    edi
+    135a:	5b                   	pop    ebx
+    135b:	5d                   	pop    ebp
+    135c:	c3                   	ret
+    135d:	b9 00 00 00 00       	mov    ecx,0x0
+    1362:	ba 24 00 00 00       	mov    edx,0x24
+    1367:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    136e:	00 
+    136f:	e8 fc ff ff ff       	call   1370 <heap.arena_allocator.ArenaAllocator.alloc+0x270>
+    1374:	b9 36 00 00 00       	mov    ecx,0x36
+    1379:	ba 13 00 00 00       	mov    edx,0x13
+    137e:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    1385:	00 
+    1386:	e8 fc ff ff ff       	call   1387 <heap.arena_allocator.ArenaAllocator.alloc+0x287>
+    138b:	b9 4a 00 00 00       	mov    ecx,0x4a
+    1390:	ba 1b 00 00 00       	mov    edx,0x1b
+    1395:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    139c:	00 
+    139d:	e8 fc ff ff ff       	call   139e <heap.arena_allocator.ArenaAllocator.alloc+0x29e>
+    13a2:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+    13a9:	00 00 00 
+    13ac:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+
+000013b0 <heap.arena_allocator.ArenaAllocator.createNode>:
+    13b0:	57                   	push   edi
+    13b1:	56                   	push   esi
+    13b2:	83 ec 14             	sub    esp,0x14
+    13b5:	8b 44 24 20          	mov    eax,DWORD PTR [esp+0x20]
+    13b9:	83 c0 18             	add    eax,0x18
+    13bc:	72 4c                	jb     140a <heap.arena_allocator.ArenaAllocator.createNode+0x5a>
+    13be:	01 c2                	add    edx,eax
+    13c0:	72 48                	jb     140a <heap.arena_allocator.ArenaAllocator.createNode+0x5a>
+    13c2:	89 d7                	mov    edi,edx
+    13c4:	d1 ef                	shr    edi,1
+    13c6:	01 d7                	add    edi,edx
+    13c8:	72 40                	jb     140a <heap.arena_allocator.ArenaAllocator.createNode+0x5a>
+    13ca:	89 ce                	mov    esi,ecx
+    13cc:	8b 54 24 1c          	mov    edx,DWORD PTR [esp+0x1c]
+    13d0:	8b 09                	mov    ecx,DWORD PTR [ecx]
+    13d2:	8b 46 04             	mov    eax,DWORD PTR [esi+0x4]
+    13d5:	c7 04 24 02 00 00 00 	mov    DWORD PTR [esp],0x2
+    13dc:	89 54 24 04          	mov    DWORD PTR [esp+0x4],edx
+    13e0:	89 fa                	mov    edx,edi
+    13e2:	ff 10                	call   DWORD PTR [eax]
+    13e4:	85 c0                	test   eax,eax
+    13e6:	74 1c                	je     1404 <heap.arena_allocator.ArenaAllocator.createNode+0x54>
+    13e8:	a8 03                	test   al,0x3
+    13ea:	75 35                	jne    1421 <heap.arena_allocator.ArenaAllocator.createNode+0x71>
+    13ec:	89 78 04             	mov    DWORD PTR [eax+0x4],edi
+    13ef:	c7 00 00 00 00 00    	mov    DWORD PTR [eax],0x0
+    13f5:	8b 4e 08             	mov    ecx,DWORD PTR [esi+0x8]
+    13f8:	89 08                	mov    DWORD PTR [eax],ecx
+    13fa:	89 46 08             	mov    DWORD PTR [esi+0x8],eax
+    13fd:	c7 46 0c 00 00 00 00 	mov    DWORD PTR [esi+0xc],0x0
+    1404:	83 c4 14             	add    esp,0x14
+    1407:	5e                   	pop    esi
+    1408:	5f                   	pop    edi
+    1409:	c3                   	ret
+    140a:	b9 25 00 00 00       	mov    ecx,0x25
+    140f:	ba 10 00 00 00       	mov    edx,0x10
+    1414:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    141b:	00 
+    141c:	e8 fc ff ff ff       	call   141d <heap.arena_allocator.ArenaAllocator.createNode+0x6d>
+    1421:	b9 36 00 00 00       	mov    ecx,0x36
+    1426:	ba 13 00 00 00       	mov    edx,0x13
+    142b:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    1432:	00 
+    1433:	e8 fc ff ff ff       	call   1434 <heap.arena_allocator.ArenaAllocator.createNode+0x84>
+    1438:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [eax+eax*1+0x0]
+    143f:	00 
+
+00001440 <heap.arena_allocator.ArenaAllocator.resize>:
+    1440:	55                   	push   ebp
+    1441:	53                   	push   ebx
+    1442:	57                   	push   edi
+    1443:	56                   	push   esi
+    1444:	83 ec 0c             	sub    esp,0xc
+    1447:	f6 c1 03             	test   cl,0x3
+    144a:	75 75                	jne    14c1 <heap.arena_allocator.ArenaAllocator.resize+0x81>
+    144c:	8b 69 08             	mov    ebp,DWORD PTR [ecx+0x8]
+    144f:	85 ed                	test   ebp,ebp
+    1451:	74 37                	je     148a <heap.arena_allocator.ArenaAllocator.resize+0x4a>
+    1453:	8b 75 04             	mov    esi,DWORD PTR [ebp+0x4]
+    1456:	83 fe 07             	cmp    esi,0x7
+    1459:	76 7d                	jbe    14d8 <heap.arena_allocator.ArenaAllocator.resize+0x98>
+    145b:	8b 41 0c             	mov    eax,DWORD PTR [ecx+0xc]
+    145e:	83 c5 08             	add    ebp,0x8
+    1461:	01 c5                	add    ebp,eax
+    1463:	72 45                	jb     14aa <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    1465:	8b 5c 24 20          	mov    ebx,DWORD PTR [esp+0x20]
+    1469:	01 da                	add    edx,ebx
+    146b:	72 3d                	jb     14aa <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    146d:	8b 7c 24 28          	mov    edi,DWORD PTR [esp+0x28]
+    1471:	39 d5                	cmp    ebp,edx
+    1473:	75 19                	jne    148e <heap.arena_allocator.ArenaAllocator.resize+0x4e>
+    1475:	89 da                	mov    edx,ebx
+    1477:	29 fa                	sub    edx,edi
+    1479:	73 1a                	jae    1495 <heap.arena_allocator.ArenaAllocator.resize+0x55>
+    147b:	83 c6 f8             	add    esi,0xfffffff8
+    147e:	29 c6                	sub    esi,eax
+    1480:	72 28                	jb     14aa <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    1482:	29 df                	sub    edi,ebx
+    1484:	72 24                	jb     14aa <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    1486:	39 fe                	cmp    esi,edi
+    1488:	73 1c                	jae    14a6 <heap.arena_allocator.ArenaAllocator.resize+0x66>
+    148a:	31 c0                	xor    eax,eax
+    148c:	eb 10                	jmp    149e <heap.arena_allocator.ArenaAllocator.resize+0x5e>
+    148e:	39 fb                	cmp    ebx,edi
+    1490:	0f 93 c0             	setae  al
+    1493:	eb 09                	jmp    149e <heap.arena_allocator.ArenaAllocator.resize+0x5e>
+    1495:	29 d0                	sub    eax,edx
+    1497:	72 11                	jb     14aa <heap.arena_allocator.ArenaAllocator.resize+0x6a>
+    1499:	89 41 0c             	mov    DWORD PTR [ecx+0xc],eax
+    149c:	b0 01                	mov    al,0x1
+    149e:	83 c4 0c             	add    esp,0xc
+    14a1:	5e                   	pop    esi
+    14a2:	5f                   	pop    edi
+    14a3:	5b                   	pop    ebx
+    14a4:	5d                   	pop    ebp
+    14a5:	c3                   	ret
+    14a6:	01 f8                	add    eax,edi
+    14a8:	73 ef                	jae    1499 <heap.arena_allocator.ArenaAllocator.resize+0x59>
+    14aa:	b9 25 00 00 00       	mov    ecx,0x25
+    14af:	ba 10 00 00 00       	mov    edx,0x10
+    14b4:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    14bb:	00 
+    14bc:	e8 fc ff ff ff       	call   14bd <heap.arena_allocator.ArenaAllocator.resize+0x7d>
+    14c1:	b9 36 00 00 00       	mov    ecx,0x36
+    14c6:	ba 13 00 00 00       	mov    edx,0x13
+    14cb:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    14d2:	00 
+    14d3:	e8 fc ff ff ff       	call   14d4 <heap.arena_allocator.ArenaAllocator.resize+0x94>
+    14d8:	b9 00 00 00 00       	mov    ecx,0x0
+    14dd:	ba 24 00 00 00       	mov    edx,0x24
+    14e2:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    14e9:	00 
+    14ea:	e8 fc ff ff ff       	call   14eb <heap.arena_allocator.ArenaAllocator.resize+0xab>
+    14ef:	90                   	nop
+
+000014f0 <heap.arena_allocator.ArenaAllocator.free>:
+    14f0:	57                   	push   edi
+    14f1:	56                   	push   esi
+    14f2:	83 ec 14             	sub    esp,0x14
+    14f5:	f6 c1 03             	test   cl,0x3
+    14f8:	75 47                	jne    1541 <heap.arena_allocator.ArenaAllocator.free+0x51>
+    14fa:	8b 41 08             	mov    eax,DWORD PTR [ecx+0x8]
+    14fd:	85 c0                	test   eax,eax
+    14ff:	74 23                	je     1524 <heap.arena_allocator.ArenaAllocator.free+0x34>
+    1501:	83 78 04 07          	cmp    DWORD PTR [eax+0x4],0x7
+    1505:	76 51                	jbe    1558 <heap.arena_allocator.ArenaAllocator.free+0x68>
+    1507:	8b 71 0c             	mov    esi,DWORD PTR [ecx+0xc]
+    150a:	83 c0 08             	add    eax,0x8
+    150d:	01 f0                	add    eax,esi
+    150f:	72 19                	jb     152a <heap.arena_allocator.ArenaAllocator.free+0x3a>
+    1511:	8b 7c 24 20          	mov    edi,DWORD PTR [esp+0x20]
+    1515:	01 fa                	add    edx,edi
+    1517:	72 11                	jb     152a <heap.arena_allocator.ArenaAllocator.free+0x3a>
+    1519:	39 d0                	cmp    eax,edx
+    151b:	75 07                	jne    1524 <heap.arena_allocator.ArenaAllocator.free+0x34>
+    151d:	29 fe                	sub    esi,edi
+    151f:	72 09                	jb     152a <heap.arena_allocator.ArenaAllocator.free+0x3a>
+    1521:	89 71 0c             	mov    DWORD PTR [ecx+0xc],esi
+    1524:	83 c4 14             	add    esp,0x14
+    1527:	5e                   	pop    esi
+    1528:	5f                   	pop    edi
+    1529:	c3                   	ret
+    152a:	b9 25 00 00 00       	mov    ecx,0x25
+    152f:	ba 10 00 00 00       	mov    edx,0x10
+    1534:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    153b:	00 
+    153c:	e8 fc ff ff ff       	call   153d <heap.arena_allocator.ArenaAllocator.free+0x4d>
+    1541:	b9 36 00 00 00       	mov    ecx,0x36
+    1546:	ba 13 00 00 00       	mov    edx,0x13
+    154b:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    1552:	00 
+    1553:	e8 fc ff ff ff       	call   1554 <heap.arena_allocator.ArenaAllocator.free+0x64>
+    1558:	b9 00 00 00 00       	mov    ecx,0x0
+    155d:	ba 24 00 00 00       	mov    edx,0x24
+    1562:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+    1569:	00 
+    156a:	e8 fc ff ff ff       	call   156b <heap.arena_allocator.ArenaAllocator.free+0x7b>
+
+Disassembly of section .text.unlikely.:
+
+00000000 <builtin.default_panic>:
+   0:	83 ec 1c             	sub    esp,0x1c
+   3:	80 7c 24 24 00       	cmp    BYTE PTR [esp+0x24],0x0
+   8:	89 c8                	mov    eax,ecx
+   a:	75 06                	jne    12 <builtin.default_panic+0x12>
+   c:	8b 4c 24 1c          	mov    ecx,DWORD PTR [esp+0x1c]
+  10:	eb 04                	jmp    16 <builtin.default_panic+0x16>
+  12:	8b 4c 24 20          	mov    ecx,DWORD PTR [esp+0x20]
+  16:	89 4c 24 10          	mov    DWORD PTR [esp+0x10],ecx
+  1a:	89 14 24             	mov    DWORD PTR [esp],edx
+  1d:	8d 4c 24 10          	lea    ecx,[esp+0x10]
+  21:	89 c2                	mov    edx,eax
+  23:	c6 44 24 14 01       	mov    BYTE PTR [esp+0x14],0x1
+  28:	e8 03 00 00 00       	call   30 <debug.panicImpl>
+  2d:	0f 1f 00             	nop    DWORD PTR [eax]
+
+00000030 <debug.panicImpl>:
+  30:	55                   	push   ebp
+  31:	89 e5                	mov    ebp,esp
+  33:	53                   	push   ebx
+  34:	57                   	push   edi
+  35:	56                   	push   esi
+  36:	81 ec 4c 06 00 00    	sub    esp,0x64c
+  3c:	8d 85 38 fa ff ff    	lea    eax,[ebp-0x5c8]
+  42:	0f 57 c0             	xorps  xmm0,xmm0
+  45:	89 d7                	mov    edi,edx
+  47:	89 4d d4             	mov    DWORD PTR [ebp-0x2c],ecx
+  4a:	8d b5 b8 fa ff ff    	lea    esi,[ebp-0x548]
+  50:	8d 8d b0 fd ff ff    	lea    ecx,[ebp-0x250]
+  56:	ba 0b 00 00 00       	mov    edx,0xb
+  5b:	c7 85 3c fb ff ff 00 	mov    DWORD PTR [ebp-0x4c4],0x0
+  62:	00 00 00 
+  65:	c7 85 38 fb ff ff 00 	mov    DWORD PTR [ebp-0x4c8],0x0
+  6c:	00 00 00 
+  6f:	c7 85 40 fb ff ff 00 	mov    DWORD PTR [ebp-0x4c0],0x0
+  76:	00 00 00 
+  79:	89 45 e4             	mov    DWORD PTR [ebp-0x1c],eax
+  7c:	8d 85 58 fe ff ff    	lea    eax,[ebp-0x1a8]
+  82:	c7 45 e8 20 00 00 00 	mov    DWORD PTR [ebp-0x18],0x20
+  89:	c7 45 e0 00 00 00 00 	mov    DWORD PTR [ebp-0x20],0x0
+  90:	0f 29 85 b8 fa ff ff 	movaps XMMWORD PTR [ebp-0x548],xmm0
+  97:	0f 29 85 c8 fa ff ff 	movaps XMMWORD PTR [ebp-0x538],xmm0
+  9e:	0f 29 85 d8 fa ff ff 	movaps XMMWORD PTR [ebp-0x528],xmm0
+  a5:	0f 29 85 e8 fa ff ff 	movaps XMMWORD PTR [ebp-0x518],xmm0
+  ac:	0f 29 85 f8 fa ff ff 	movaps XMMWORD PTR [ebp-0x508],xmm0
+  b3:	0f 29 85 08 fb ff ff 	movaps XMMWORD PTR [ebp-0x4f8],xmm0
+  ba:	0f 29 85 18 fb ff ff 	movaps XMMWORD PTR [ebp-0x4e8],xmm0
+  c1:	0f 29 85 28 fb ff ff 	movaps XMMWORD PTR [ebp-0x4d8],xmm0
+  c8:	89 34 24             	mov    DWORD PTR [esp],esi
+  cb:	89 85 b4 fd ff ff    	mov    DWORD PTR [ebp-0x24c],eax
+  d1:	c7 85 b8 fd ff ff 20 	mov    DWORD PTR [ebp-0x248],0x20
+  d8:	00 00 00 
+  db:	c7 85 b0 fd ff ff 00 	mov    DWORD PTR [ebp-0x250],0x0
+  e2:	00 00 00 
+  e5:	e8 2c 01 00 00       	call   216 <debug.panicImpl+0x1e6>
+  ea:	66 85 c0             	test   ax,ax
+  ed:	75 48                	jne    137 <debug.panicImpl+0x107>
+  ef:	8d 8d b0 fd ff ff    	lea    ecx,[ebp-0x250]
+  f5:	ba 04 00 00 00       	mov    edx,0x4
+  fa:	89 34 24             	mov    DWORD PTR [esp],esi
+  fd:	e8 2c 01 00 00       	call   22e <debug.panicImpl+0x1fe>
+ 102:	66 85 c0             	test   ax,ax
+ 105:	75 30                	jne    137 <debug.panicImpl+0x107>
+ 107:	8d 8d b0 fd ff ff    	lea    ecx,[ebp-0x250]
+ 10d:	ba 07 00 00 00       	mov    edx,0x7
+ 112:	89 34 24             	mov    DWORD PTR [esp],esi
+ 115:	e8 2c 01 00 00       	call   246 <debug.panicImpl+0x216>
+ 11a:	66 85 c0             	test   ax,ax
+ 11d:	75 18                	jne    137 <debug.panicImpl+0x107>
+ 11f:	8d 8d b0 fd ff ff    	lea    ecx,[ebp-0x250]
+ 125:	ba 08 00 00 00       	mov    edx,0x8
+ 12a:	89 34 24             	mov    DWORD PTR [esp],esi
+ 12d:	e8 2c 01 00 00       	call   25e <debug.panicImpl+0x22e>
+ 132:	66 85 c0             	test   ax,ax
+ 135:	74 0b                	je     142 <debug.panicImpl+0x112>
+ 137:	8d 8d b0 fd ff ff    	lea    ecx,[ebp-0x250]
+ 13d:	e8 5e 0b 00 00       	call   ca0 <builtin.returnError>
+ 142:	65 a1 00 00 00 00    	mov    eax,gs:0x0
+ 148:	85 c0                	test   eax,eax
+ 14a:	0f 85 36 08 00 00    	jne    986 <debug.panicImpl+0x956>
+ 150:	65 c7 05 00 00 00 00 	mov    DWORD PTR gs:0x0,0x1
+ 157:	01 00 00 00 
+ 15b:	f0 fe 05 00 00 00 00 	lock inc BYTE PTR ds:0x0
+ 162:	f0 0f ba 2d 04 00 00 	lock bts DWORD PTR ds:0x4,0x0
+ 169:	00 00 
+ 16b:	73 05                	jae    172 <debug.panicImpl+0x142>
+ 16d:	e8 ce 0b 00 00       	call   d40 <Thread.Mutex.FutexImpl.lockSlow>
+ 172:	65 80 3d 00 00 00 00 	cmp    BYTE PTR gs:0x0,0x1
+ 179:	01 
+ 17a:	c7 45 d8 02 00 00 00 	mov    DWORD PTR [ebp-0x28],0x2
+ 181:	89 7d ec             	mov    DWORD PTR [ebp-0x14],edi
+ 184:	75 0b                	jne    191 <debug.panicImpl+0x161>
+ 186:	65 a1 00 00 00 00    	mov    eax,gs:0x0
+ 18c:	89 45 f0             	mov    DWORD PTR [ebp-0x10],eax
+ 18f:	eb 18                	jmp    1a9 <debug.panicImpl+0x179>
+ 191:	b8 e0 00 00 00       	mov    eax,0xe0
+ 196:	cd 80                	int    0x80
+ 198:	89 45 f0             	mov    DWORD PTR [ebp-0x10],eax
+ 19b:	65 a3 00 00 00 00    	mov    gs:0x0,eax
+ 1a1:	65 c6 05 00 00 00 00 	mov    BYTE PTR gs:0x0,0x1
+ 1a8:	01 
+ 1a9:	31 db                	xor    ebx,ebx
+ 1ab:	8d bd b8 fa ff ff    	lea    edi,[ebp-0x548]
+ 1b1:	8d 75 e0             	lea    esi,[ebp-0x20]
+ 1b4:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+ 1bb:	00 00 00 
+ 1be:	66 90                	xchg   ax,ax
+ 1c0:	83 fb 07             	cmp    ebx,0x7
+ 1c3:	0f 87 21 08 00 00    	ja     9ea <debug.panicImpl+0x9ba>
+ 1c9:	b9 07 00 00 00       	mov    ecx,0x7
+ 1ce:	8d 83 c3 01 00 00    	lea    eax,[ebx+0x1c3]
+ 1d4:	89 f2                	mov    edx,esi
+ 1d6:	c7 04 24 02 00 00 00 	mov    DWORD PTR [esp],0x2
+ 1dd:	29 d9                	sub    ecx,ebx
+ 1df:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 1e3:	89 4c 24 08          	mov    DWORD PTR [esp+0x8],ecx
+ 1e7:	89 f9                	mov    ecx,edi
+ 1e9:	e8 3c 06 00 00       	call   82a <debug.panicImpl+0x7fa>
+ 1ee:	66 83 bd bc fa ff ff 	cmp    WORD PTR [ebp-0x544],0x0
+ 1f5:	00 
+ 1f6:	0f 85 72 04 00 00    	jne    66e <debug.panicImpl+0x63e>
+ 1fc:	03 9d b8 fa ff ff    	add    ebx,DWORD PTR [ebp-0x548]
+ 202:	0f 82 da 06 00 00    	jb     8e2 <debug.panicImpl+0x8b2>
+ 208:	83 fb 07             	cmp    ebx,0x7
+ 20b:	75 b3                	jne    1c0 <debug.panicImpl+0x190>
+ 20d:	8b 5d f0             	mov    ebx,DWORD PTR [ebp-0x10]
+ 210:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR ds:0x0
+ 217:	b8 21 00 00 00       	mov    eax,0x21
+ 21c:	c6 85 d8 fa ff ff aa 	mov    BYTE PTR [ebp-0x528],0xaa
+ 223:	83 fb 64             	cmp    ebx,0x64
+ 226:	0f 29 85 c8 fa ff ff 	movaps XMMWORD PTR [ebp-0x538],xmm0
+ 22d:	0f 29 85 b8 fa ff ff 	movaps XMMWORD PTR [ebp-0x548],xmm0
+ 234:	0f 82 da 00 00 00    	jb     314 <debug.panicImpl+0x2e4>
+ 23a:	b9 1f 85 eb 51       	mov    ecx,0x51eb851f
+ 23f:	89 d8                	mov    eax,ebx
+ 241:	f7 e1                	mul    ecx
+ 243:	89 d1                	mov    ecx,edx
+ 245:	89 da                	mov    edx,ebx
+ 247:	c1 e9 05             	shr    ecx,0x5
+ 24a:	6b c1 64             	imul   eax,ecx,0x64
+ 24d:	29 c2                	sub    edx,eax
+ 24f:	81 fb 0f 27 00 00    	cmp    ebx,0x270f
+ 255:	0f b7 84 12 fa 00 00 	movzx  eax,WORD PTR [edx+edx*1+0xfa]
+ 25c:	00 
+ 25d:	66 89 85 d7 fa ff ff 	mov    WORD PTR [ebp-0x529],ax
+ 264:	b8 1f 00 00 00       	mov    eax,0x1f
+ 269:	0f 86 a3 00 00 00    	jbe    312 <debug.panicImpl+0x2e2>
+ 26f:	be 29 5c 8f 02       	mov    esi,0x28f5c29
+ 274:	89 c8                	mov    eax,ecx
+ 276:	f7 e6                	mul    esi
+ 278:	6b c2 64             	imul   eax,edx,0x64
+ 27b:	29 c1                	sub    ecx,eax
+ 27d:	0f b7 84 09 fa 00 00 	movzx  eax,WORD PTR [ecx+ecx*1+0xfa]
+ 284:	00 
+ 285:	b9 59 17 b7 d1       	mov    ecx,0xd1b71759
+ 28a:	66 89 85 d5 fa ff ff 	mov    WORD PTR [ebp-0x52b],ax
+ 291:	89 d8                	mov    eax,ebx
+ 293:	f7 e1                	mul    ecx
+ 295:	b8 1d 00 00 00       	mov    eax,0x1d
+ 29a:	89 d1                	mov    ecx,edx
+ 29c:	c1 e9 0d             	shr    ecx,0xd
+ 29f:	81 fb 40 42 0f 00    	cmp    ebx,0xf4240
+ 2a5:	72 6b                	jb     312 <debug.panicImpl+0x2e2>
+ 2a7:	89 c8                	mov    eax,ecx
+ 2a9:	f7 e6                	mul    esi
+ 2ab:	6b c2 64             	imul   eax,edx,0x64
+ 2ae:	29 c1                	sub    ecx,eax
+ 2b0:	0f b7 84 09 fa 00 00 	movzx  eax,WORD PTR [ecx+ecx*1+0xfa]
+ 2b7:	00 
+ 2b8:	b9 83 de 1b 43       	mov    ecx,0x431bde83
+ 2bd:	66 89 85 d3 fa ff ff 	mov    WORD PTR [ebp-0x52d],ax
+ 2c4:	89 d8                	mov    eax,ebx
+ 2c6:	f7 e1                	mul    ecx
+ 2c8:	b8 1b 00 00 00       	mov    eax,0x1b
+ 2cd:	c1 ea 12             	shr    edx,0x12
+ 2d0:	81 fb 00 e1 f5 05    	cmp    ebx,0x5f5e100
+ 2d6:	72 4e                	jb     326 <debug.panicImpl+0x2f6>
+ 2d8:	69 c2 7b 14 00 00    	imul   eax,edx,0x147b
+ 2de:	b9 89 3b e6 55       	mov    ecx,0x55e63b89
+ 2e3:	c1 e8 13             	shr    eax,0x13
+ 2e6:	6b c0 64             	imul   eax,eax,0x64
+ 2e9:	29 c2                	sub    edx,eax
+ 2eb:	0f b7 c2             	movzx  eax,dx
+ 2ee:	0f b7 84 00 fa 00 00 	movzx  eax,WORD PTR [eax+eax*1+0xfa]
+ 2f5:	00 
+ 2f6:	66 89 85 d1 fa ff ff 	mov    WORD PTR [ebp-0x52f],ax
+ 2fd:	89 d8                	mov    eax,ebx
+ 2ff:	f7 e1                	mul    ecx
+ 301:	b8 19 00 00 00       	mov    eax,0x19
+ 306:	89 d3                	mov    ebx,edx
+ 308:	c1 eb 19             	shr    ebx,0x19
+ 30b:	83 fb 0a             	cmp    ebx,0xa
+ 30e:	72 09                	jb     319 <debug.panicImpl+0x2e9>
+ 310:	eb 1b                	jmp    32d <debug.panicImpl+0x2fd>
+ 312:	89 cb                	mov    ebx,ecx
+ 314:	83 fb 0a             	cmp    ebx,0xa
+ 317:	73 14                	jae    32d <debug.panicImpl+0x2fd>
+ 319:	80 c3 30             	add    bl,0x30
+ 31c:	88 9c 05 b7 fa ff ff 	mov    BYTE PTR [ebp+eax*1-0x549],bl
+ 323:	48                   	dec    eax
+ 324:	eb 1a                	jmp    340 <debug.panicImpl+0x310>
+ 326:	89 d3                	mov    ebx,edx
+ 328:	83 fb 0a             	cmp    ebx,0xa
+ 32b:	72 ec                	jb     319 <debug.panicImpl+0x2e9>
+ 32d:	0f b7 8c 1b fa 00 00 	movzx  ecx,WORD PTR [ebx+ebx*1+0xfa]
+ 334:	00 
+ 335:	66 89 8c 05 b6 fa ff 	mov    WORD PTR [ebp+eax*1-0x54a],cx
+ 33c:	ff 
+ 33d:	83 c0 fe             	add    eax,0xfffffffe
+ 340:	b9 21 00 00 00       	mov    ecx,0x21
+ 345:	8d 94 05 b8 fa ff ff 	lea    edx,[ebp+eax*1-0x548]
+ 34c:	c7 44 24 04 b8 04 00 	mov    DWORD PTR [esp+0x4],0x4b8
+ 353:	00 
+ 354:	29 c1                	sub    ecx,eax
+ 356:	8d 45 d8             	lea    eax,[ebp-0x28]
+ 359:	89 0c 24             	mov    DWORD PTR [esp],ecx
+ 35c:	8d 4d e0             	lea    ecx,[ebp-0x20]
+ 35f:	89 44 24 08          	mov    DWORD PTR [esp+0x8],eax
+ 363:	e8 3c 07 00 00       	call   aa4 <debug.panicImpl+0xa74>
+ 368:	66 85 c0             	test   ax,ax
+ 36b:	0f 85 02 03 00 00    	jne    673 <debug.panicImpl+0x643>
+ 371:	31 db                	xor    ebx,ebx
+ 373:	8d bd b8 fa ff ff    	lea    edi,[ebp-0x548]
+ 379:	8d 75 e0             	lea    esi,[ebp-0x20]
+ 37c:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+ 380:	83 fb 08             	cmp    ebx,0x8
+ 383:	0f 87 61 06 00 00    	ja     9ea <debug.panicImpl+0x9ba>
+ 389:	b9 08 00 00 00       	mov    ecx,0x8
+ 38e:	8d 83 09 00 00 00    	lea    eax,[ebx+0x9]
+ 394:	89 f2                	mov    edx,esi
+ 396:	c7 04 24 02 00 00 00 	mov    DWORD PTR [esp],0x2
+ 39d:	29 d9                	sub    ecx,ebx
+ 39f:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 3a3:	89 4c 24 08          	mov    DWORD PTR [esp+0x8],ecx
+ 3a7:	89 f9                	mov    ecx,edi
+ 3a9:	e8 3c 06 00 00       	call   9ea <debug.panicImpl+0x9ba>
+ 3ae:	66 83 bd bc fa ff ff 	cmp    WORD PTR [ebp-0x544],0x0
+ 3b5:	00 
+ 3b6:	0f 85 b2 02 00 00    	jne    66e <debug.panicImpl+0x63e>
+ 3bc:	03 9d b8 fa ff ff    	add    ebx,DWORD PTR [ebp-0x548]
+ 3c2:	0f 82 1a 05 00 00    	jb     8e2 <debug.panicImpl+0x8b2>
+ 3c8:	83 fb 08             	cmp    ebx,0x8
+ 3cb:	75 b3                	jne    380 <debug.panicImpl+0x350>
+ 3cd:	8d 45 d8             	lea    eax,[ebp-0x28]
+ 3d0:	8b 55 ec             	mov    edx,DWORD PTR [ebp-0x14]
+ 3d3:	8d 4d e0             	lea    ecx,[ebp-0x20]
+ 3d6:	c7 44 24 04 b8 04 00 	mov    DWORD PTR [esp+0x4],0x4b8
+ 3dd:	00 
+ 3de:	89 44 24 08          	mov    DWORD PTR [esp+0x8],eax
+ 3e2:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+ 3e5:	89 04 24             	mov    DWORD PTR [esp],eax
+ 3e8:	e8 3c 07 00 00       	call   b29 <debug.panicImpl+0xaf9>
+ 3ed:	66 85 c0             	test   ax,ax
+ 3f0:	0f 85 78 02 00 00    	jne    66e <debug.panicImpl+0x63e>
+ 3f6:	31 c0                	xor    eax,eax
+ 3f8:	8d b5 b8 fa ff ff    	lea    esi,[ebp-0x548]
+ 3fe:	8d 7d e0             	lea    edi,[ebp-0x20]
+ 401:	85 c0                	test   eax,eax
+ 403:	75 43                	jne    448 <debug.panicImpl+0x418>
+ 405:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+ 40c:	00 00 00 
+ 40f:	90                   	nop
+ 410:	89 f1                	mov    ecx,esi
+ 412:	89 fa                	mov    edx,edi
+ 414:	c7 44 24 08 01 00 00 	mov    DWORD PTR [esp+0x8],0x1
+ 41b:	00 
+ 41c:	c7 44 24 04 03 00 00 	mov    DWORD PTR [esp+0x4],0x3
+ 423:	00 
+ 424:	c7 04 24 02 00 00 00 	mov    DWORD PTR [esp],0x2
+ 42b:	e8 3c 06 00 00       	call   a6c <debug.panicImpl+0xa3c>
+ 430:	66 83 bd bc fa ff ff 	cmp    WORD PTR [ebp-0x544],0x0
+ 437:	00 
+ 438:	0f 85 30 02 00 00    	jne    66e <debug.panicImpl+0x63e>
+ 43e:	8b 85 b8 fa ff ff    	mov    eax,DWORD PTR [ebp-0x548]
+ 444:	85 c0                	test   eax,eax
+ 446:	74 c8                	je     410 <debug.panicImpl+0x3e0>
+ 448:	83 f8 01             	cmp    eax,0x1
+ 44b:	0f 85 99 05 00 00    	jne    9ea <debug.panicImpl+0x9ba>
+ 451:	80 3d 2c 00 00 00 00 	cmp    BYTE PTR ds:0x2c,0x0
+ 458:	8d 85 b8 f9 ff ff    	lea    eax,[ebp-0x648]
+ 45e:	89 45 bc             	mov    DWORD PTR [ebp-0x44],eax
+ 461:	c7 45 c0 20 00 00 00 	mov    DWORD PTR [ebp-0x40],0x20
+ 468:	c7 45 b8 00 00 00 00 	mov    DWORD PTR [ebp-0x48],0x0
+ 46f:	0f 85 87 00 00 00    	jne    4fc <debug.panicImpl+0x4cc>
+ 475:	80 3d 30 00 00 00 00 	cmp    BYTE PTR ds:0x30,0x0
+ 47c:	75 31                	jne    4af <debug.panicImpl+0x47f>
+ 47e:	a1 80 06 00 00       	mov    eax,ds:0x680
+ 483:	8b 0d 84 06 00 00    	mov    ecx,DWORD PTR ds:0x684
+ 489:	c6 05 30 00 00 00 01 	mov    BYTE PTR ds:0x30,0x1
+ 490:	89 0d 3c 00 00 00    	mov    DWORD PTR ds:0x3c,ecx
+ 496:	a3 38 00 00 00       	mov    ds:0x38,eax
+ 49b:	c7 05 44 00 00 00 00 	mov    DWORD PTR ds:0x44,0x0
+ 4a2:	00 00 00 
+ 4a5:	c7 05 40 00 00 00 00 	mov    DWORD PTR ds:0x40,0x0
+ 4ac:	00 00 00 
+ 4af:	c7 05 1c 00 00 00 00 	mov    DWORD PTR ds:0x1c,0x0
+ 4b6:	00 00 00 
+ 4b9:	c7 05 18 00 00 00 00 	mov    DWORD PTR ds:0x18,0x0
+ 4c0:	00 00 00 
+ 4c3:	c7 05 20 00 00 00 00 	mov    DWORD PTR ds:0x20,0x0
+ 4ca:	00 00 00 
+ 4cd:	c7 05 14 00 00 00 dc 	mov    DWORD PTR ds:0x14,0x6dc
+ 4d4:	06 00 00 
+ 4d7:	c7 05 10 00 00 00 38 	mov    DWORD PTR ds:0x10,0x38
+ 4de:	00 00 00 
+ 4e1:	c7 05 28 00 00 00 dc 	mov    DWORD PTR ds:0x28,0x6dc
+ 4e8:	06 00 00 
+ 4eb:	c7 05 24 00 00 00 38 	mov    DWORD PTR ds:0x24,0x38
+ 4f2:	00 00 00 
+ 4f5:	c6 05 2c 00 00 00 01 	mov    BYTE PTR ds:0x2c,0x1
+ 4fc:	8d b5 b8 fa ff ff    	lea    esi,[ebp-0x548]
+ 502:	31 ff                	xor    edi,edi
+ 504:	bb 02 00 00 00       	mov    ebx,0x2
+ 509:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [eax+0x0]
+ 510:	c7 85 bc fa ff ff aa 	mov    DWORD PTR [ebp-0x544],0xaaaaaaaa
+ 517:	aa aa aa 
+ 51a:	c7 85 b8 fa ff ff aa 	mov    DWORD PTR [ebp-0x548],0xaaaaaaaa
+ 521:	aa aa aa 
+ 524:	b8 36 00 00 00       	mov    eax,0x36
+ 529:	b9 13 54 00 00       	mov    ecx,0x5413
+ 52e:	89 f2                	mov    edx,esi
+ 530:	cd 80                	int    0x80
+ 532:	89 c1                	mov    ecx,eax
+ 534:	f7 d9                	neg    ecx
+ 536:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+ 53b:	0f 42 cf             	cmovb  ecx,edi
+ 53e:	66 83 f9 04          	cmp    cx,0x4
+ 542:	74 cc                	je     510 <debug.panicImpl+0x4e0>
+ 544:	0f b7 c1             	movzx  eax,cx
+ 547:	89 34 24             	mov    DWORD PTR [esp],esi
+ 54a:	c7 44 24 08 ec 02 00 	mov    DWORD PTR [esp+0x8],0x2ec
+ 551:	00 
+ 552:	c7 44 24 04 aa 00 00 	mov    DWORD PTR [esp+0x4],0xaa
+ 559:	00 
+ 55a:	85 c0                	test   eax,eax
+ 55c:	e8 fc ff ff ff       	call   55d <debug.panicImpl+0x52d>
+ 561:	89 f2                	mov    edx,esi
+ 563:	e8 cc 05 00 00       	call   b34 <debug.panicImpl+0xb04>
+ 568:	85 c0                	test   eax,eax
+ 56a:	75 62                	jne    5ce <debug.panicImpl+0x59e>
+ 56c:	8b 45 d4             	mov    eax,DWORD PTR [ebp-0x2c]
+ 56f:	8b 55 04             	mov    edx,DWORD PTR [ebp+0x4]
+ 572:	8b bd 04 fb ff ff    	mov    edi,DWORD PTR [ebp-0x4fc]
+ 578:	8b 08                	mov    ecx,DWORD PTR [eax]
+ 57a:	8b 40 04             	mov    eax,DWORD PTR [eax+0x4]
+ 57d:	89 54 24 04          	mov    DWORD PTR [esp+0x4],edx
+ 581:	ba ec 02 00 00       	mov    edx,0x2ec
+ 586:	c7 04 24 02 00 00 00 	mov    DWORD PTR [esp],0x2
+ 58d:	89 4d f0             	mov    DWORD PTR [ebp-0x10],ecx
+ 590:	89 45 ec             	mov    DWORD PTR [ebp-0x14],eax
+ 593:	a1 14 00 00 00       	mov    eax,ds:0x14
+ 598:	8b 0d 10 00 00 00    	mov    ecx,DWORD PTR ds:0x10
+ 59e:	ff 10                	call   DWORD PTR [eax]
+ 5a0:	85 c0                	test   eax,eax
+ 5a2:	0f 85 68 04 00 00    	jne    a10 <debug.panicImpl+0x9e0>
+ 5a8:	8d 75 b8             	lea    esi,[ebp-0x48]
+ 5ab:	89 f1                	mov    ecx,esi
+ 5ad:	e8 ee 06 00 00       	call   ca0 <builtin.returnError>
+ 5b2:	89 f1                	mov    ecx,esi
+ 5b4:	e8 e7 06 00 00       	call   ca0 <builtin.returnError>
+ 5b9:	89 f1                	mov    ecx,esi
+ 5bb:	e8 e0 06 00 00       	call   ca0 <builtin.returnError>
+ 5c0:	89 f1                	mov    ecx,esi
+ 5c2:	e8 d9 06 00 00       	call   ca0 <builtin.returnError>
+ 5c7:	c7 45 b8 00 00 00 00 	mov    DWORD PTR [ebp-0x48],0x0
+ 5ce:	b8 44 05 00 00       	mov    eax,0x544
+ 5d3:	80 b8 a8 00 00 00 00 	cmp    BYTE PTR [eax+0xa8],0x0
+ 5da:	75 3e                	jne    61a <debug.panicImpl+0x5ea>
+ 5dc:	8b 4d d4             	mov    ecx,DWORD PTR [ebp-0x2c]
+ 5df:	8b 01                	mov    eax,DWORD PTR [ecx]
+ 5e1:	8b 49 04             	mov    ecx,DWORD PTR [ecx+0x4]
+ 5e4:	c7 44 24 08 9c 00 00 	mov    DWORD PTR [esp+0x8],0x9c
+ 5eb:	00 
+ 5ec:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ 5f3:	00 
+ 5f4:	89 85 b0 fd ff ff    	mov    DWORD PTR [ebp-0x250],eax
+ 5fa:	8d 85 bc fd ff ff    	lea    eax,[ebp-0x244]
+ 600:	89 8d b4 fd ff ff    	mov    DWORD PTR [ebp-0x24c],ecx
+ 606:	89 ad b8 fd ff ff    	mov    DWORD PTR [ebp-0x248],ebp
+ 60c:	89 04 24             	mov    DWORD PTR [esp],eax
+ 60f:	e8 fc ff ff ff       	call   610 <debug.panicImpl+0x5e0>
+ 614:	8d 85 b0 fd ff ff    	lea    eax,[ebp-0x250]
+ 61a:	8d b5 08 ff ff ff    	lea    esi,[ebp-0xf8]
+ 620:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 624:	c7 44 24 08 a8 00 00 	mov    DWORD PTR [esp+0x8],0xa8
+ 62b:	00 
+ 62c:	89 34 24             	mov    DWORD PTR [esp],esi
+ 62f:	e8 fc ff ff ff       	call   630 <debug.panicImpl+0x600>
+ 634:	8d 4d b0             	lea    ecx,[ebp-0x50]
+ 637:	89 f2                	mov    edx,esi
+ 639:	e8 4c 0d 00 00       	call   138a <heap.arena_allocator.ArenaAllocator.alloc+0x28a>
+ 63e:	80 7d b4 00          	cmp    BYTE PTR [ebp-0x4c],0x0
+ 642:	75 64                	jne    6a8 <debug.panicImpl+0x678>
+ 644:	80 7d ac 00          	cmp    BYTE PTR [ebp-0x54],0x0
+ 648:	0f 85 bf 00 00 00    	jne    70d <debug.panicImpl+0x6dd>
+ 64e:	31 c0                	xor    eax,eax
+ 650:	31 f6                	xor    esi,esi
+ 652:	87 05 04 00 00 00    	xchg   DWORD PTR ds:0x4,eax
+ 658:	83 f8 03             	cmp    eax,0x3
+ 65b:	0f 84 dd 00 00 00    	je     73e <debug.panicImpl+0x70e>
+ 661:	85 c0                	test   eax,eax
+ 663:	0f 84 6a 01 00 00    	je     7d3 <debug.panicImpl+0x7a3>
+ 669:	e9 05 01 00 00       	jmp    773 <debug.panicImpl+0x743>
+ 66e:	8d 4d e0             	lea    ecx,[ebp-0x20]
+ 671:	eb 1a                	jmp    68d <debug.panicImpl+0x65d>
+ 673:	8d 75 e0             	lea    esi,[ebp-0x20]
+ 676:	89 f1                	mov    ecx,esi
+ 678:	e8 23 06 00 00       	call   ca0 <builtin.returnError>
+ 67d:	89 f1                	mov    ecx,esi
+ 67f:	e8 1c 06 00 00       	call   ca0 <builtin.returnError>
+ 684:	89 f1                	mov    ecx,esi
+ 686:	e8 15 06 00 00       	call   ca0 <builtin.returnError>
+ 68b:	89 f1                	mov    ecx,esi
+ 68d:	e8 0e 06 00 00       	call   ca0 <builtin.returnError>
+ 692:	8d 75 e0             	lea    esi,[ebp-0x20]
+ 695:	89 f1                	mov    ecx,esi
+ 697:	e8 04 06 00 00       	call   ca0 <builtin.returnError>
+ 69c:	89 f1                	mov    ecx,esi
+ 69e:	e8 fd 05 00 00       	call   ca0 <builtin.returnError>
+ 6a3:	e8 98 04 00 00       	call   b40 <os.abort>
+ 6a8:	80 bd 0c ff ff ff 00 	cmp    BYTE PTR [ebp-0xf4],0x0
+ 6af:	0f 84 2d 02 00 00    	je     8e2 <debug.panicImpl+0x8b2>
+ 6b5:	8b 9d 08 ff ff ff    	mov    ebx,DWORD PTR [ebp-0xf8]
+ 6bb:	39 5d b0             	cmp    DWORD PTR [ebp-0x50],ebx
+ 6be:	0f 84 1e 02 00 00    	je     8e2 <debug.panicImpl+0x8b2>
+ 6c4:	8d 4d c8             	lea    ecx,[ebp-0x38]
+ 6c7:	8d 95 08 ff ff ff    	lea    edx,[ebp-0xf8]
+ 6cd:	e8 4c 0d 00 00       	call   141e <heap.arena_allocator.ArenaAllocator.createNode+0x6e>
+ 6d2:	80 7d cc 00          	cmp    BYTE PTR [ebp-0x34],0x0
+ 6d6:	0f 84 68 ff ff ff    	je     644 <debug.panicImpl+0x614>
+ 6dc:	8d 75 c8             	lea    esi,[ebp-0x38]
+ 6df:	8d bd 08 ff ff ff    	lea    edi,[ebp-0xf8]
+ 6e5:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+ 6ec:	00 00 00 
+ 6ef:	90                   	nop
+ 6f0:	39 5d c8             	cmp    DWORD PTR [ebp-0x38],ebx
+ 6f3:	0f 84 e9 01 00 00    	je     8e2 <debug.panicImpl+0x8b2>
+ 6f9:	89 f1                	mov    ecx,esi
+ 6fb:	89 fa                	mov    edx,edi
+ 6fd:	e8 4c 0d 00 00       	call   144e <heap.arena_allocator.ArenaAllocator.resize+0xe>
+ 702:	80 7d cc 00          	cmp    BYTE PTR [ebp-0x34],0x0
+ 706:	75 e8                	jne    6f0 <debug.panicImpl+0x6c0>
+ 708:	e9 37 ff ff ff       	jmp    644 <debug.panicImpl+0x614>
+ 70d:	66 83 7d a8 00       	cmp    WORD PTR [ebp-0x58],0x0
+ 712:	0f 85 ca 01 00 00    	jne    8e2 <debug.panicImpl+0x8b2>
+ 718:	8b b5 48 ff ff ff    	mov    esi,DWORD PTR [ebp-0xb8]
+ 71e:	8b 85 18 ff ff ff    	mov    eax,DWORD PTR [ebp-0xe8]
+ 724:	8b 9d 1c ff ff ff    	mov    ebx,DWORD PTR [ebp-0xe4]
+ 72a:	85 f6                	test   esi,esi
+ 72c:	0f 85 b8 00 00 00    	jne    7ea <debug.panicImpl+0x7ba>
+ 732:	31 f6                	xor    esi,esi
+ 734:	bf 04 00 00 00       	mov    edi,0x4
+ 739:	e9 c1 00 00 00       	jmp    7ff <debug.panicImpl+0x7cf>
+ 73e:	b8 f0 00 00 00       	mov    eax,0xf0
+ 743:	bb 04 00 00 00       	mov    ebx,0x4
+ 748:	b9 81 00 00 00       	mov    ecx,0x81
+ 74d:	ba 01 00 00 00       	mov    edx,0x1
+ 752:	cd 80                	int    0x80
+ 754:	89 c1                	mov    ecx,eax
+ 756:	f7 d9                	neg    ecx
+ 758:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+ 75d:	0f 43 f1             	cmovae esi,ecx
+ 760:	66 83 fe 16          	cmp    si,0x16
+ 764:	77 6d                	ja     7d3 <debug.panicImpl+0x7a3>
+ 766:	0f b7 c6             	movzx  eax,si
+ 769:	b9 01 40 40 00       	mov    ecx,0x404001
+ 76e:	0f a3 c1             	bt     ecx,eax
+ 771:	73 60                	jae    7d3 <debug.panicImpl+0x7a3>
+ 773:	f0 fe 0d 00 00 00 00 	lock dec BYTE PTR ds:0x0
+ 77a:	75 05                	jne    781 <debug.panicImpl+0x751>
+ 77c:	e8 bf 03 00 00       	call   b40 <os.abort>
+ 781:	8d 9d b8 fa ff ff    	lea    ebx,[ebp-0x548]
+ 787:	bf 11 08 40 00       	mov    edi,0x400811
+ 78c:	31 d2                	xor    edx,edx
+ 78e:	31 f6                	xor    esi,esi
+ 790:	c7 85 b8 fa ff ff 00 	mov    DWORD PTR [ebp-0x548],0x0
+ 797:	00 00 00 
+ 79a:	66 0f 1f 44 00 00    	nop    WORD PTR [eax+eax*1+0x0]
+ 7a0:	b8 f0 00 00 00       	mov    eax,0xf0
+ 7a5:	b9 80 00 00 00       	mov    ecx,0x80
+ 7aa:	cd 80                	int    0x80
+ 7ac:	89 c1                	mov    ecx,eax
+ 7ae:	f7 d9                	neg    ecx
+ 7b0:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+ 7b5:	b8 00 00 00 00       	mov    eax,0x0
+ 7ba:	0f 42 c8             	cmovb  ecx,eax
+ 7bd:	0f b7 c1             	movzx  eax,cx
+ 7c0:	66 83 f8 16          	cmp    ax,0x16
+ 7c4:	77 0a                	ja     7d0 <debug.panicImpl+0x7a0>
+ 7c6:	0f a3 c7             	bt     edi,eax
+ 7c9:	72 d5                	jb     7a0 <debug.panicImpl+0x770>
+ 7cb:	83 f8 0e             	cmp    eax,0xe
+ 7ce:	74 03                	je     7d3 <debug.panicImpl+0x7a3>
+ 7d0:	83 f8 6e             	cmp    eax,0x6e
+ 7d3:	b9 e1 00 00 00       	mov    ecx,0xe1
+ 7d8:	ba 18 00 00 00       	mov    edx,0x18
+ 7dd:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ 7e4:	00 
+ 7e5:	e8 16 f8 ff ff       	call   0 <builtin.default_panic>
+ 7ea:	81 fe 00 00 00 20    	cmp    esi,0x20000000
+ 7f0:	0f 83 ec 00 00 00    	jae    8e2 <debug.panicImpl+0x8b2>
+ 7f6:	8b bd 40 ff ff ff    	mov    edi,DWORD PTR [ebp-0xc0]
+ 7fc:	c1 e6 03             	shl    esi,0x3
+ 7ff:	85 f6                	test   esi,esi
+ 801:	74 3d                	je     840 <debug.panicImpl+0x810>
+ 803:	89 74 24 08          	mov    DWORD PTR [esp+0x8],esi
+ 807:	89 3c 24             	mov    DWORD PTR [esp],edi
+ 80a:	c7 44 24 04 aa 00 00 	mov    DWORD PTR [esp+0x4],0xaa
+ 811:	00 
+ 812:	89 45 f0             	mov    DWORD PTR [ebp-0x10],eax
+ 815:	e8 fc ff ff ff       	call   816 <debug.panicImpl+0x7e6>
+ 81a:	8b 45 04             	mov    eax,DWORD PTR [ebp+0x4]
+ 81d:	8b 4d f0             	mov    ecx,DWORD PTR [ebp-0x10]
+ 820:	89 fa                	mov    edx,edi
+ 822:	89 34 24             	mov    DWORD PTR [esp],esi
+ 825:	c7 44 24 04 02 00 00 	mov    DWORD PTR [esp+0x4],0x2
+ 82c:	00 
+ 82d:	89 44 24 08          	mov    DWORD PTR [esp+0x8],eax
+ 831:	ff 53 08             	call   DWORD PTR [ebx+0x8]
+ 834:	8b 85 18 ff ff ff    	mov    eax,DWORD PTR [ebp-0xe8]
+ 83a:	8b 9d 1c ff ff ff    	mov    ebx,DWORD PTR [ebp-0xe4]
+ 840:	8b b5 3c ff ff ff    	mov    esi,DWORD PTR [ebp-0xc4]
+ 846:	85 f6                	test   esi,esi
+ 848:	75 0c                	jne    856 <debug.panicImpl+0x826>
+ 84a:	89 5d ec             	mov    DWORD PTR [ebp-0x14],ebx
+ 84d:	31 f6                	xor    esi,esi
+ 84f:	bb 04 00 00 00       	mov    ebx,0x4
+ 854:	eb 18                	jmp    86e <debug.panicImpl+0x83e>
+ 856:	81 fe 00 00 00 10    	cmp    esi,0x10000000
+ 85c:	0f 83 80 00 00 00    	jae    8e2 <debug.panicImpl+0x8b2>
+ 862:	89 5d ec             	mov    DWORD PTR [ebp-0x14],ebx
+ 865:	8b 9d 34 ff ff ff    	mov    ebx,DWORD PTR [ebp-0xcc]
+ 86b:	c1 e6 04             	shl    esi,0x4
+ 86e:	8d bd 34 ff ff ff    	lea    edi,[ebp-0xcc]
+ 874:	85 f6                	test   esi,esi
+ 876:	89 45 f0             	mov    DWORD PTR [ebp-0x10],eax
+ 879:	74 43                	je     8be <debug.panicImpl+0x88e>
+ 87b:	89 74 24 08          	mov    DWORD PTR [esp+0x8],esi
+ 87f:	89 1c 24             	mov    DWORD PTR [esp],ebx
+ 882:	c7 44 24 04 aa 00 00 	mov    DWORD PTR [esp+0x4],0xaa
+ 889:	00 
+ 88a:	e8 fc ff ff ff       	call   88b <debug.panicImpl+0x85b>
+ 88f:	8b 45 04             	mov    eax,DWORD PTR [ebp+0x4]
+ 892:	89 34 24             	mov    DWORD PTR [esp],esi
+ 895:	8b 4d f0             	mov    ecx,DWORD PTR [ebp-0x10]
+ 898:	8b 75 ec             	mov    esi,DWORD PTR [ebp-0x14]
+ 89b:	89 da                	mov    edx,ebx
+ 89d:	c7 44 24 04 02 00 00 	mov    DWORD PTR [esp+0x4],0x2
+ 8a4:	00 
+ 8a5:	89 44 24 08          	mov    DWORD PTR [esp+0x8],eax
+ 8a9:	ff 56 08             	call   DWORD PTR [esi+0x8]
+ 8ac:	8b 85 18 ff ff ff    	mov    eax,DWORD PTR [ebp-0xe8]
+ 8b2:	8b 8d 1c ff ff ff    	mov    ecx,DWORD PTR [ebp-0xe4]
+ 8b8:	89 45 f0             	mov    DWORD PTR [ebp-0x10],eax
+ 8bb:	89 4d ec             	mov    DWORD PTR [ebp-0x14],ecx
+ 8be:	b8 aa aa aa aa       	mov    eax,0xaaaaaaaa
+ 8c3:	b9 19 00 00 00       	mov    ecx,0x19
+ 8c8:	f3 ab                	rep stos DWORD PTR es:[edi],eax
+ 8ca:	8b 5d a0             	mov    ebx,DWORD PTR [ebp-0x60]
+ 8cd:	85 db                	test   ebx,ebx
+ 8cf:	75 09                	jne    8da <debug.panicImpl+0x8aa>
+ 8d1:	31 db                	xor    ebx,ebx
+ 8d3:	bf 04 00 00 00       	mov    edi,0x4
+ 8d8:	eb 25                	jmp    8ff <debug.panicImpl+0x8cf>
+ 8da:	81 fb 00 00 00 10    	cmp    ebx,0x10000000
+ 8e0:	72 17                	jb     8f9 <debug.panicImpl+0x8c9>
+ 8e2:	b9 25 00 00 00       	mov    ecx,0x25
+ 8e7:	ba 10 00 00 00       	mov    edx,0x10
+ 8ec:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ 8f3:	00 
+ 8f4:	e8 07 f7 ff ff       	call   0 <builtin.default_panic>
+ 8f9:	8b 7d 98             	mov    edi,DWORD PTR [ebp-0x68]
+ 8fc:	c1 e3 04             	shl    ebx,0x4
+ 8ff:	8d 55 98             	lea    edx,[ebp-0x68]
+ 902:	85 db                	test   ebx,ebx
+ 904:	75 0b                	jne    911 <debug.panicImpl+0x8e1>
+ 906:	8b 75 04             	mov    esi,DWORD PTR [ebp+0x4]
+ 909:	8b 45 ec             	mov    eax,DWORD PTR [ebp-0x14]
+ 90c:	8b 4d f0             	mov    ecx,DWORD PTR [ebp-0x10]
+ 90f:	eb 40                	jmp    951 <debug.panicImpl+0x921>
+ 911:	89 5c 24 08          	mov    DWORD PTR [esp+0x8],ebx
+ 915:	89 3c 24             	mov    DWORD PTR [esp],edi
+ 918:	c7 44 24 04 aa 00 00 	mov    DWORD PTR [esp+0x4],0xaa
+ 91f:	00 
+ 920:	e8 fc ff ff ff       	call   921 <debug.panicImpl+0x8f1>
+ 925:	8b 75 04             	mov    esi,DWORD PTR [ebp+0x4]
+ 928:	8b 4d f0             	mov    ecx,DWORD PTR [ebp-0x10]
+ 92b:	8b 45 ec             	mov    eax,DWORD PTR [ebp-0x14]
+ 92e:	89 fa                	mov    edx,edi
+ 930:	89 1c 24             	mov    DWORD PTR [esp],ebx
+ 933:	c7 44 24 04 02 00 00 	mov    DWORD PTR [esp+0x4],0x2
+ 93a:	00 
+ 93b:	89 74 24 08          	mov    DWORD PTR [esp+0x8],esi
+ 93f:	ff 50 08             	call   DWORD PTR [eax+0x8]
+ 942:	8b 8d 18 ff ff ff    	mov    ecx,DWORD PTR [ebp-0xe8]
+ 948:	8b 85 1c ff ff ff    	mov    eax,DWORD PTR [ebp-0xe4]
+ 94e:	8d 55 98             	lea    edx,[ebp-0x68]
+ 951:	c7 42 08 aa aa aa aa 	mov    DWORD PTR [edx+0x8],0xaaaaaaaa
+ 958:	c7 42 04 aa aa aa aa 	mov    DWORD PTR [edx+0x4],0xaaaaaaaa
+ 95f:	c7 02 aa aa aa aa    	mov    DWORD PTR [edx],0xaaaaaaaa
+ 965:	89 74 24 08          	mov    DWORD PTR [esp+0x8],esi
+ 969:	c7 44 24 04 02 00 00 	mov    DWORD PTR [esp+0x4],0x2
+ 970:	00 
+ 971:	c7 04 24 ec 02 00 00 	mov    DWORD PTR [esp],0x2ec
+ 978:	8b 95 2c ff ff ff    	mov    edx,DWORD PTR [ebp-0xd4]
+ 97e:	ff 50 08             	call   DWORD PTR [eax+0x8]
+ 981:	e9 c8 fc ff ff       	jmp    64e <debug.panicImpl+0x61e>
+ 986:	83 f8 01             	cmp    eax,0x1
+ 989:	0f 85 ed fd ff ff    	jne    77c <debug.panicImpl+0x74c>
+ 98f:	31 db                	xor    ebx,ebx
+ 991:	8d 7d e0             	lea    edi,[ebp-0x20]
+ 994:	65 c7 05 00 00 00 00 	mov    DWORD PTR gs:0x0,0x2
+ 99b:	02 00 00 00 
+ 99f:	90                   	nop
+ 9a0:	83 fb 23             	cmp    ebx,0x23
+ 9a3:	77 45                	ja     9ea <debug.panicImpl+0x9ba>
+ 9a5:	b9 23 00 00 00       	mov    ecx,0x23
+ 9aa:	8d 83 da 01 00 00    	lea    eax,[ebx+0x1da]
+ 9b0:	89 fa                	mov    edx,edi
+ 9b2:	c7 04 24 02 00 00 00 	mov    DWORD PTR [esp],0x2
+ 9b9:	29 d9                	sub    ecx,ebx
+ 9bb:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 9bf:	89 4c 24 08          	mov    DWORD PTR [esp+0x8],ecx
+ 9c3:	89 f1                	mov    ecx,esi
+ 9c5:	e8 3c 06 00 00       	call   1006 <heap.PageAllocator.resize+0x66>
+ 9ca:	66 83 bd bc fa ff ff 	cmp    WORD PTR [ebp-0x544],0x0
+ 9d1:	00 
+ 9d2:	75 2d                	jne    a01 <debug.panicImpl+0x9d1>
+ 9d4:	03 9d b8 fa ff ff    	add    ebx,DWORD PTR [ebp-0x548]
+ 9da:	0f 82 02 ff ff ff    	jb     8e2 <debug.panicImpl+0x8b2>
+ 9e0:	83 fb 23             	cmp    ebx,0x23
+ 9e3:	75 bb                	jne    9a0 <debug.panicImpl+0x970>
+ 9e5:	e9 92 fd ff ff       	jmp    77c <debug.panicImpl+0x74c>
+ 9ea:	b9 00 00 00 00       	mov    ecx,0x0
+ 9ef:	ba 24 00 00 00       	mov    edx,0x24
+ 9f4:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ 9fb:	00 
+ 9fc:	e8 ff f5 ff ff       	call   0 <builtin.default_panic>
+ a01:	8d 75 e0             	lea    esi,[ebp-0x20]
+ a04:	89 f1                	mov    ecx,esi
+ a06:	e8 95 02 00 00       	call   ca0 <builtin.returnError>
+ a0b:	e9 85 fc ff ff       	jmp    695 <debug.panicImpl+0x665>
+ a10:	89 c3                	mov    ebx,eax
+ a12:	89 7d c4             	mov    DWORD PTR [ebp-0x3c],edi
+ a15:	89 04 24             	mov    DWORD PTR [esp],eax
+ a18:	c7 44 24 08 ec 02 00 	mov    DWORD PTR [esp+0x8],0x2ec
+ a1f:	00 
+ a20:	c7 44 24 04 aa 00 00 	mov    DWORD PTR [esp+0x4],0xaa
+ a27:	00 
+ a28:	e8 fc ff ff ff       	call   a29 <debug.panicImpl+0x9f9>
+ a2d:	f6 c3 03             	test   bl,0x3
+ a30:	0f 85 e5 00 00 00    	jne    b1b <debug.panicImpl+0xaeb>
+ a36:	89 74 24 04          	mov    DWORD PTR [esp+0x4],esi
+ a3a:	89 1c 24             	mov    DWORD PTR [esp],ebx
+ a3d:	c7 44 24 08 ec 02 00 	mov    DWORD PTR [esp+0x8],0x2ec
+ a44:	00 
+ a45:	e8 fc ff ff ff       	call   a46 <debug.panicImpl+0xa16>
+ a4a:	8b 45 ec             	mov    eax,DWORD PTR [ebp-0x14]
+ a4d:	c7 85 e8 fe ff ff aa 	mov    DWORD PTR [ebp-0x118],0xaaaaaaaa
+ a54:	aa aa aa 
+ a57:	c7 85 ec fe ff ff 00 	mov    DWORD PTR [ebp-0x114],0x0
+ a5e:	00 00 00 
+ a61:	c7 85 f0 fe ff ff 00 	mov    DWORD PTR [ebp-0x110],0x0
+ a68:	00 00 00 
+ a6b:	8d bd 84 fe ff ff    	lea    edi,[ebp-0x17c]
+ a71:	b9 19 00 00 00       	mov    ecx,0x19
+ a76:	be d0 04 00 00       	mov    esi,0x4d0
+ a7b:	89 85 5c fe ff ff    	mov    DWORD PTR [ebp-0x1a4],eax
+ a81:	8b 45 f0             	mov    eax,DWORD PTR [ebp-0x10]
+ a84:	89 85 58 fe ff ff    	mov    DWORD PTR [ebp-0x1a8],eax
+ a8a:	a1 14 00 00 00       	mov    eax,ds:0x14
+ a8f:	89 ad 60 fe ff ff    	mov    DWORD PTR [ebp-0x1a0],ebp
+ a95:	c7 85 64 fe ff ff 10 	mov    DWORD PTR [ebp-0x19c],0x10
+ a9c:	00 00 00 
+ a9f:	89 85 6c fe ff ff    	mov    DWORD PTR [ebp-0x194],eax
+ aa5:	a1 10 00 00 00       	mov    eax,ds:0x10
+ aaa:	89 85 68 fe ff ff    	mov    DWORD PTR [ebp-0x198],eax
+ ab0:	8b 45 c4             	mov    eax,DWORD PTR [ebp-0x3c]
+ ab3:	c7 85 74 fe ff ff 00 	mov    DWORD PTR [ebp-0x18c],0x0
+ aba:	00 00 00 
+ abd:	c7 85 70 fe ff ff 00 	mov    DWORD PTR [ebp-0x190],0x0
+ ac4:	00 00 00 
+ ac7:	89 85 78 fe ff ff    	mov    DWORD PTR [ebp-0x188],eax
+ acd:	89 9d 7c fe ff ff    	mov    DWORD PTR [ebp-0x184],ebx
+ ad3:	c7 85 80 fe ff ff 40 	mov    DWORD PTR [ebp-0x180],0x540
+ ada:	05 00 00 
+ add:	8d 85 58 fe ff ff    	lea    eax,[ebp-0x1a8]
+ ae3:	f3 a5                	rep movs DWORD PTR es:[edi],DWORD PTR ds:[esi]
+ ae5:	66 c7 85 f4 fe ff ff 	mov    WORD PTR [ebp-0x10c],0xaaaa
+ aec:	aa aa 
+ aee:	c7 85 f8 fe ff ff 00 	mov    DWORD PTR [ebp-0x108],0x0
+ af5:	00 00 00 
+ af8:	c6 85 fc fe ff ff 01 	mov    BYTE PTR [ebp-0x104],0x1
+ aff:	c7 85 fd fe ff ff 00 	mov    DWORD PTR [ebp-0x103],0x1000000
+ b06:	00 00 01 
+ b09:	80 b8 a8 00 00 00 00 	cmp    BYTE PTR [eax+0xa8],0x0
+ b10:	0f 84 c6 fa ff ff    	je     5dc <debug.panicImpl+0x5ac>
+ b16:	e9 ff fa ff ff       	jmp    61a <debug.panicImpl+0x5ea>
+ b1b:	b9 36 00 00 00       	mov    ecx,0x36
+ b20:	ba 13 00 00 00       	mov    edx,0x13
+ b25:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ b2c:	00 
+ b2d:	e8 ce f4 ff ff       	call   0 <builtin.default_panic>
+ b32:	66 2e 0f 1f 84 00 00 	nop    WORD PTR cs:[eax+eax*1+0x0]
+ b39:	00 00 00 
+ b3c:	0f 1f 40 00          	nop    DWORD PTR [eax+0x0]
+
+00000b40 <os.abort>:
+ b40:	53                   	push   ebx
+ b41:	57                   	push   edi
+ b42:	56                   	push   esi
+ b43:	81 ec a0 00 00 00    	sub    esp,0xa0
+ b49:	8d 44 24 20          	lea    eax,[esp+0x20]
+ b4d:	8d 4c 24 10          	lea    ecx,[esp+0x10]
+ b51:	ba 06 00 00 00       	mov    edx,0x6
+ b56:	89 44 24 14          	mov    DWORD PTR [esp+0x14],eax
+ b5a:	c7 44 24 18 20 00 00 	mov    DWORD PTR [esp+0x18],0x20
+ b61:	00 
+ b62:	c7 44 24 10 00 00 00 	mov    DWORD PTR [esp+0x10],0x0
+ b69:	00 
+ b6a:	e8 2c 00 00 00       	call   b9b <os.abort+0x5b>
+ b6f:	66 85 c0             	test   ax,ax
+ b72:	74 08                	je     b7c <os.abort+0x3c>
+ b74:	c7 44 24 10 00 00 00 	mov    DWORD PTR [esp+0x10],0x0
+ b7b:	00 
+ b7c:	b8 af 00 00 00       	mov    eax,0xaf
+ b81:	31 db                	xor    ebx,ebx
+ b83:	b9 2c 03 00 00       	mov    ecx,0x32c
+ b88:	31 d2                	xor    edx,edx
+ b8a:	be 08 00 00 00       	mov    esi,0x8
+ b8f:	cd 80                	int    0x80
+ b91:	89 c1                	mov    ecx,eax
+ b93:	31 ff                	xor    edi,edi
+ b95:	f7 d9                	neg    ecx
+ b97:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+ b9c:	0f 42 cf             	cmovb  ecx,edi
+ b9f:	66 83 f9 16          	cmp    cx,0x16
+ ba3:	0f 84 90 00 00 00    	je     c39 <os.abort+0xf9>
+ ba9:	0f b7 c1             	movzx  eax,cx
+ bac:	83 f8 0e             	cmp    eax,0xe
+ baf:	0f 84 84 00 00 00    	je     c39 <os.abort+0xf9>
+ bb5:	85 c0                	test   eax,eax
+ bb7:	0f 85 7c 00 00 00    	jne    c39 <os.abort+0xf9>
+ bbd:	b1 01                	mov    cl,0x1
+ bbf:	90                   	nop
+ bc0:	31 c0                	xor    eax,eax
+ bc2:	f0 0f b0 0d 08 00 00 	lock cmpxchg BYTE PTR ds:0x8,cl
+ bc9:	00 
+ bca:	75 f4                	jne    bc0 <os.abort+0x80>
+ bcc:	8d 4c 24 10          	lea    ecx,[esp+0x10]
+ bd0:	ba 06 00 00 00       	mov    edx,0x6
+ bd5:	c7 04 24 ac 03 00 00 	mov    DWORD PTR [esp],0x3ac
+ bdc:	e8 2c 01 00 00       	call   d0d <Thread.Futex.wait+0x2d>
+ be1:	66 83 f8 10          	cmp    ax,0x10
+ be5:	74 69                	je     c50 <os.abort+0x110>
+ be7:	0f b7 c0             	movzx  eax,ax
+ bea:	85 c0                	test   eax,eax
+ bec:	75 79                	jne    c67 <os.abort+0x127>
+ bee:	b8 e0 00 00 00       	mov    eax,0xe0
+ bf3:	cd 80                	int    0x80
+ bf5:	89 c3                	mov    ebx,eax
+ bf7:	b8 ee 00 00 00       	mov    eax,0xee
+ bfc:	b9 06 00 00 00       	mov    ecx,0x6
+ c01:	31 d2                	xor    edx,edx
+ c03:	be 08 00 00 00       	mov    esi,0x8
+ c08:	31 ff                	xor    edi,edi
+ c0a:	cd 80                	int    0x80
+ c0c:	b8 af 00 00 00       	mov    eax,0xaf
+ c11:	bb 01 00 00 00       	mov    ebx,0x1
+ c16:	b9 38 04 00 00       	mov    ecx,0x438
+ c1b:	cd 80                	int    0x80
+ c1d:	89 c1                	mov    ecx,eax
+ c1f:	f7 d9                	neg    ecx
+ c21:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+ c26:	0f 42 cf             	cmovb  ecx,edi
+ c29:	66 85 c9             	test   cx,cx
+ c2c:	74 50                	je     c7e <os.abort+0x13e>
+ c2e:	0f b7 c1             	movzx  eax,cx
+ c31:	83 f8 0e             	cmp    eax,0xe
+ c34:	74 03                	je     c39 <os.abort+0xf9>
+ c36:	83 f8 16             	cmp    eax,0x16
+ c39:	b9 e1 00 00 00       	mov    ecx,0xe1
+ c3e:	ba 18 00 00 00       	mov    edx,0x18
+ c43:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ c4a:	00 
+ c4b:	e8 b0 f3 ff ff       	call   0 <builtin.default_panic>
+ c50:	b9 92 00 00 00       	mov    ecx,0x92
+ c55:	ba 17 00 00 00       	mov    edx,0x17
+ c5a:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ c61:	00 
+ c62:	e8 99 f3 ff ff       	call   0 <builtin.default_panic>
+ c67:	b9 c9 00 00 00       	mov    ecx,0xc9
+ c6c:	ba 17 00 00 00       	mov    edx,0x17
+ c71:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ c78:	00 
+ c79:	e8 82 f3 ff ff       	call   0 <builtin.default_panic>
+ c7e:	8d 4c 24 10          	lea    ecx,[esp+0x10]
+ c82:	ba 09 00 00 00       	mov    edx,0x9
+ c87:	c6 05 00 00 00 00 00 	mov    BYTE PTR ds:0x0,0x0
+ c8e:	e8 2c 00 00 00       	call   cbf <builtin.returnError+0x1f>
+ c93:	e8 3c 02 00 00       	call   ed4 <heap.PageAllocator.alloc+0x14>
+ c98:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [eax+eax*1+0x0]
+ c9f:	00 
+
+00000ca0 <builtin.returnError>:
+ ca0:	56                   	push   esi
+ ca1:	83 ec 08             	sub    esp,0x8
+ ca4:	8b 01                	mov    eax,DWORD PTR [ecx]
+ ca6:	3b 41 08             	cmp    eax,DWORD PTR [ecx+0x8]
+ ca9:	73 0c                	jae    cb7 <builtin.returnError+0x17>
+ cab:	8b 51 04             	mov    edx,DWORD PTR [ecx+0x4]
+ cae:	8b 74 24 0c          	mov    esi,DWORD PTR [esp+0xc]
+ cb2:	89 34 82             	mov    DWORD PTR [edx+eax*4],esi
+ cb5:	8b 01                	mov    eax,DWORD PTR [ecx]
+ cb7:	40                   	inc    eax
+ cb8:	74 07                	je     cc1 <builtin.returnError+0x21>
+ cba:	89 01                	mov    DWORD PTR [ecx],eax
+ cbc:	83 c4 08             	add    esp,0x8
+ cbf:	5e                   	pop    esi
+ cc0:	c3                   	ret
+ cc1:	b9 25 00 00 00       	mov    ecx,0x25
+ cc6:	ba 10 00 00 00       	mov    edx,0x10
+ ccb:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ cd2:	00 
+ cd3:	e8 28 f3 ff ff       	call   0 <builtin.default_panic>
+ cd8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [eax+eax*1+0x0]
+ cdf:	00 
+
+00000ce0 <Thread.Futex.wait>:
+ ce0:	53                   	push   ebx
+ ce1:	57                   	push   edi
+ ce2:	56                   	push   esi
+ ce3:	83 ec 10             	sub    esp,0x10
+ ce6:	89 cb                	mov    ebx,ecx
+ ce8:	b8 f0 00 00 00       	mov    eax,0xf0
+ ced:	b9 80 00 00 00       	mov    ecx,0x80
+ cf2:	31 f6                	xor    esi,esi
+ cf4:	cd 80                	int    0x80
+ cf6:	89 c1                	mov    ecx,eax
+ cf8:	31 ff                	xor    edi,edi
+ cfa:	f7 d9                	neg    ecx
+ cfc:	3d 01 f0 ff ff       	cmp    eax,0xfffff001
+ d01:	0f 42 cf             	cmovb  ecx,edi
+ d04:	0f b7 c1             	movzx  eax,cx
+ d07:	66 83 f8 16          	cmp    ax,0x16
+ d0b:	77 16                	ja     d23 <Thread.Futex.wait+0x43>
+ d0d:	b9 11 08 40 00       	mov    ecx,0x400811
+ d12:	0f a3 c1             	bt     ecx,eax
+ d15:	73 07                	jae    d1e <Thread.Futex.wait+0x3e>
+ d17:	83 c4 10             	add    esp,0x10
+ d1a:	5e                   	pop    esi
+ d1b:	5f                   	pop    edi
+ d1c:	5b                   	pop    ebx
+ d1d:	c3                   	ret
+ d1e:	83 f8 0e             	cmp    eax,0xe
+ d21:	74 03                	je     d26 <Thread.Futex.wait+0x46>
+ d23:	83 f8 6e             	cmp    eax,0x6e
+ d26:	b9 e1 00 00 00       	mov    ecx,0xe1
+ d2b:	ba 18 00 00 00       	mov    edx,0x18
+ d30:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ d37:	00 
+ d38:	e8 c3 f2 ff ff       	call   0 <builtin.default_panic>
+ d3d:	0f 1f 00             	nop    DWORD PTR [eax]
+
+00000d40 <Thread.Mutex.FutexImpl.lockSlow>:
+ d40:	83 ec 0c             	sub    esp,0xc
+ d43:	a1 04 00 00 00       	mov    eax,ds:0x4
+ d48:	83 f8 03             	cmp    eax,0x3
+ d4b:	74 0f                	je     d5c <Thread.Mutex.FutexImpl.lockSlow+0x1c>
+ d4d:	b8 03 00 00 00       	mov    eax,0x3
+ d52:	87 05 04 00 00 00    	xchg   DWORD PTR ds:0x4,eax
+ d58:	85 c0                	test   eax,eax
+ d5a:	74 1e                	je     d7a <Thread.Mutex.FutexImpl.lockSlow+0x3a>
+ d5c:	b9 04 00 00 00       	mov    ecx,0x4
+ d61:	ba 03 00 00 00       	mov    edx,0x3
+ d66:	e8 75 ff ff ff       	call   ce0 <Thread.Futex.wait>
+ d6b:	b8 03 00 00 00       	mov    eax,0x3
+ d70:	87 05 04 00 00 00    	xchg   DWORD PTR ds:0x4,eax
+ d76:	85 c0                	test   eax,eax
+ d78:	75 e2                	jne    d5c <Thread.Mutex.FutexImpl.lockSlow+0x1c>
+ d7a:	83 c4 0c             	add    esp,0xc
+ d7d:	c3                   	ret
