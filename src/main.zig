@@ -46,22 +46,23 @@ fn Cases(comptime hex_long: string, comptime asm_long: string) type {
 
 // zig fmt: off
 
-// 00000000 <add>:
-// comptime { _ = Cases("83 ec 0c               ", "sub    esp,0xc                  "); }
 comptime { _ = Cases("8b 44 24 10            ", "mov    eax,DWORD PTR [esp+0x10] "); }
 comptime { _ = Cases("03 44 24 14            ", "add    eax,DWORD PTR [esp+0x14] "); }
-// comptime { _ = Cases("70 04                  ", "jo     11 <add+0x11>            "); }
-// comptime { _ = Cases("83 c4 0c               ", "add    esp,0xc                  "); }
 comptime { _ = Cases("c3                     ", "ret                             "); }
 comptime { _ = Cases("b9 25 00 00 00         ", "mov    ecx,0x25                 "); }
 comptime { _ = Cases("ba 10 00 00 00         ", "mov    edx,0x10                 "); }
 comptime { _ = Cases("c7 44 24 04 00 00 00 00", "mov    DWORD PTR [esp+0x4],0x0  "); }
+comptime { _ = Cases("55                     ", "push   ebp"); }
+comptime { _ = Cases("53                     ", "push   ebx"); }
+comptime { _ = Cases("57                     ", "push   edi"); }
+comptime { _ = Cases("56                     ", "push   esi"); }
+
+// 00000000 <add>:
+// comptime { _ = Cases("83 ec 0c               ", "sub    esp,0xc                  "); }
+// comptime { _ = Cases("70 04                  ", "jo     11 <add+0x11>            "); }
+// comptime { _ = Cases("83 c4 0c               ", "add    esp,0xc                  "); }
 // comptime { _ = Cases("e8 fc ff ff ff         ", "call   24 <add+0x24>            "); }
 // comptime { _ = Cases("0f 1f 84 00 00 00 00 00", "nop    DWORD PTR [eax+eax*1+0x0]"); }
 
 
 // 00000030 <os.raise>:
-comptime { _ = Cases("55                     ", "push   ebp"); }
-comptime { _ = Cases("53                     ", "push   ebx"); }
-comptime { _ = Cases("57                     ", "push   edi"); }
-comptime { _ = Cases("56                     ", "push   esi"); }
