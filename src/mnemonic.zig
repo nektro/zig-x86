@@ -250,7 +250,10 @@ pub const Mnemonic = enum {
     // MINSD—Return Minimum Scalar Double Precision Floating-Point Value
     // MINSS—Return Minimum Scalar Single Precision Floating-Point Value
     // MONITOR—Set Up Monitor Address
-    // MOV—Move
+
+    /// Move
+    MOV,
+
     // MOV—Move to/from Control Registers
     // MOV—Move to/from Debug Registers
     // MOVAPD—Move Aligned Packed Double Precision Floating-Point Values

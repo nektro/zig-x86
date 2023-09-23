@@ -18,6 +18,7 @@ fn Cases(comptime hex_long: string, comptime asm_long: string) type {
                 var result: string = &.{};
                 var iter = std.mem.tokenizeScalar(u8, asm_long, ' ');
                 while (iter.next()) |item| {
+                    if (result.len > 0) result = result ++ " ";
                     result = result ++ item;
                 }
                 break :blk result;
@@ -47,7 +48,7 @@ fn Cases(comptime hex_long: string, comptime asm_long: string) type {
 
 // 00000000 <add>:
 // comptime { _ = Cases("83 ec 0c               ", "sub    esp,0xc                  "); }
-// comptime { _ = Cases("8b 44 24 10            ", "mov    eax,DWORD PTR [esp+0x10] "); }
+comptime { _ = Cases("8b 44 24 10            ", "mov    eax,DWORD PTR [esp+0x10] "); }
 // comptime { _ = Cases("03 44 24 14            ", "add    eax,DWORD PTR [esp+0x14] "); }
 // comptime { _ = Cases("70 04                  ", "jo     11 <add+0x11>            "); }
 // comptime { _ = Cases("83 c4 0c               ", "add    esp,0xc                  "); }

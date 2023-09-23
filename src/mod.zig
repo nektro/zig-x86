@@ -120,12 +120,16 @@ pub const BytesToInstructionIter = @import("./BytesToInstructionIter.zig");
 
 pub const Instruction = struct {
     mnemonic: x86.Mnemonic,
+    op1: ?Operand = null,
+    op2: ?Operand = null,
 
     pub fn format(ins: Instruction, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
         _ = fmt;
         _ = options;
         const mnemonic_s = @tagName(ins.mnemonic);
         try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
+        if (ins.op1) |o| try writer.print(" {}", .{o});
+        if (ins.op2) |o| try writer.print(",{}", .{o});
     }
 };
 
@@ -136,3 +140,34 @@ fn ascii_lower(s: string) [32]u8 {
     }
     return b;
 }
+
+pub const Operand = union(enum) {
+    reg: Register,
+    reg_disp8: struct { Register, u8 },
+
+    pub fn format(op: Operand, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
+        _ = fmt;
+        _ = options;
+        switch (op) {
+            .reg => |r| try writer.print("{}", .{r}),
+            .reg_disp8 => |r| try writer.print("DWORD PTR [{}+0x{}]", .{ r[0], std.fmt.fmtSliceHexLower(&.{r[1]}) }),
+        }
+    }
+};
+
+pub const Register = enum {
+    // zig fmt: off
+    AL,   CL,   DL,   BL,   AH,   CH,   DH,   BH,
+    AX,   CX,   DX,   BX,   SP,   BP,   SI,   DI,
+    EAX,  ECX,  EDX,  EBX,  ESP,  EBP,  ESI,  EDI,
+    MM0,  MM1,  MM2,  MM3,  MM4,  MM5,  MM6,  MM7,
+    XMM0, XMM1, XMM2, XMM3, XMM4, XMM5, XMM6, XMM7,
+    // zig fmt: on
+
+    pub fn format(reg: Register, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
+        _ = fmt;
+        _ = options;
+        const reg_s = @tagName(reg);
+        try writer.writeAll(ascii_lower(reg_s)[0..reg_s.len]);
+    }
+};
