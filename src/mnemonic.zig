@@ -8,7 +8,10 @@ pub const Mnemonic = enum {
     // AAS—ASCII Adjust AL After Subtraction
     // ADC—Add With Carry
     // ADCX—Unsigned Integer Addition of Two Operands With Carry Flag
-    // ADD—Add
+
+    /// Add
+    ADD,
+
     // ADDPD—Add Packed Double Precision Floating-Point Values
     // ADDPS—Add Packed Single Precision Floating-Point Values
     // ADDSD—Add Scalar Double Precision Floating-Point Values

@@ -21,6 +21,7 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         0xC3 => return .{ .mnemonic = .RET },
 
         0x8B => return try foo1(iter, .MOV, .@"32", 1),
+        0x03 => return try foo1(iter, .ADD, .@"32", 1),
 
         else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
     }
