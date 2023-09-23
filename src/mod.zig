@@ -4,25 +4,25 @@ const x86 = @This();
 
 pub usingnamespace @import("./mnemonic.zig");
 
-const OperandSize = enum(u8) {
+pub const OperandSize = enum(u8) {
     @"16" = 16,
     @"32" = 32,
     @"64" = 64,
 };
 
-const AddressSize = enum(u8) {
+pub const AddressSize = enum(u8) {
     @"16" = 16,
     @"32" = 32,
     @"64" = 64,
 };
 
-const StackAddrSize = enum(u8) {
+pub const StackAddrSize = enum(u8) {
     @"16" = 16,
     @"32" = 32,
     @"64" = 64,
 };
 
-const AddressingMethod = enum {
+pub const AddressingMethod = enum {
     /// Direct address: the instruction has no ModR/M byte; the address of the operand is encoded in the instruction. No base register, index register, or scaling factor can be applied (for example, far JMP (EA)).
     A,
     /// The VEX.vvvv field of the VEX prefix selects a general purpose register.
@@ -71,7 +71,7 @@ const AddressingMethod = enum {
     Y,
 };
 
-const OperandType = enum {
+pub const OperandType = enum {
     /// Two one-word operands in memory or two double-word operands in memory, depending on operand-size attribute (used only by the BOUND instruction).
     a,
     /// Byte, regardless of operand-size attribute.
