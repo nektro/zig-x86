@@ -18,8 +18,10 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         else => |e| return e,
     };
     switch (b) {
+        // ZO
         0xC3 => return .{ .mnemonic = .RET },
 
+        // RM
         0x8B => return try foo1(iter, .MOV, .@"32", 1),
         0x03 => return try foo1(iter, .ADD, .@"32", 1),
 
@@ -31,6 +33,15 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         0xBD => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EBP }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
         0xBE => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .ESI }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
         0xBF => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EDI }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+
+        // MI
+        0xC7 => {
+            const modrm: ModRM = @bitCast(try iter.reader.readByte());
+            if (modrm.sib_follows()) _ = try iter.reader.readByte();
+            const disp = try iter.reader.readByte();
+            const imm = try iter.reader.readInt(u32, .Little);
+            return .{ .mnemonic = .MOV, .op1 = .{ .reg_disp8 = .{ foo2(false, .@"32", null, modrm.rm), disp } }, .op2 = .{ .imm32 = imm } };
+        },
 
         else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
     }
@@ -133,6 +144,15 @@ const ModRM = packed struct(u8) {
     rm: u3,
     reg: u3,
     mod: u2,
+
+    fn sib_follows(self: ModRM) bool {
+        return switch (@as(u8, @bitCast(self))) {
+            0x04, 0x0C, 0x14, 0x1C, 0x24, 0x2C, 0x34, 0x3C => true,
+            0x44, 0x4C, 0x54, 0x5C, 0x64, 0x6C, 0x74, 0x7C => true,
+            0x84, 0x8C, 0x94, 0x9C, 0xA4, 0xAC, 0xB4, 0xBC => true,
+            else => false,
+        };
+    }
 };
 
 const W = enum {

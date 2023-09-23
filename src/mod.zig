@@ -148,12 +148,19 @@ pub const Operand = union(enum) {
 
     pub fn format(op: Operand, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
         _ = fmt;
+        _ = options;
         switch (op) {
             .reg => |r| try writer.print("{}", .{r}),
-            .reg_disp8 => |r| try writer.print("DWORD PTR [{}+0x{}]", .{ r[0], std.fmt.fmtSliceHexLower(&.{r[1]}) }),
+            .reg_disp8 => |r| {
+                try writer.writeAll("DWORD PTR [");
+                try writer.print("{}", .{r[0]});
+                try writer.writeAll("+0x");
+                try std.fmt.formatInt(r[1], 16, .lower, .{}, writer);
+                try writer.writeAll("]");
+            },
             .imm32 => |r| {
                 try writer.writeAll("0x");
-                try std.fmt.formatInt(r, 16, .lower, options, writer);
+                try std.fmt.formatInt(r, 16, .lower, .{}, writer);
             },
         }
     }
