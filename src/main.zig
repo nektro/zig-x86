@@ -56,6 +56,10 @@ comptime { _ = Cases("55", "push ebp"); }
 comptime { _ = Cases("53", "push ebx"); }
 comptime { _ = Cases("57", "push edi"); }
 comptime { _ = Cases("56", "push esi"); }
+comptime { _ = Cases("8b 44 24 08", "mov eax,DWORD PTR [esp+0x8]"); }
+comptime { _ = Cases("03 44 24 04", "add eax,DWORD PTR [esp+0x4]"); }
+comptime { _ = Cases("c3", "ret"); }
+
 
 // 00000000 <add>:
 // comptime { _ = Cases("83 ec 0c               ", "sub    esp,0xc                  "); }
