@@ -26,7 +26,7 @@ $ objdump -d -Mintel --insn-width=11 add.o > notes/objdump.intel.txt
 
 ```
 $ objcopy -O binary --only-sections=.text add.o add.bin
-$ ndisasm add.bin > notes/ndisasm.1.txt
+$ ndisasm -b 32 add.bin > notes/ndisasm.1.txt
 ```
 
 ## License
