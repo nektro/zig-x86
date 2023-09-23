@@ -391,7 +391,10 @@ pub const Mnemonic = enum {
     // PTWRITE—Write Data to a Processor Trace Packet
     // PUNPCKHBW/PUNPCKHWD/PUNPCKHDQ/PUNPCKHQDQ— Unpack High Data
     // PUNPCKLBW/PUNPCKLWD/PUNPCKLDQ/PUNPCKLQDQ—Unpack Low Data
-    // PUSH—Push Word, Doubleword, or Quadword Onto the Stack
+
+    /// Push Word, Doubleword, or Quadword Onto the Stack
+    PUSH,
+
     // PUSHA/PUSHAD—Push All General-Purpose Registers
     // PUSHF/PUSHFD/PUSHFQ—Push EFLAGS Register Onto the Stack
     // PXOR—Logical Exclusive OR

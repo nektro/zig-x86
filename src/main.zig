@@ -58,3 +58,10 @@ comptime { _ = Cases("ba 10 00 00 00         ", "mov    edx,0x10                
 comptime { _ = Cases("c7 44 24 04 00 00 00 00", "mov    DWORD PTR [esp+0x4],0x0  "); }
 // comptime { _ = Cases("e8 fc ff ff ff         ", "call   24 <add+0x24>            "); }
 // comptime { _ = Cases("0f 1f 84 00 00 00 00 00", "nop    DWORD PTR [eax+eax*1+0x0]"); }
+
+
+// 00000030 <os.raise>:
+comptime { _ = Cases("55                     ", "push   ebp"); }
+comptime { _ = Cases("53                     ", "push   ebx"); }
+comptime { _ = Cases("57                     ", "push   edi"); }
+comptime { _ = Cases("56                     ", "push   esi"); }

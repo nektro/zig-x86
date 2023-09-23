@@ -43,6 +43,15 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
             return .{ .mnemonic = .MOV, .op1 = .{ .reg_disp8 = .{ foo2(false, .@"32", null, modrm.rm), disp } }, .op2 = .{ .imm32 = imm } };
         },
 
+        0x50 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .EAX } },
+        0x51 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .ECX } },
+        0x52 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .EDX } },
+        0x53 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .EBX } },
+        0x54 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .ESP } },
+        0x55 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .EBP } },
+        0x56 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .ESI } },
+        0x57 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .EDI } },
+
         else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
     }
 }
