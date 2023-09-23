@@ -144,13 +144,17 @@ fn ascii_lower(s: string) [32]u8 {
 pub const Operand = union(enum) {
     reg: Register,
     reg_disp8: struct { Register, u8 },
+    imm32: u32,
 
     pub fn format(op: Operand, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
         _ = fmt;
-        _ = options;
         switch (op) {
             .reg => |r| try writer.print("{}", .{r}),
             .reg_disp8 => |r| try writer.print("DWORD PTR [{}+0x{}]", .{ r[0], std.fmt.fmtSliceHexLower(&.{r[1]}) }),
+            .imm32 => |r| {
+                try writer.writeAll("0x");
+                try std.fmt.formatInt(r, 16, .lower, options, writer);
+            },
         }
     }
 };

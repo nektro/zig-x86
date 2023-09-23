@@ -23,6 +23,15 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         0x8B => return try foo1(iter, .MOV, .@"32", 1),
         0x03 => return try foo1(iter, .ADD, .@"32", 1),
 
+        0xB8 => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EAX }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+        0xB9 => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .ECX }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+        0xBA => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EDX }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+        0xBB => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EBX }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+        0xBC => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .ESP }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+        0xBD => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EBP }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+        0xBE => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .ESI }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+        0xBF => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EDI }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
+
         else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
     }
 }
