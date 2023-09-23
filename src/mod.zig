@@ -1,5 +1,9 @@
 const std = @import("std");
+const string = []const u8;
 const x86 = @This();
+const Reader = @import("./Reader.zig");
+
+pub usingnamespace @import("./mnemonic.zig");
 
 const OperandSize = enum(u8) {
     @"16" = 16,
@@ -110,3 +114,46 @@ const OperandType = enum {
     /// Word for 16-bit operand-size or doubleword for 32 or 64-bit operand-size.
     z,
 };
+
+//
+
+pub const BytesToInstructionIter = struct {
+    reader: Reader,
+
+    pub fn init(reader: anytype) BytesToInstructionIter {
+        return .{
+            .reader = Reader.from(reader),
+        };
+    }
+
+    pub fn next(iter: BytesToInstructionIter) !?Instruction {
+        const b = iter.reader.readByte() catch |err| switch (err) {
+            error.EndOfStream => return null,
+            else => |e| return e,
+        };
+        switch (b) {
+            0xC3 => return .{ .mnemonic = .RET },
+
+            else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
+        }
+    }
+};
+
+pub const Instruction = struct {
+    mnemonic: x86.Mnemonic,
+
+    pub fn format(ins: Instruction, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
+        _ = fmt;
+        _ = options;
+        const mnemonic_s = @tagName(ins.mnemonic);
+        try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
+    }
+};
+
+fn ascii_lower(s: string) [32]u8 {
+    var b: [32]u8 = undefined;
+    for (s, 0..) |c, i| {
+        b[i] = std.ascii.toLower(c);
+    }
+    return b;
+}
