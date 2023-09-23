@@ -19,8 +19,3 @@ zig build test --summary all
 Mozilla Public License Version 2.0
 
 Copyright 2023 Meghan Denny
-
-<!--  -->
-
-// https://unix.stackexchange.com/questions/30173/how-to-remove-duplicate-lines-inside-a-text-file
-// awk '!seen[$0]++' filename
