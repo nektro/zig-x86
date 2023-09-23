@@ -303,7 +303,10 @@ pub const Mnemonic = enum {
     // MULX—Unsigned Multiply Without Affecting Flags
     // MWAIT—Monitor Wait
     // NEG—Two's Complement Negation
-    // NOP—No Operation
+
+    /// No Operation
+    NOP,
+
     // NOT—One's Complement Negation
     // OR—Logical Inclusive OR
     // ORPD—Bitwise Logical OR of Packed Double Precision Floating-Point Values

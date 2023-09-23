@@ -20,6 +20,7 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
     switch (b) {
         // ZO
         0xC3 => return .{ .mnemonic = .RET },
+        0x90 => return .{ .mnemonic = .NOP },
 
         // RM
         0x8B => return try foo1(iter, .MOV, .@"32", 1),
