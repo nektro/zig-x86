@@ -11,7 +11,7 @@ https://www.intel.com/content/www/us/en/architecture-and-technology/64-ia-32-arc
 Tests are located in `src/main.zig`.
 
 ```
-zig build test --summary all
+$ zig build test --summary all
 ```
 
 ## Creating the disasm reference files
