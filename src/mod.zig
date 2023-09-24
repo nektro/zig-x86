@@ -155,25 +155,8 @@ pub const Operand = union(enum) {
     imm32: u32,
 
     pub fn format(op: Operand, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
+        _ = fmt;
         _ = options;
-        if (comptime std.mem.eql(u8, fmt, "N")) return format2(op, writer);
-        switch (op) {
-            .reg => |r| try writer.print("{}", .{r}),
-            .reg_disp8 => |r| {
-                try writer.writeAll("DWORD PTR [");
-                try writer.print("{}", .{r[0]});
-                try writer.writeAll("+0x");
-                try std.fmt.formatInt(r[1], 16, .lower, .{}, writer);
-                try writer.writeAll("]");
-            },
-            .imm32 => |r| {
-                try writer.writeAll("0x");
-                try std.fmt.formatInt(r, 16, .lower, .{}, writer);
-            },
-        }
-    }
-
-    pub fn format2(op: Operand, writer: anytype) !void {
         switch (op) {
             .reg => |r| try writer.print("{}", .{r}),
             .reg_disp8 => |r| {
