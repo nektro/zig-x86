@@ -204,6 +204,7 @@ pub const Operand = union(enum) {
     reg_disp8: struct { Register, u8 },
     imm32: u32,
     imms32: i32,
+    imm8: u8,
     imms8: i8,
 
     pub fn format(op: Operand, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
@@ -225,6 +226,10 @@ pub const Operand = union(enum) {
                 try writer.writeAll("]");
             },
             .imm32 => |r| {
+                try writer.writeAll("0x");
+                try std.fmt.formatInt(r, 16, .lower, .{}, writer);
+            },
+            .imm8 => |r| {
                 try writer.writeAll("0x");
                 try std.fmt.formatInt(r, 16, .lower, .{}, writer);
             },

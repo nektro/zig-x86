@@ -115,6 +115,12 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
             return .{ .mnemonic = mnemonic, .op1 = op1, .op2 = op2 };
         },
 
+        // I
+        0xCD => {
+            const imm = try iter.reader.readByte();
+            return .{ .mnemonic = .INT, .op1 = .{ .imm8 = imm } };
+        },
+
 
         else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
     }
