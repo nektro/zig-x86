@@ -427,7 +427,10 @@ pub const Mnemonic = enum {
     // PMULLD/PMULLQ—Multiply Packed Integers and Store Low Result
     // PMULLW—Multiply Packed Signed Integers and Store Low Result
     // PMULUDQ—Multiply Packed Unsigned Doubleword Integers
-    // POP—Pop a Value From the Stack
+
+    /// Pop a Value From the Stack
+    POP,
+
     // POPA/POPAD—Pop All General-Purpose Registers
     // POPCNT—Return the Count of Number of Bits Set to 1
     // POPF/POPFD/POPFQ—Pop Stack Into EFLAGS Register

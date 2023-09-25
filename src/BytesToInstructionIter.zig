@@ -53,6 +53,15 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         0x56 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .ESI } },
         0x57 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .EDI } },
 
+        0x58 => return .{ .mnemonic = .POP, .op1 = .{ .reg = .EAX } },
+        0x59 => return .{ .mnemonic = .POP, .op1 = .{ .reg = .ECX } },
+        0x5A => return .{ .mnemonic = .POP, .op1 = .{ .reg = .EDX } },
+        0x5B => return .{ .mnemonic = .POP, .op1 = .{ .reg = .EBX } },
+        0x5C => return .{ .mnemonic = .POP, .op1 = .{ .reg = .ESP } },
+        0x5D => return .{ .mnemonic = .POP, .op1 = .{ .reg = .EBP } },
+        0x5E => return .{ .mnemonic = .POP, .op1 = .{ .reg = .ESI } },
+        0x5F => return .{ .mnemonic = .POP, .op1 = .{ .reg = .EDI } },
+
         // D
         0x70 => {
             const imm: i8 = @bitCast(try iter.reader.readByte());
