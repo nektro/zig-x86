@@ -63,7 +63,10 @@ pub const Mnemonic = enum {
     // BTR—Bit Test and Reset
     // BTS—Bit Test and Set
     // BZHI—Zero High Bits Starting with Specified Bit Position
-    // CALL—Call Procedure
+
+    /// Call Procedure
+    CALL,
+
     // CBW/CWDE/CDQE—Convert Byte to Word/Convert Word to Doubleword/Convert Doubleword to Quadword
     // CLAC—Clear AC Flag in EFLAGS Register
     // CLC—Clear Carry Flag
@@ -524,7 +527,10 @@ pub const Mnemonic = enum {
     // STR—Store Task Register
     // STTILECFG—Store Tile Configuration
     // STUI—Set User Interrupt Flag
-    // SUB—Subtract
+
+    /// Subtract
+    SUB,
+
     // SUBPD—Subtract Packed Double Precision Floating-Point Values
     // SUBPS—Subtract Packed Single Precision Floating-Point Values
     // SUBSD—Subtract Scalar Double Precision Floating-Point Value

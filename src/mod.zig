@@ -132,8 +132,15 @@ pub const Instruction = struct {
                 try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
                 const base_addr = comptime std.fmt.parseInt(u64, fmt, 16) catch unreachable;
                 try writer.writeAll(" ");
-                try writer.writeAll("0x");
                 try std.fmt.formatInt(safeAdd(base_addr, ins.op1.?.imms8) + 2, 16, .lower, .{}, writer);
+                return;
+            },
+            .CALL => {
+                const mnemonic_s = @tagName(ins.mnemonic);
+                try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
+                const base_addr = comptime std.fmt.parseInt(u64, fmt, 16) catch unreachable;
+                try writer.writeAll(" ");
+                try std.fmt.formatInt(safeAdd(base_addr, ins.op1.?.imms32) + 5, 16, .lower, .{}, writer);
                 return;
             },
             else => {},
@@ -178,6 +185,7 @@ pub const Operand = union(enum) {
     reg: Register,
     reg_disp8: struct { Register, u8 },
     imm32: u32,
+    imms32: i32,
     imms8: i8,
 
     pub fn format(op: Operand, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
@@ -186,13 +194,13 @@ pub const Operand = union(enum) {
         comptime var iter = std.mem.splitScalar(u8, fmt, ',');
         const idx = comptime std.fmt.parseInt(u8, iter.next().?, 10) catch unreachable;
         const baseaddr = comptime std.fmt.parseInt(u64, iter.next().?, 16) catch unreachable;
+        _ = idx;
         _ = baseaddr;
 
         switch (op) {
             .reg => |r| try writer.print("{}", .{r}),
             .reg_disp8 => |r| {
-                if (idx == 1) try writer.writeAll("dword ");
-                try writer.writeAll("[");
+                try writer.writeAll("DWORD PTR [");
                 try writer.print("{}", .{r[0]});
                 try writer.writeAll("+0x");
                 try std.fmt.formatInt(r[1], 16, .lower, .{}, writer);
@@ -206,6 +214,10 @@ pub const Operand = union(enum) {
                 if (r < 0) try writer.writeAll("-");
                 try writer.writeAll("0x");
                 try std.fmt.formatInt(r, 16, .lower, .{}, writer);
+            },
+            .imms32 => |r| {
+                _ = r;
+                @panic("TODO");
             },
         }
     }

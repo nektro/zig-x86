@@ -53,9 +53,28 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         0x56 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .ESI } },
         0x57 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .EDI } },
 
+        // D
         0x70 => {
             const imm: i8 = @bitCast(try iter.reader.readByte());
             return .{ .mnemonic = .JO, .op1 = .{ .imms8 = imm } };
+        },
+        0xE8 => {
+            var imm = try iter.reader.readInt(i32, .Little);
+            return .{ .mnemonic = .CALL, .op1 = .{ .imms32 = imm } };
+        },
+
+        // MI
+        0x83 => {
+            const modrm: ModRM = @bitCast(try iter.reader.readByte());
+            const imm: i8 = @bitCast(try iter.reader.readByte());
+            const mnemonic: x86.Mnemonic = switch (modrm.reg) {
+                0 => .ADD,
+                5 => .SUB,
+                else => @panic("TODO"),
+            };
+            const op1: x86.Operand = .{ .reg = foo2(false, .@"32", null, modrm.rm) };
+            const op2: x86.Operand = .{ .imms8 = imm };
+            return .{ .mnemonic = mnemonic, .op1 = op1, .op2 = op2 };
         },
 
         else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
