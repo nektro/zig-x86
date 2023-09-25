@@ -125,6 +125,20 @@ pub const Instruction = struct {
 
     pub fn format(ins: Instruction, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
         _ = options;
+
+        switch (ins.mnemonic) {
+            .JO => {
+                const mnemonic_s = @tagName(ins.mnemonic);
+                try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
+                const base_addr = comptime std.fmt.parseInt(u64, fmt, 16) catch unreachable;
+                try writer.writeAll(" ");
+                try writer.writeAll("0x");
+                try std.fmt.formatInt(safeAdd(base_addr, ins.op1.?.imms8) + 2, 16, .lower, .{}, writer);
+                return;
+            },
+            else => {},
+        }
+
         const mnemonic_s = @tagName(ins.mnemonic);
         try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
         if (ins.op1) |o| {
@@ -146,10 +160,25 @@ fn ascii_lower(s: string) [32]u8 {
     return b;
 }
 
+/// Allows u32 + i16 to work
+pub fn safeAdd(a: anytype, b: anytype) @TypeOf(a) {
+    if (b >= 0) {
+        return a + @as(@TypeOf(a), @intCast(b));
+    }
+    return a - @as(@TypeOf(a), @intCast(-@as(OneBiggerInt(@TypeOf(b)), b)));
+}
+
+pub fn OneBiggerInt(comptime T: type) type {
+    var info = @typeInfo(T);
+    info.Int.bits += 1;
+    return @Type(info);
+}
+
 pub const Operand = union(enum) {
     reg: Register,
     reg_disp8: struct { Register, u8 },
     imm32: u32,
+    imms8: i8,
 
     pub fn format(op: Operand, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
         _ = options;
@@ -170,6 +199,11 @@ pub const Operand = union(enum) {
                 try writer.writeAll("]");
             },
             .imm32 => |r| {
+                try writer.writeAll("0x");
+                try std.fmt.formatInt(r, 16, .lower, .{}, writer);
+            },
+            .imms8 => |r| {
+                if (r < 0) try writer.writeAll("-");
                 try writer.writeAll("0x");
                 try std.fmt.formatInt(r, 16, .lower, .{}, writer);
             },

@@ -206,7 +206,64 @@ pub const Mnemonic = enum {
     // INVLPG—Invalidate TLB Entries
     // INVPCID—Invalidate Process-Context Identifier
     // IRET/IRETD/IRETQ—Interrupt Return
-    // Jcc—Jump if Condition Is Met
+
+    /// Jump if Condition Is Met—Overflow
+    JO,
+    /// Jump if Condition Is Met—No overflow
+    JNO,
+    /// Jump if Condition Is Met—Below, Not above or equal
+    JB,
+    /// Jump if Condition Is Met—Below, Not above or equal
+    JNAE,
+    /// Jump if Condition Is Met—Not below, Above or equal
+    JNB,
+    /// Jump if Condition Is Met—Not below, Above or equal
+    JAE,
+    /// Jump if Condition Is Met—Equal, Zero
+    JE,
+    /// Jump if Condition Is Met—Equal, Zero
+    JZ,
+    /// Jump if Condition Is Met—Not equal, Not zero
+    JNE,
+    /// Jump if Condition Is Met—Not equal, Not zero
+    JNZ,
+    /// Jump if Condition Is Met—Below or equal, Not above
+    JBE,
+    /// Jump if Condition Is Met—Below or equal, Not above
+    JNA,
+    /// Jump if Condition Is Met—Not below or equal, Above
+    JNBE,
+    /// Jump if Condition Is Met—Not below or equal, Above
+    JA,
+    /// Jump if Condition Is Met—Sign
+    JS,
+    /// Jump if Condition Is Met—Not sign
+    JNS,
+    /// Jump if Condition Is Met—Parity, Parity Even
+    JP,
+    /// Jump if Condition Is Met—Parity, Parity Even
+    JPE,
+    /// Jump if Condition Is Met—Not parity, Parity Odd
+    JNP,
+    /// Jump if Condition Is Met—Not parity, Parity Odd
+    JPO,
+    /// Jump if Condition Is Met—Less than, Not greater than or equal to
+    JL,
+    /// Jump if Condition Is Met—Less than, Not greater than or equal to
+    JNGE,
+    /// Jump if Condition Is Met—Not less than, Greater than or equal to
+    JNL,
+    /// Jump if Condition Is Met—Not less than, Greater than or equal to
+    JGE,
+    /// Jump if Condition Is Met—Less than or equal to, Not greater than
+    JLE,
+    /// Jump if Condition Is Met—Less than or equal to, Not greater than
+    JNG,
+    /// Jump if Condition Is Met—Not less than or equal to, Greater than
+    JNLE,
+    /// Jump if Condition Is Met—Not less than or equal to, Greater than
+    JG,
+
     // JMP—Jump
     // KADDW/KADDB/KADDQ/KADDD—ADD Two Masks
     // KANDW/KANDB/KANDQ/KANDD—Bitwise Logical AND Masks

@@ -53,6 +53,11 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         0x56 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .ESI } },
         0x57 => return .{ .mnemonic = .PUSH, .op1 = .{ .reg = .EDI } },
 
+        0x70 => {
+            const imm: i8 = @bitCast(try iter.reader.readByte());
+            return .{ .mnemonic = .JO, .op1 = .{ .imms8 = imm } };
+        },
+
         else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
     }
 }

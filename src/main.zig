@@ -6,7 +6,6 @@ fn Cases2(comptime baseaddr_str: string, comptime hex_long: string, comptime asm
     return struct {
         // hex -> asm
         test {
-            const baseaddr = try std.fmt.parseUnsigned(u64, baseaddr_str, 16);
             const hex = comptime blk: {
                 var result: []const u8 = &.{};
                 var iter = std.mem.window(u8, std.mem.trimRight(u8, hex_long, " "), 2, 2);
@@ -21,7 +20,7 @@ fn Cases2(comptime baseaddr_str: string, comptime hex_long: string, comptime asm
             const allocator = std.testing.allocator;
             var list = std.ArrayList(u8).init(allocator);
             defer list.deinit();
-            try instr.?.renderNasm(baseaddr, list.writer());
+            try instr.?.format(baseaddr_str, .{}, list.writer());
             try std.testing.expectEqualStrings(asm_expected, list.items);
             try std.testing.expect((try iter.next()) == null);
         }
@@ -44,6 +43,7 @@ fn Cases2(comptime baseaddr_str: string, comptime hex_long: string, comptime asm
 
 comptime { _ = Cases2("00000003", "8B442410        ", "mov eax,[esp+0x10]"); }
 comptime { _ = Cases2("00000007", "03442414        ", "add eax,[esp+0x14]"); }
+comptime { _ = Cases2("0000000B", "7004            ", "jo 0x11"); }
 comptime { _ = Cases2("00000010", "C3              ", "ret"); }
 comptime { _ = Cases2("00000011", "C744240400000000", "mov dword [esp+0x4],0x0"); }
 comptime { _ = Cases2("00000019", "B925000000      ", "mov ecx,0x25"); }
