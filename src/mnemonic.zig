@@ -81,7 +81,10 @@ pub const Mnemonic = enum {
     // CLWB—Cache Line Write Back
     // CMC—Complement Carry Flag
     // CMOVcc—Conditional Move
-    // CMP—Compare Two Operands
+
+    // Compare Two Operands
+    CMP,
+
     // CMPPD—Compare Packed Double Precision Floating-Point Values
     // CMPPS—Compare Packed Single Precision Floating-Point Values
     // CMPS/CMPSB/CMPSW/CMPSD/CMPSQ—Compare String Operands

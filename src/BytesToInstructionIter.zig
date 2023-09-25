@@ -82,12 +82,27 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
             const mnemonic: x86.Mnemonic = switch (modrm.reg) {
                 0 => .ADD,
                 5 => .SUB,
+                7 => .CMP,
                 else => @panic("TODO"),
             };
             const op1: x86.Operand = .{ .reg = foo2(false, .@"32", null, modrm.rm) };
             const op2: x86.Operand = .{ .imms8 = imm };
             return .{ .mnemonic = mnemonic, .op1 = op1, .op2 = op2 };
         },
+        0x81 => {
+            const modrm: ModRM = @bitCast(try iter.reader.readByte());
+            const imm = try iter.reader.readInt(u32, .Little);
+            const mnemonic: x86.Mnemonic = switch (modrm.reg) {
+                0 => .ADD,
+                5 => .SUB,
+                7 => .CMP,
+                else => @panic("TODO"),
+            };
+            const op1: x86.Operand = .{ .reg = foo2(false, .@"32", null, modrm.rm) };
+            const op2: x86.Operand = .{ .imm32 = imm };
+            return .{ .mnemonic = mnemonic, .op1 = op1, .op2 = op2 };
+        },
+
 
         else => std.debug.panic("TODO opcode: {b}", .{std.fmt.fmtSliceHexLower(&.{b})}),
     }
