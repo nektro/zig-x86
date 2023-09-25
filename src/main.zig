@@ -42,6 +42,8 @@ fn Cases2(comptime baseaddr_str: string, comptime hex_long: string, comptime asm
 
 // zig fmt: off
 
+comptime { _ = Cases2("00000003", "8B442410        ", "mov eax,[esp+0x10]"); }
+comptime { _ = Cases2("00000007", "03442414        ", "add eax,[esp+0x14]"); }
 comptime { _ = Cases2("00000010", "C3              ", "ret"); }
 comptime { _ = Cases2("00000011", "C744240400000000", "mov dword [esp+0x4],0x0"); }
 comptime { _ = Cases2("00000019", "B925000000      ", "mov ecx,0x25"); }

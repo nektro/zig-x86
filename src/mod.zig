@@ -125,15 +125,16 @@ pub const Instruction = struct {
 
     pub fn format(ins: Instruction, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
         _ = options;
-        try renderNasm(ins, std.fmt.parseUnsigned(u64, fmt, 16) catch unreachable, writer);
-    }
-
-    pub fn renderNasm(ins: Instruction, base_addr: u64, writer: anytype) !void {
-        _ = base_addr;
         const mnemonic_s = @tagName(ins.mnemonic);
         try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
-        if (ins.op1) |o| try writer.print(" {}", .{o});
-        if (ins.op2) |o| try writer.print(",{}", .{o});
+        if (ins.op1) |o| {
+            try writer.writeAll(" ");
+            try o.format("1," ++ fmt, .{}, writer);
+        }
+        if (ins.op2) |o| {
+            try writer.writeAll(",");
+            try o.format("2," ++ fmt, .{}, writer);
+        }
     }
 };
 
@@ -151,12 +152,18 @@ pub const Operand = union(enum) {
     imm32: u32,
 
     pub fn format(op: Operand, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
-        _ = fmt;
         _ = options;
+
+        comptime var iter = std.mem.splitScalar(u8, fmt, ',');
+        const idx = comptime std.fmt.parseInt(u8, iter.next().?, 10) catch unreachable;
+        const baseaddr = comptime std.fmt.parseInt(u64, iter.next().?, 16) catch unreachable;
+        _ = baseaddr;
+
         switch (op) {
             .reg => |r| try writer.print("{}", .{r}),
             .reg_disp8 => |r| {
-                try writer.writeAll("dword [");
+                if (idx == 1) try writer.writeAll("dword ");
+                try writer.writeAll("[");
                 try writer.print("{}", .{r[0]});
                 try writer.writeAll("+0x");
                 try std.fmt.formatInt(r[1], 16, .lower, .{}, writer);
