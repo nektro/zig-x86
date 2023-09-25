@@ -124,20 +124,16 @@ pub const Instruction = struct {
     op2: ?Operand = null,
 
     pub fn format(ins: Instruction, comptime fmt: string, options: std.fmt.FormatOptions, writer: anytype) !void {
-        _ = fmt;
         _ = options;
-        const mnemonic_s = @tagName(ins.mnemonic);
-        try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
-        if (ins.op1) |o| try writer.print(" {}", .{o});
-        if (ins.op2) |o| try writer.print(",{}", .{o});
+        try renderNasm(ins, std.fmt.parseUnsigned(u64, fmt, 16) catch unreachable, writer);
     }
 
     pub fn renderNasm(ins: Instruction, base_addr: u64, writer: anytype) !void {
         _ = base_addr;
         const mnemonic_s = @tagName(ins.mnemonic);
         try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
-        if (ins.op1) |o| try writer.print(" {N}", .{o});
-        if (ins.op2) |o| try writer.print(",{N}", .{o});
+        if (ins.op1) |o| try writer.print(" {}", .{o});
+        if (ins.op2) |o| try writer.print(",{}", .{o});
     }
 };
 
