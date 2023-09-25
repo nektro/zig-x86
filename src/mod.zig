@@ -127,7 +127,25 @@ pub const Instruction = struct {
         _ = options;
 
         switch (ins.mnemonic) {
-            .JO => {
+            // zig fmt: off
+            .JO,
+            .JNO,
+            .JB, .JNAE, .JC,
+            .JNB, .JAE, .JNC,
+            .JZ, .JE,
+            .JNZ, .JNE,
+            .JBE, .JNA,
+            .JNBE, .JA,
+            .JS,
+            .JNS,
+            .JP, .JPE,
+            .JNP, .JPO,
+            .JL, .JNGE,
+            .JNL, .JGE,
+            .JLE, .JNG,
+            .JNLE, .JG,
+            // zig fmt: on
+            => {
                 const mnemonic_s = @tagName(ins.mnemonic);
                 try writer.writeAll(ascii_lower(mnemonic_s)[0..mnemonic_s.len]);
                 const base_addr = comptime std.fmt.parseInt(u64, fmt, 16) catch unreachable;

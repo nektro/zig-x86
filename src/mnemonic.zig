@@ -221,10 +221,14 @@ pub const Mnemonic = enum {
     JB,
     /// Jump if Condition Is Met—Below, Not above or equal
     JNAE,
+    /// Jump if Condition Is Met—Carry
+    JC,
     /// Jump if Condition Is Met—Not below, Above or equal
     JNB,
     /// Jump if Condition Is Met—Not below, Above or equal
     JAE,
+    /// Jump if Condition Is Met—Not Carry
+    JNC,
     /// Jump if Condition Is Met—Equal, Zero
     JE,
     /// Jump if Condition Is Met—Equal, Zero

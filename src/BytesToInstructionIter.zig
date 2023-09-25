@@ -66,10 +66,22 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         0x5F => return .{ .mnemonic = .POP, .op1 = .{ .reg = .EDI } },
 
         // D
-        0x70 => {
-            const imm: i8 = @bitCast(try iter.reader.readByte());
-            return .{ .mnemonic = .JO, .op1 = .{ .imms8 = imm } };
-        },
+        0x70 => return try foo6(iter, .JO), // JO
+        0x71 => return try foo6(iter, .JNO), // JNO
+        0x72 => return try foo6(iter, .JB), // B/NAE/C
+        0x73 => return try foo6(iter, .JNB), // NB/AE/NC
+        0x74 => return try foo6(iter, .JE), // Z/E
+        0x75 => return try foo6(iter, .JNE), // NZ/NE
+        0x76 => return try foo6(iter, .JBE), // BE/NA
+        0x77 => return try foo6(iter, .JNBE), // NBE/A
+        0x78 => return try foo6(iter, .JS), // S
+        0x79 => return try foo6(iter, .JNS), // NS
+        0x7A => return try foo6(iter, .JP), // P/PE
+        0x7B => return try foo6(iter, .JNP), // NP/PO
+        0x7C => return try foo6(iter, .JL), // L/NGE
+        0x7D => return try foo6(iter, .JNL), // NL/GE
+        0x7E => return try foo6(iter, .JLE), // LE/NG
+        0x7F => return try foo6(iter, .JNLE), // NLE/G
         0xE8 => {
             var imm = try iter.reader.readInt(i32, .Little);
             return .{ .mnemonic = .CALL, .op1 = .{ .imms32 = imm } };
@@ -209,6 +221,11 @@ fn foo5(iter: BytesToInstructionIter, mnem: x86.Mnemonic, opsize: x86.OperandSiz
         .op1 = try foo3(@bitCast(modrm), iter.reader),
         .op2 = .{ .reg = foo2(false, opsize, w, modrm.reg) },
     };
+}
+
+fn foo6(iter: BytesToInstructionIter, mnem: x86.Mnemonic) !x86.Instruction {
+    const imm: i8 = @bitCast(try iter.reader.readByte());
+    return .{ .mnemonic = mnem, .op1 = .{ .imms8 = imm } };
 }
 
 const ModRM = packed struct(u8) {
