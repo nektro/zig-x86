@@ -26,6 +26,9 @@ pub fn next(iter: BytesToInstructionIter) !?x86.Instruction {
         0x8B => return try foo1(iter, .MOV, .@"32", 1),
         0x03 => return try foo1(iter, .ADD, .@"32", 1),
 
+        // MR
+        0x89 => return try foo5(iter, .MOV, .@"32", 1),
+
         0xB8 => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EAX }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
         0xB9 => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .ECX }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
         0xBA => return .{ .mnemonic = .MOV, .op1 = .{ .reg = .EDX }, .op2 = .{ .imm32 = try iter.reader.readInt(u32, .Little) } },
@@ -154,14 +157,14 @@ fn foo3(modrm: u8, reader: Reader) !x86.Operand {
         // [ESI]+disp32       |     | 110 |  86  |  8E  |  96  |  9E  |  A6  |  AE  |  B6  |  BE  |
         // [EDI]+disp32       |     | 111 |  87  |  8F  |  97  |  9F  |  A7  |  AF  |  B7  |  BF  |
 
-        // EAX/AX/AL/MM0/XMM0 | 11  | 000 |  C0  |  C8  |  D0  |  D8  |  E0  |  E8  |  F0  |  F8  |
-        // ECX/CX/CL/MM/XMM1  |     | 001 |  C1  |  C9  |  D1  |  D9  |  E1  |  E9  |  F1  |  F9  |
-        // EDX/DX/DL/MM2/XMM2 |     | 010 |  C2  |  CA  |  D2  |  DA  |  E2  |  EA  |  F2  |  FA  |
-        // EBX/BX/BL/MM3/XMM3 |     | 011 |  C3  |  CB  |  D3  |  DB  |  E3  |  EB  |  F3  |  FB  |
-        // ESP/SP/AH/MM4/XMM4 |     | 100 |  C4  |  CC  |  D4  |  DC  |  E4  |  EC  |  F4  |  FC  |
-        // EBP/BP/CH/MM5/XMM5 |     | 101 |  C5  |  CD  |  D5  |  DD  |  E5  |  ED  |  F5  |  FD  |
-        // ESI/SI/DH/MM6/XMM6 |     | 110 |  C6  |  CE  |  D6  |  DE  |  E6  |  EE  |  F6  |  FE  |
-        // EDI/DI/BH/MM7/XMM7 |     | 111 |  C7  |  CF  |  D7  |  DF  |  E7  |  EF  |  F7  |  FF  |
+        0xC0, 0xC8, 0xD0, 0xD8, 0xE0, 0xE8, 0xF0, 0xF8 => .{ .reg = .EAX },
+        0xC1, 0xC9, 0xD1, 0xD9, 0xE1, 0xE9, 0xF1, 0xF9 => .{ .reg = .ECX },
+        0xC2, 0xCA, 0xD2, 0xDA, 0xE2, 0xEA, 0xF2, 0xFA => .{ .reg = .EDX },
+        0xC3, 0xCB, 0xD3, 0xDB, 0xE3, 0xEB, 0xF3, 0xFB => .{ .reg = .EBX },
+        0xC4, 0xCC, 0xD4, 0xDC, 0xE4, 0xEC, 0xF4, 0xFC => .{ .reg = .ESP },
+        0xC5, 0xCD, 0xD5, 0xDD, 0xE5, 0xED, 0xF5, 0xFD => .{ .reg = .EBP },
+        0xC6, 0xCE, 0xD6, 0xDE, 0xE6, 0xEE, 0xF6, 0xFE => .{ .reg = .ESI },
+        0xC7, 0xCF, 0xD7, 0xDF, 0xE7, 0xEF, 0xF7, 0xFF => .{ .reg = .EDI },
 
         else => std.debug.panic("TODO {b}", .{std.fmt.fmtSliceHexLower(&.{modrm})}),
     };
@@ -180,6 +183,16 @@ fn foo4(reader: Reader) !x86.Register {
         0x24 => .ESP,
 
         else => std.debug.panic("TODO {b}", .{std.fmt.fmtSliceHexLower(&.{sib_b})}),
+    };
+}
+
+// TODO: give this a better name once we understand the full context better
+fn foo5(iter: BytesToInstructionIter, mnem: x86.Mnemonic, opsize: x86.OperandSize, w: ?u1) !x86.Instruction {
+    const modrm: ModRM = @bitCast(try iter.reader.readByte());
+    return .{
+        .mnemonic = mnem,
+        .op1 = try foo3(@bitCast(modrm), iter.reader),
+        .op2 = .{ .reg = foo2(false, opsize, w, modrm.reg) },
     };
 }
 
